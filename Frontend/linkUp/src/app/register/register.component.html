@@ -1,0 +1,43 @@
+<div class="register w-[100vw] h-[100vh] flex flex-col justify-center items-center">
+    <h2 class="text-center mb-2 text-[2rem]">Start your journey. Create account.</h2>
+
+    <!-- <div  class="success-message" data-cy="registered-success-popup">
+        User created successfully.
+    </div>
+
+    <div class="success-message" data-cy="registered-failure-popup">
+        User failed to register.
+    </div> -->
+
+    <form data-cy="registrationForm"  [formGroup] = "registrationForm" (ngSubmit)="registerNewUser()" class="flex flex-col my-4 mx-6">
+         <div class="flex flex-col py-1 ">
+            <label class="text-[1rem]">Email</label>
+            <input data-cy="userEmail" type="email" formControlName="email" placeholder="Enter your email" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+            <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="text-red-500">Email is required</div>
+        </div>
+
+        <div class="flex flex-col py-1">
+            <label class="text-[1rem]">Enter Full Name:</label> 
+            <input data-cy="userFullName" type="text" formControlName="userFullName" placeholder="Enter your full name" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+            <div *ngIf="registrationForm.get('userFullName')?.invalid && registrationForm.get('userFullName')?.touched" class="text-red-500">Full name is required</div>
+        </div>
+       
+        <div class="flex flex-col py-1">
+            <label class="text-[1rem]">Username</label>
+            <input data-cy="userName" type="text" formControlName="userName" placeholder="Enter your username" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+            <div *ngIf="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched" class="text-red-500">User name is required</div>
+        </div>
+        <div class="flex flex-col py-1">
+            <label class="text-[1rem]">Password</label>
+            <input data-cy="userPassword" type="password" formControlName="password" placeholder="Enter your password" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+            <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="text-red-500">Password is required</div>
+        <!--<div *ngIf="registrationForm.get('password')?.errors?.minlength">Password must be at least 8 characters long.</div>-->
+        </div>
+        <div class="flex flex-col">
+            <input data-cy="register_user_btn" type="submit" value="Register" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">
+        </div>
+        <div class="my-[4px] text-gray-500 text-[13px]">
+            <a routerLink = "/login" class="active:text-[#8800FF]">Already have an account</a>
+        </div>
+    </form>
+</div>

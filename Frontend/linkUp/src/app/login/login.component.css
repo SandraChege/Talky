@@ -1,0 +1,10 @@
+.login {
+  margin: 0;
+  padding: 0;
+  background-color: #17151e;
+  color: white;
+}
+form {
+  width: 50%;
+  row-gap: 10px;
+}

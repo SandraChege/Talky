@@ -1,0 +1,15 @@
+.social-links {
+  display: flex;
+  justify-content: space-around;
+  /* background-color: black; */
+  padding: 10px;
+}
+.social-links a {
+    background-color: red;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.social-links a svg{
+    color: white;
+}
+
