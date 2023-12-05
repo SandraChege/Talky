@@ -1,0 +1,22 @@
+<div class="flex postcontainer">
+    <app-navbar></app-navbar>
+    <div class="post w-[90vw] h-[100vh] flex flex-col bg-[#17151E] ml-[10vw]">
+        <div class="postformcontainer w-[80vw] flex flex-col text-white">
+            <form action=""  data-cy="addPostForm"  [formGroup] = "addPostForm" (ngSubmit)="newPost()" class="flex flex-col my-4 mx-6">
+                <div class="flex flex-col py-1 ">
+                    <label class="text-[1rem]">Image</label>
+                    <input data-cy="image" type="text" formControlName="image" placeholder="Image Url" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                    <div *ngIf="addPostForm.get('image')?.invalid && addPostForm.get('image')?.touched" class="text-red-500">Image is required</div>
+                </div>
+                <div class="flex flex-col py-1 ">
+                    <label class="text-[1rem]">Comment</label>
+                    <input data-cy="content" type="text" formControlName="content" placeholder="content" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                    <div *ngIf="addPostForm.get('content')?.invalid && addPostForm.get('content')?.touched" class="text-red-500">Content is required</div>
+                </div>
+                <div class="flex flex-col">
+                    <input data-cy="add_post_btn" type="submit" value="Add new post" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">
+                </div>
+            </form>          
+        </div>        
+    </div>
+</div>

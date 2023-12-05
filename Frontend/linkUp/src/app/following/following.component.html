@@ -1,0 +1,35 @@
+<div class="flex allsummarycontainer">
+    <app-navbar></app-navbar>
+    <div class="summary w-[90vw] h-[100vh] flex bg-[#17151E] ml-[10vw]">
+        <div class="w-[75vw] summarycontainer w-[80vw] flex flex-col text-white">
+            <!-- buttons -->
+            <div class="buttoncontainer flex justify-between">
+                <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]"><a routerLink="/people">People</a></button>
+                <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]"><a routerLink="/followers">Followers</a></button>
+                <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]"><a routerLink="/following">Following</a></button>          
+            </div>
+            <!-- personinfo -->
+            <div class="allPersonalInfo mt-[20px]">
+                <table class="w-[100%]">
+                    <thead>
+                        <th>Username</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jane Doe</td>
+                            <td><button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Unfollow</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="personinfo text-white w-[15vw]">
+            <div>
+                <p class="pt-[8px]"><i class="fa-solid fa-user"></i><span class="pl-[20px]">username</span></p>
+                <p class="pt-[10px]">Followers<span class="pl-[20px]">1000</span></p>
+                <p class="pt-[10px]">Following<span class="pl-[20px]">20</span></p>
+            </div>
+        </div>
+    </div>
+</div>

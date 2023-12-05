@@ -11,6 +11,12 @@ import { RegisterComponent } from './register/register.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { PostformComponent } from './postform/postform.component';
+import { MypostsComponent } from './myposts/myposts.component';
+import { SummaryComponent } from './summary/summary.component';
+import { PeopleComponent } from './people/people.component';
+import { FollowersComponent } from './followers/followers.component';
+import { FollowingComponent } from './following/following.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +28,12 @@ import { HomeComponent } from './home/home.component';
     ResetpasswordComponent,
     NavbarComponent,
     HomeComponent,
+    PostformComponent,
+    MypostsComponent,
+    SummaryComponent,
+    PeopleComponent,
+    FollowersComponent,
+    FollowingComponent,
   ],
   imports: [
     BrowserModule,

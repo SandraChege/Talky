@@ -1,0 +1,29 @@
+.summary {
+  gap: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .summary {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin-left: 0;
+    width: 100%;
+    height: fit-content;
+  }
+  .personinfo {
+    width: 100%;
+    margin-top: 3.2rem; /*60px*/
+    display: flex;
+    padding-left: 2rem;
+  }
+}
+.allPersonalInfo th, .allPersonalInfo td {
+  border: 1px solid #6b7280;
+  padding: 8px;
+  text-align: left;
+}
+
+.allPersonalInfo td button {
+  text-align: center;
+}
