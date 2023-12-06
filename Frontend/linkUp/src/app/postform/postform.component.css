@@ -1,13 +1,16 @@
-.post{
-    justify-content: center;
-    align-items: center;
+.post {
+  justify-content: center;
+  align-items: center;
 }
-@media screen and (max-width:500px) {
-    .postcontainer{
-        flex-direction: column;
-    }
-    .post{
-        margin-left: 0;
-        width: 100%;
-    }
+
+@media screen and (max-width: 500px) {
+  .post {
+    margin-left: 0;
+    width: 100%;
+  }
+  .postformcontainer {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 }

@@ -16,16 +16,21 @@ img {
 .actions button:hover {
   color: var(--purple);
 }
-.actions span{
-    padding-left: 1rem;
+.actions span {
+  padding-left: 1rem;
 }
 
-@media screen and (max-width:500px) {
-    .allpostcontainer{
-        flex-direction: column;
-    }
-    .posts{
-        margin-left: 0;
-        width: 100%;
-    }
+@media screen and (max-width: 500px) {
+  .posts {
+    margin-left: 0;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: normal;
+    /* background-color: blueviolet; */
+  }
+  .postcontainer {
+    width: 80%;
+    /* background-color: red; */
+  }
 }

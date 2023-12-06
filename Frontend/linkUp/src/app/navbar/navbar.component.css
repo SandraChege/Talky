@@ -21,6 +21,7 @@
 .sidebar i {
   margin-right: 5px;
 }
+
 @media screen and (max-width:500px) {
   .sidebar{
     display: flex;

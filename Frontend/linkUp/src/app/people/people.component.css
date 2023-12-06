@@ -2,18 +2,19 @@
   gap: 20px;
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .summary {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: center;
     margin-left: 0;
     width: 100%;
+    height: 100vh;
     height: fit-content;
   }
   .personinfo {
     width: 100%;
-    margin-top: 3.2rem; /*60px*/
+    margin-top: 3.2rem; 
     display: flex;
     padding-left: 2rem;
   }
@@ -26,4 +27,12 @@
 
 .allPersonalInfo td button {
   text-align: center;
+} */
+@media screen and (max-width: 500px) {
+  .summary {
+    margin-left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
 }
