@@ -1,38 +1,76 @@
 .summary {
   gap: 20px;
 }
-
-/* @media screen and (max-width: 500px) {
-  .summary {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 0;
-    width: 100%;
-    height: 100vh;
-    height: fit-content;
-  }
-  .personinfo {
-    width: 100%;
-    margin-top: 3.2rem; 
-    display: flex;
-    padding-left: 2rem;
-  }
+.searchInput {
+  width: 100%;
+  margin-top: 10px;
 }
-.allPersonalInfo th, .allPersonalInfo td {
-  border: 1px solid #6b7280;
+.searchInput input {
+  width: 50%;
+  border-radius: 10px;
+  background-color: rgba(21, 23, 30, 0.1);
+  border: 2px solid rgb(107, 114, 128);
+  color: white;
+}
+.searchInput input:focus,
+.searchInput input:hover {
+  border: 2px solid rgb(107, 114, 128);
+}
+table {
+  /* border-collapse: collapse; */
+  margin: 10px;
+  width: 95%;
+}
+th,
+td {
+  border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-.allPersonalInfo td button {
-  text-align: center;
-} */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
   .summary {
     margin-left: 0;
-    width: 100%;
+    width: 100vw;
     flex-direction: column;
+  }
+  .summarycontainer{
+    width: 100%;
+  }
+  .buttoncontainer {
+    padding-top: 50px;
+    gap: 10px;
+  }
+  .searchInput {
+    margin-top: 20px;
+    justify-content: center;
     align-items: center;
   }
+  .searchInput input{
+    width: 80%;
+  }
+  .allPersonalInfo{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  /* .personinfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: 10px;
+    background-color: red;
+  } */
+}
+@media screen and (max-width:450px) {
+  .buttoncontainer{
+    flex-direction: column;
+  }
+  .buttoncontainer button:first-child{
+    /* background-color: red; */
+    margin-top: 50px;
+  }
+  
 }
