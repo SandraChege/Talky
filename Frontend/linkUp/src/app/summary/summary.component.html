@@ -1,26 +1,29 @@
-<div class="flex allsummarycontainer">
+<div>
     <app-navbar></app-navbar>
-    <div class="summary w-[90vw] h-[100vh] flex bg-[#17151E] ml-[10vw]">
-        <div class="w-[75vw] summarycontainer w-[80vw] flex flex-col text-white">
-            <!-- buttons -->
-            <div class="buttoncontainer flex justify-between">
-                <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]"><a routerLink="/people">People</a></button>
-                <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]"><a routerLink="/followers">Followers</a></button>
-                <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]"><a routerLink="/following">Following</a></button>          
-            </div>
-            <!-- personinfo -->
-            <div class="flex mt-[2rem]">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur deserunt eum eveniet atque ut assumenda repudiandae obcaecati. Nulla tenetur nostrum ad, animi quidem distinctio recusandae, illum nesciunt aliquam ducimus rem.
-                Vero inventore, facere minima magnam accusantium, quos modi velit beatae, eaque repellat non illo obcaecati suscipit qui! Doloremque quia architecto, magni aliquam necessitatibus magnam distinctio saepe? Fugiat quo earum repudiandae.
-                </p>
-            </div>
+    <div class="profilecontainer flex flex-col bg-[#17151E] ml-[10vw] h-[100vh] w-[90vw] text-white">
+        <div class="top">
+            <p>Hello <span>Username</span></p>
+            <p class="py-8">This is your profile page. You can see the number of your followers and the number of those you are following</p>
         </div>
-        <div class="personinfo text-white w-[15vw]">
-            <div>
-                <p class="pt-[8px]"><i class="fa-solid fa-user"></i><span class="pl-[20px]">username</span></p>
-                <p class="pt-[10px]">Followers<span class="pl-[20px]">1000</span></p>
-                <p class="pt-[10px]">Following<span class="pl-[20px]">20</span></p>
-            </div>
+        <div class="myprofile w-[60vw] flex flex-col">
+                <p class="flex items-center py-4"><i class="fa-solid fa-user"></i> <span>About</span></p>
+                <!-- <form [formGroup]=" ProfileForm" (ngSubmit) = "updateProfile()">
+                    <div class="flex justify-between py-4 items-center px-4">
+                        <label for="">Full Name</label>
+                        <input type="text" data-cy="userName" formControlName="userName" placeholder="Jane Doe" class="p-4 w-[30vw] border-gray-200 border-[0.5px] outline-none">
+                    </div>
+                    <div class="flex justify-between py-4 items-center px-4">
+                        <label for="">Email</label>
+                        <input type="text"data-cy="email" formControlName="email" placeholder="janedoe@gmail.com" class="p-4 w-[30vw] border-gray-200 border-[0.5px] outline-none">
+                    </div>
+                    <div class="flex justify-between py-4 items-center px-4">
+                        <label for="">Phone Number</label>
+                        <input type="number" data-cy="phone_no" formControlName="phone_no" placeholder="700000000" class="p-4 w-[30vw] border-gray-200 border-[0.5px] outline-none">
+                    </div>
+                    <div class="flex justify-end py-4 items-center px-4">
+                        <button data-cy="updateProfile" class="bg-[#D03E3B] text-white px-4 py-2 rounded-md" type="submit">Update Profile</button>
+                    </div>
+                </form> -->
         </div>
     </div>
 </div>

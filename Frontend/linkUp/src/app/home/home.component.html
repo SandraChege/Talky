@@ -5,12 +5,14 @@
             <!--DIVISION 1-->
             <div class="top">
                 <!--SEARCH FUNCTIONALITY-->
-                <div class="searchInput">
-                    <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search post">
-                </div>
-                <!--POST BUTTON-->
-                <div>
-                    <button (click)="viewForm()" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Create Post</button>
+                <div class="search-container flex gap-4">
+                   <div class="searchInput">
+                        <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search post">
+                    </div>
+                    <!--POST BUTTON-->
+                    <div class="search-btn">
+                        <button (click)="viewForm()" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Create Post</button>
+                    </div>
                 </div>
             </div>
 
@@ -102,4 +104,5 @@
                 <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
             </div>
         </div>
+    </div>
 </div>

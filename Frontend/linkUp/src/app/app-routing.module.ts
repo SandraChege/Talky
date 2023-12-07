@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'addpost', component: PostformComponent },
   { path: 'myposts', component: MypostsComponent },
-  { path: 'summary', component: SummaryComponent },
+  { path: 'profile', component: SummaryComponent },
   { path: 'people', component: PeopleComponent },
   { path: 'followers', component: FollowersComponent },
   { path:'following', component: FollowingComponent},
