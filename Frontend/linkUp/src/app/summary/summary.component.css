@@ -1,9 +1,10 @@
-.top {
-  margin: 30px 20px;
-  background-color: #3498db; /* Choose your desired background color */
-  padding: 20px;
-  border-radius: 0 0 20px 20px;
+.profilecontainer{
+  justify-content: center;
+  padding: 10px;
 }
-.top p:first-child {
-  font-size: 2rem;
+.profilecontainer .profile{
+  width: 60vw;
+}
+.top p span{
+  font-weight: bold;
 }

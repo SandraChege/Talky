@@ -1,29 +1,21 @@
 <div>
     <app-navbar></app-navbar>
-    <div class="profilecontainer flex flex-col bg-[#17151E] ml-[10vw] h-[100vh] w-[90vw] text-white">
-        <div class="top">
-            <p>Hello <span>Username</span></p>
-            <p class="py-8">This is your profile page. You can see the number of your followers and the number of those you are following</p>
-        </div>
-        <div class="myprofile w-[60vw] flex flex-col">
-                <p class="flex items-center py-4"><i class="fa-solid fa-user"></i> <span>About</span></p>
-                <!-- <form [formGroup]=" ProfileForm" (ngSubmit) = "updateProfile()">
-                    <div class="flex justify-between py-4 items-center px-4">
-                        <label for="">Full Name</label>
-                        <input type="text" data-cy="userName" formControlName="userName" placeholder="Jane Doe" class="p-4 w-[30vw] border-gray-200 border-[0.5px] outline-none">
-                    </div>
-                    <div class="flex justify-between py-4 items-center px-4">
-                        <label for="">Email</label>
-                        <input type="text"data-cy="email" formControlName="email" placeholder="janedoe@gmail.com" class="p-4 w-[30vw] border-gray-200 border-[0.5px] outline-none">
-                    </div>
-                    <div class="flex justify-between py-4 items-center px-4">
-                        <label for="">Phone Number</label>
-                        <input type="number" data-cy="phone_no" formControlName="phone_no" placeholder="700000000" class="p-4 w-[30vw] border-gray-200 border-[0.5px] outline-none">
-                    </div>
-                    <div class="flex justify-end py-4 items-center px-4">
-                        <button data-cy="updateProfile" class="bg-[#D03E3B] text-white px-4 py-2 rounded-md" type="submit">Update Profile</button>
-                    </div>
-                </form> -->
+    <div class="profilecontainer flex bg-[#17151E] ml-[10vw] h-[100vh] w-[90vw] text-white">
+        <div class="profile">
+            <div class="top">
+                <p class="py-2">Hello, <span>Sandra Chege</span></p>
+                <p class="py-2">_sandra_chege</p>
+                <p class="py-4">I love beauty and emotion. 🥰 I'm passionate about photography and learning. 📚 I explore genres and styles. 🌈 I think photography is storytelling. 📖 I hope you like and feel my photos.😊</p>
+            </div>
+            <div class="total flex justify-around">
+                <p>posts: <span> 202</span> </p>
+                <p>Following: <span> 620</span></p>
+                <p>Followers: <span> 320</span></p>
+            </div>
+            <div class="buttons flex justify-around">
+                <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">following</button>
+                <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">followers</button>
+            </div>
         </div>
     </div>
 </div>
