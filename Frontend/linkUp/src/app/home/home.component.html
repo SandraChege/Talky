@@ -1,41 +1,105 @@
 <div class="flex homecontainer">
     <app-navbar></app-navbar>
-    <div class="home w-[90vw] flex bg-[#17151E] ml-[10vw]">
-        <div class="leftcontainer flex flex-col px-[5px]">
-            <div class="postcontainer flex  w-[70vw] flex flex-col text-white">
-                <p class="">username</p>
-                <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg"class="rounded-[10px]" alt="">
-                <p class="p-[10px]">quas, assumenda beatae repellendus modi nisi? Pariatur non distinctio perferendis blanditiis nulla nobis porro voluptatum corporis enim ab.</p>
-                <div class="actions">
-                    <button><i class="fa-solid fa-thumbs-up"></i></button>
-                    <button><i class="fa-solid fa-comment"></i></button>
-                </div>           
+    <div class="home w-[90vw] flex bg-[#17151E] ml-[10vw] py-6">
+        <div class="leftcontainer w-[62vw] flex flex-col">
+            <!--DIVISION 1-->
+            <div class="top">
+                <!--SEARCH FUNCTIONALITY-->
+                <div class="searchInput">
+                    <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search post">
+                </div>
+                <!--POST BUTTON-->
+                <div>
+                    <button (click)="viewForm()" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Create Post</button>
+                </div>
             </div>
-            
+
+           <!--DIVISION 2-->
+            <div class="postcontainer flex flex-col text-white ">
+                <div><p class="py-2">username</p></div>
+                <div><img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" class="rounded-[10px]" alt=""></div>
+                <div><p class="py-2 text-center">quas, assumenda beatae repellendus modi nisi? Pariatur non distinctio perferendis blanditiis nulla nobis porro voluptatum corporis enim ab.</p></div>
+                <div class="actions">
+                    <button><i class="fa-solid fa-thumbs-up"></i> <span class="px-4">2000</span> </button>
+                    <button><i class="fa-solid fa-comment"></i> <span class="px-4">2000</span> </button>
+                </div>  
+                <div class="flex justify-between items-center">
+                    <input type="text" placeholder="Type your comments" class="py-1.5">
+                    <button type="submit" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Add</button>
+                </div>
+                <!-- <hr class="py-2"> -->
+                <div class="postcomments border-gray-500 border-2 p-2">
+                    <div class="py-2">
+                        <p>username</p>
+                        <p>🌿 Mindful Movement, Mind-Blowing Results: Say goodbye to monotony! With yoga, every movement is a dance, every breath is a melody. Feel the burn while embracing the serenity. 🕊️</p>
+                    </div>
+                    <div class="py-2">
+                        <p>username</p>
+                        <p>🌸 Floral Symphony: In every petal and bloom, there's a story waiting to be told. The floral tapestry of nature is a symphony of colors, fragrances, and the delicate whispers of life. 🌺🌼</p>
+                    </div>
+                </div>         
+            </div>
+             <div class="postcontainer flex flex-col text-white ">
+                <div><p class="py-2">username</p></div>
+                <div><img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" class="rounded-[10px]" alt=""></div>
+                <div><p class="py-2 text-center">quas, assumenda beatae repellendus modi nisi? Pariatur non distinctio perferendis blanditiis nulla nobis porro voluptatum corporis enim ab.</p></div>
+                <div class="actions">
+                    <button><i class="fa-solid fa-thumbs-up"></i> <span class="px-4">2000</span> </button>
+                    <button><i class="fa-solid fa-comment"></i> <span class="px-4">2000</span> </button>
+                </div>  
+                <div class="flex justify-between items-center">
+                    <input type="text" placeholder="Type your comments" class="py-1.5">
+                    <button type="submit" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Add</button>
+                </div>
+                <!-- <hr class="py-2"> -->
+                <div class="postcomments border-gray-500 border-2 p-2">
+                    <div class="py-2">
+                        <p>username</p>
+                        <p>🌿 Mindful Movement, Mind-Blowing Results: Say goodbye to monotony! With yoga, every movement is a dance, every breath is a melody. Feel the burn while embracing the serenity. 🕊️</p>
+                    </div>
+                    <div class="py-2">
+                        <p>username</p>
+                        <p>🌸 Floral Symphony: In every petal and bloom, there's a story waiting to be told. The floral tapestry of nature is a symphony of colors, fragrances, and the delicate whispers of life. 🌺🌼</p>
+                    </div>
+                </div>         
+            </div>
+
+            <!---FORM CONTAINER-->
+            <div class="postform overlay" *ngIf="isFormVisible">
+                <div class="container">
+                    <form action=""  data-cy="addPostForm"  [formGroup] = "addPostForm" (ngSubmit)="newPost()" class="flex flex-col my-4 mx-6">
+                        <div class="flex flex-col py-1 ">
+                            <label class="text-[1rem]">Image</label>
+                            <input data-cy="image" type="text" formControlName="image" placeholder="Image Url" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                            <div *ngIf="addPostForm.get('image')?.invalid && addPostForm.get('image')?.touched" class="text-red-500">Image is required</div>
+                        </div>
+                        <div class="flex flex-col py-1 ">
+                            <label class="text-[1rem]">Comment</label>
+                            <input data-cy="content" type="text" formControlName="content" placeholder="content" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                            <div *ngIf="addPostForm.get('content')?.invalid && addPostForm.get('content')?.touched" class="text-red-500">Content is required</div>
+                        </div>
+                        <div class="btns flex justify-between">
+                            <input data-cy="add_post_btn" type="submit" value="Add new post" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">
+                            <input data-cy="add_post_btn" type="submit" value="Close Form" (click)="hideform()" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">
+                        </div>
+                    </form>  
+                </div>
+            </div>
         </div>
        
-        <div class="personalinfo w-[20vw] text-white">
+        <div class="personalinfo w-[25vw] text-white">
             <p>Suggestions</p>
-            <div class="my-[20px] p-[5px] rounded-[10px] text-center">
+            <div class="my-[20px] rounded-[10px] text-center py-4">
                 <p>Username</p>
-                <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
             </div>
-            <div class="my-[20px] p-[10px] rounded-[10px] text-center">
+            <div class="my-[20px] rounded-[10px] text-center py-4">
                 <p>Username</p>
-                <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
             </div>
-            <div class="my-[20px] p-[10px] rounded-[10px] text-center">
+            <div class="my-[20px] rounded-[10px] text-center py-4">
                 <p>Username</p>
-                <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
-            </div>
-            <div class="my-[20px] p-[10px] rounded-[10px] text-center">
-                <p>Username</p>
-                <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
-            </div>
-            <div class="my-[20px] p-[10px] rounded-[10px] text-center">
-                <p>Username</p>
-                <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
             </div>
         </div>
-    </div>
 </div>

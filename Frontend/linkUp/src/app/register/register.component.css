@@ -5,7 +5,7 @@
   color: white;
 }
 form{
-    width: 50%;
+    width: 40%;
     row-gap: 10px;
 }
 @media screen and (max-width:500px) {

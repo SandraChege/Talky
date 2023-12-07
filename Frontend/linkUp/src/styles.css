@@ -3,9 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    box-sizing: border-box;
+}
+
 :root{
     --blue:#0000FF;
     --purple:#8800FF;
     --white:#FFFFFF;
     --back:#17151E;
+    --grey:rgb(107, 114, 128);
 }

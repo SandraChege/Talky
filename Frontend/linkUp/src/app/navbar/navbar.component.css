@@ -15,15 +15,14 @@
   margin-bottom: 3rem;
   font-size: 1.5rem;
 }
-.sidebar a:first-child{
+.sidebar a:first-child {
   margin-top: 10px;
 }
 .sidebar i {
   margin-right: 5px;
 }
-
-@media screen and (max-width:500px) {
-  .sidebar{
+@media screen and (max-width: 700px) {
+  .sidebar {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -33,9 +32,21 @@
     width: 100%;
   }
   .name{
-    /* right: 0%;
-    position: relative;
-    bottom: none; */
     display: none;
   }
 }
+
+/* @media screen and (max-width: 500px) {
+  .sidebar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: fixed;
+    height: 5%;
+    width: 100%;
+  }
+  .name {
+    display: none;
+  }
+} */

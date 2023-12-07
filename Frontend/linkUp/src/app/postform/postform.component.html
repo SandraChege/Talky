@@ -1,7 +1,7 @@
 <div class="flex postcontainer">
     <app-navbar></app-navbar>
     <div class="post w-[90vw] h-[100vh] flex flex-col bg-[#17151E] ml-[10vw]">
-        <div class="postformcontainer w-[80vw] flex flex-col text-white">
+        <div @slideIn class="postformcontainer w-[80vw] flex flex-col text-white">
             <form action=""  data-cy="addPostForm"  [formGroup] = "addPostForm" (ngSubmit)="newPost()" class="flex flex-col my-4 mx-6">
                 <div class="flex flex-col py-1 ">
                     <label class="text-[1rem]">Image</label>
