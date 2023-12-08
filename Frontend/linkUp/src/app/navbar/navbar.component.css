@@ -7,6 +7,9 @@
   align-items: center;
   position: fixed;
 }
+/* .sidebar .logo{
+  transform: rotate(-15deg) skew(30deg);
+} */
 .sidebar a {
   text-decoration: none;
   color: white;
