@@ -7,14 +7,17 @@ import { Component } from '@angular/core';
 })
 export class SummaryComponent {
   isFormVisible: boolean = false;
+  isFollowersVisible: boolean = false;
 
   viewFollowers() {
-    this.isFormVisible = true;
+    this.isFollowersVisible = true;
   }
   viewFollowing() {
     this.isFormVisible = true;
   }
   hideform() {
     this.isFormVisible = false;
+    this.isFollowersVisible= false;
   }
+
 }

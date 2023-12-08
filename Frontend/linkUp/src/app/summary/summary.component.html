@@ -10,6 +10,7 @@
                     <p class="py-2">Hello, <span>Sandra Chege</span></p>
                     <p class="py-2">_sandra_chege</p>
                     <p class="py-4">I love beauty and emotion. 🥰 I'm passionate about photography and learning. 📚 I explore genres and styles. 🌈 I think photography is storytelling. 📖 I hope you like and feel my photos.😊</p>
+                    <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Edit Profile</button>
                 </div>
             </div>
             <div class="total flex justify-around">
@@ -20,11 +21,12 @@
             </div>
         </div>
         <!--Followers container-->
-        <div class="followersform overlay" *ngIf="isFormVisible">
+        <div class="followersform overlay" *ngIf="isFollowersVisible">
             <div class="container flex flex-col">
                 <div class="closeicon"><button (click)="hideform()"><i class="fa-solid fa-xmark"></i></button></div>
-                <div>
-                <p class="py-4 text-black">Sandra Mwihaki</p> 
+                <div class="flex flex-wrap justify-around">
+                    <p class="py-4 text-black">Sandra Mwihaki</p> 
+                    <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow Back</button>
                 </div>
             </div>
         </div>
