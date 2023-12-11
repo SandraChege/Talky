@@ -54,6 +54,14 @@
                     <div class="py-2">
                         <p class="font-bold">username</p>
                         <p>🌸 Floral Symphony: In every petal and bloom, there's a story waiting to be told. The floral tapestry of nature is a symphony of colors, fragrances, and the delicate whispers of life. 🌺🌼</p>
+                        <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                        <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                        <button class="text-[#6B7280] text-[13px]">Delete</button>
+                        <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                            <input type="text" placeholder="Type your reply" class="py-1.0">
+                            <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
+                        
                     </div>
                 </div>         
             </div>
