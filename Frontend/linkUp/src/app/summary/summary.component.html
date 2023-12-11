@@ -1,7 +1,8 @@
 <div>
     <app-navbar></app-navbar>
-    <div class="profilecontainer flex bg-[#17151E] ml-[10vw] h-[100vh] w-[90vw] text-white">
+    <div class="profilecontainer flex ml-[10vw] bg-[#17151E] w-[90vw] text-white">
         <div class="profile">
+            <!--username and image-->
             <div class="top flex p-[10px] gap-x-4">
                 <div class="image">
                     <img src="https://cdn.pixabay.com/photo/2021/10/27/13/15/digital-graphicscat-6747298_640.jpg" alt="">
@@ -10,36 +11,96 @@
                     <p class="py-2">Hello, <span>Sandra Chege</span></p>
                     <p class="py-2">_sandra_chege</p>
                     <p class="py-4">I love beauty and emotion. 🥰 I'm passionate about photography and learning. 📚 I explore genres and styles. 🌈 I think photography is storytelling. 📖 I hope you like and feel my photos.😊</p>
-                    <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Edit Profile</button>
+                    <button (click)="updateProfile()" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Edit Profile</button>
                 </div>
             </div>
             <div class="total flex justify-around">
                 <!-- <p>posts: <span> 202</span> </p> -->
                 <a routerLink="/myposts">Posts:<span class="px-2">202</span></a>
-                <button (click) = "viewFollowers()">Followers: <span class="px-2">300</span></button>
-                <button (click) = "viewFollowing()">Following: <span class="px-2">300</span></button>
+                <button (click) = "viewFollowers()" class="hover:text-[#0000FF] hover:text-bold hover:text-[18px]">Followers: <span class="px-2">300</span></button>
+                <button (click) = "viewFollowing()" class="hover:text-[#8800FF] hover:text-bold hover:text-[18px]">Following: <span class="px-2">300</span></button>
+            </div>
+            <!-- POST CONTAINER -->
+            <div class="myposts">
+                <div>
+                    <a routerLink="/myposts">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/myposts">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/myposts">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/myposts">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/myposts">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/myposts">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
+                    </a>
+                </div>
             </div>
         </div>
         <!--Followers container-->
         <div class="followersform overlay" *ngIf="isFollowersVisible">
             <div class="container flex flex-col">
                 <div class="closeicon"><button (click)="hideform()"><i class="fa-solid fa-xmark"></i></button></div>
+                <div class="searchInput">
+                    <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search post">
+                </div>
                 <div class="flex flex-wrap justify-around">
                     <p class="py-4 text-black">Sandra Mwihaki</p> 
                     <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow Back</button>
                 </div>
             </div>
         </div>
-
-        <!--Followers container-->
+        <!--Following container-->
         <div class="followingform overlay" *ngIf="isFormVisible">
             <div class="container flex flex-col">
                 <div class="closeicon"><button (click)="hideform()"><i class="fa-solid fa-xmark"></i></button></div>
+                <div class="searchInput">
+                    <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search post">
+                </div>
                 <div class="flex flex-wrap justify-around">
                     <p class="py-4 text-black">Sandra Mwihaki</p> 
                     <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Unfollow</button>
                 </div>
             </div>
         </div>
+        <!--Profile form-->
+        <div class="profileform overlay" *ngIf="isProfileFormVisible">
+            <div class="container text-black">
+                <form [formGroup] = "profileForm" (ngSubmit)="updateProfile()">
+                    <div class="closeicon"><button (click)="hideform()"><i class="fa-solid fa-xmark"></i></button></div>
+                    <div class="flex flex-col py-1">
+                        <label class="text-[1rem] text-black">Enter Full Name:</label> 
+                        <input data-cy="userFullName" type="text" formControlName="userFullName" placeholder="Enter your full name" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                        <div *ngIf="profileForm.get('userFullName')?.invalid && profileForm.get('userFullName')?.touched" class="text-red-500">Full name is required</div>
+                    </div>
+       
+                    <div class="flex flex-col py-1">
+                        <label class="text-[1rem] text-black">Username</label>
+                        <input data-cy="userName" type="text" formControlName="userName" placeholder="Enter your username" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                        <div *ngIf="profileForm.get('userName')?.invalid && profileForm.get('userName')?.touched" class="text-red-500">User name is required</div>
+                    </div>
+                    <div class="flex flex-col">
+                        <input data-cy="update_user_btn" type="submit" value="update" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">
+                    </div>
+                </form>
+            </div>
+        </div>    
     </div>
 </div>

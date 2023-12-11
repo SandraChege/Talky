@@ -27,13 +27,29 @@
                 </div>  
                 <div class="flex justify-between items-center">
                     <input type="text" placeholder="Type your comments" class="py-1.5">
-                    <button type="submit" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Add</button>
+                    <button type="submit" class="comment  outline-none"><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
-                <!-- <hr class="py-2"> -->
+                <!-- comments container -->
                 <div class="postcomments border-gray-500 border-2 p-2">
                     <div class="py-2">
                         <p class="font-bold">username</p>
                         <p>🌿 Mindful Movement, Mind-Blowing Results: Say goodbye to monotony! With yoga, every movement is a dance, every breath is a melody. Feel the burn while embracing the serenity. 🕊️</p>
+                        <!--REPLY CONTAINER-->
+                        <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                        <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                        <button class="text-[#6B7280] text-[13px]">Delete</button>
+                        <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                            <input type="text" placeholder="Type your reply" class="py-1.0">
+                            <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
+                        <!-- Dropdown for edit and delete -->
+                        <!-- <div class="dropdown mt-2 bg-red-500">
+                            <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            <div class="dropdown-content bg-white border rounded-md hidden">
+                                <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                            </div>
+                        </div> -->
                     </div>
                     <div class="py-2">
                         <p class="font-bold">username</p>
@@ -41,30 +57,7 @@
                     </div>
                 </div>         
             </div>
-             <div class="postcontainer flex flex-col text-white">
-                <div><p class="py-2">username</p></div>
-                <div><img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" class="rounded-[10px]" alt=""></div>
-                <div><p class="py-2 text-center">quas, assumenda beatae repellendus modi nisi? Pariatur non distinctio perferendis blanditiis nulla nobis porro voluptatum corporis enim ab.</p></div>
-                <div class="actions">
-                    <button><i class="fa-solid fa-thumbs-up"></i> <span class="px-4">2000</span> </button>
-                    <button><i class="fa-solid fa-comment"></i> <span class="px-4">2000</span> </button>
-                </div>  
-                <div class="flex justify-between items-center">
-                    <input type="text" placeholder="Type your comments" class="py-1.5">
-                    <button type="submit" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Add</button>
-                </div>
-                <!-- <hr class="py-2"> -->
-                <div class="postcomments border-gray-500 border-2 p-2">
-                    <div class="py-2">
-                        <p class="font-bold">username</p>
-                        <p>🌿 Mindful Movement, Mind-Blowing Results: Say goodbye to monotony! With yoga, every movement is a dance, every breath is a melody. Feel the burn while embracing the serenity. 🕊️</p>
-                    </div>
-                    <div class="py-2">
-                        <p class="font-bold">username</p>
-                        <p>🌸 Floral Symphony: In every petal and bloom, there's a story waiting to be told. The floral tapestry of nature is a symphony of colors, fragrances, and the delicate whispers of life. 🌺🌼</p>
-                    </div>
-                </div>           
-            </div>
+             
 
             <!---FORM CONTAINER-->
             <div class="postform overlay" *ngIf="isFormVisible">
@@ -89,17 +82,17 @@
             </div>
         </div>
        
-        <div class="personalinfo w-[25vw] text-white">
+        <div class="personalinfo w-[20vw] text-white mr-[20px]">
             <p>Suggestions</p>
-            <div class="my-[20px] rounded-[10px] py-4">
+            <div class="my-[20px] rounded-[10px] py-1">
                 <p>Username</p>
                 <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
             </div>
-            <div class="my-[20px] rounded-[10px] py-4">
+            <div class="my-[20px] rounded-[10px] py-1">
                 <p>Username</p>
                 <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
             </div>
-            <div class="my-[20px] rounded-[10px] py-4">
+            <div class="my-[20px] rounded-[10px] py-1">
                 <p>Username</p>
                 <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
             </div>

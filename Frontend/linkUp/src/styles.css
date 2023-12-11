@@ -14,3 +14,5 @@
     --back:#17151E;
     --grey:rgb(107, 114, 128);
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

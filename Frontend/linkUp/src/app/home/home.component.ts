@@ -17,6 +17,7 @@ export class HomeComponent {
   }
 
   isFormVisible: boolean = false;
+  showReply: boolean = false;
 
   viewForm() {
     // this.addPost = true;
@@ -27,4 +28,7 @@ export class HomeComponent {
   }
 
   newPost() {}
+  toggleReply() {
+    this.showReply = true;
+  }
 }

@@ -13,7 +13,7 @@
   border-radius: 10px;
   background-color: rgba(21, 23, 30, 0.1);
   border: 2px solid rgb(107, 114, 128);
-  color: white;
+  color: black;
 }
 .searchInput input:focus,
 .searchInput input:hover {
@@ -63,6 +63,12 @@ img {
   background-color: var(--grey); /* color of the scroll thumb */
   border-radius: 10px; /* roundness of the scroll thumb */
 }
+.comment i{
+  color: white;
+}
+.comment i:hover{
+  color: var(--purple);
+}
 .personalinfo {
   position: fixed;
   right: 10px;
@@ -97,6 +103,11 @@ img {
   width: 50%;
   max-width: 60%;
 }
+@media screen and (max-width:920px) {
+  .personalinfo div{
+    flex-direction: column;
+  }
+}
 @media screen and (max-width: 700px) {
   .home {
     margin-left: 0;
@@ -128,5 +139,11 @@ img {
 @media screen and (max-width: 500px) {
   .top{
     gap: 0;
+  }
+}
+@media screen and (max-width:350px) {
+  .search-container{
+    flex-direction: column;
+    gap: 5px;
   }
 }
