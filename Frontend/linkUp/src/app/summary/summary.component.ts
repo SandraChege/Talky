@@ -15,7 +15,7 @@ export class SummaryComponent {
   constructor(private formBuilder: FormBuilder) {
     this.profileForm = this.formBuilder.group({
       userFullName: ['', Validators.required],
-      userName: ['', Validators.required],
+      profileUrl: ['', Validators.required],
     });
   }
 

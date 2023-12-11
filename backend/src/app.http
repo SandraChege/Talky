@@ -1,0 +1,58 @@
+###REGISTER USER
+POST http://localhost:4500/user/register
+Content-Type: application/json
+
+{
+    "fullname":"Sandra Chege",
+    "username": "sandrachege123",
+    "email":"9superbikes@gmail.com",
+    "password":"12345678"
+}
+
+###LOGIN USER
+POST http://localhost:4500/user/login
+Content-Type: application/json
+
+{
+    "email":"9superbikes@gmail.com",
+    "password":"12345678"
+}
+
+###CHECK USER DETAILS
+GET http://localhost:4500/user/checkuserdetails
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJhN2UzY2U2Mi02N2FlLTQ2ZTctYTgyNC0wYTFhYzk0YjAwYjgiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6bnVsbCwiaXNXZWxjb21lZCI6ZmFsc2UsImlzRGVsZXRlZCI6ZmFsc2UsInJlc2V0UGFzc3dvcmQiOmZhbHNlLCJPVFAiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIzLTEyLTExVDEyOjMzOjE3LjYyMFoiLCJpYXQiOjE3MDIyODcxOTksImV4cCI6MTcwMjM3MzU5OX0.LjYLQD4S5Vaw2PjpcUByDDJhf8bn4cpSMgXG6j24rj4
+
+###getoneuser
+POST http://localhost:4500/user/getoneuser
+Content-Type: application/json
+
+{
+    "email": "9superbikes@gmail.com"
+}
+
+###updateuser
+PUT http://localhost:4500/user/updateuser
+Content-Type: application/json
+
+{
+    "userID":"d010438b-52d5-47dc-ba9c-15a4011d2ee4",
+    "fullname": "Sandra Chege",
+    "profileUrl": "https://cdn.pixabay.com/photo/2023/11/21/00/09/ai-generated-8402112_1280.png"
+}
+
+#### FORGOT PASSWORD
+POST http://localhost:4500/user/forgot 
+Content-Type: application/json
+
+{
+    "email":"9superbikes@gmail.com"
+}
+
+###RESET PASSWORD
+POST http://localhost:4500/user/resetpassword
+Content-Type: application/json
+
+{
+    "userID": "a7e3ce62-67ae-46e7-a824-0a1ac94b00b8",
+    "password": "12345678"
+}

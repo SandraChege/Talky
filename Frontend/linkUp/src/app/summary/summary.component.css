@@ -75,6 +75,19 @@
     height: 100%;
   }
 }
+@media screen and (max-width:900px) {
+  .top {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+  .top .image {
+    width: 80%
+  }
+}
 @media screen and (max-width: 700px) {
   .profilecontainer {
     margin-left: 0;
