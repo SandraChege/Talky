@@ -1,109 +1,424 @@
 <div class="flex homecontainer">
     <app-navbar></app-navbar>
-    <div class="home w-[90vw] flex bg-[#17151E] ml-[10vw] py-6">
-        <div class="leftcontainer w-[62vw] flex flex-col">
-            <!--DIVISION 1-->
+    <div class="home w-[90vw] flex ml-[10vw] py-6 gap-x-14">
+        <div class="leftcontainer w-[60vw] flex flex-col">
+           <!--DIVISION 1-->
             <div class="top">
                 <!--SEARCH FUNCTIONALITY-->
                 <div class="search-container flex gap-4">
-                   <div class="searchInput">
+                   <!-- <div class="searchInput">
                         <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search post">
-                    </div>
+                    </div> -->
                     <!--POST BUTTON-->
                     <div class="search-btn">
-                        <button (click)="viewForm()" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Create Post</button>
+                        <button (click)="viewForm()" class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Create Post</button>
                     </div>
                 </div>
             </div>
 
-           <!--DIVISION 2-->
-            <div class="postcontainer flex flex-col text-white">
-                <div><p class="py-2 font-bold">username</p></div>
-                <div><img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" class="rounded-[10px]" alt=""></div>
-                <div><p class="py-2 text-center">quas, assumenda beatae repellendus modi nisi? Pariatur non distinctio perferendis blanditiis nulla nobis porro voluptatum corporis enim ab.</p></div>
-                <div class="actions">
-                    <button><i class="fa-solid fa-thumbs-up"></i> <span class="px-4">2000</span> </button>
-                    <button><i class="fa-solid fa-comment"></i> <span class="px-4">2000</span> </button>
-                </div>  
-                <div class="flex justify-between items-center">
-                    <input type="text" placeholder="Type your comments" class="py-1.5">
-                    <button type="submit" class="comment  outline-none"><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-                <!-- comments container -->
-                <div class="postcomments border-gray-500 border-2 p-2">
-                    <div class="py-2">
-                        <p class="font-bold">username</p>
-                        <p>🌿 Mindful Movement, Mind-Blowing Results: Say goodbye to monotony! With yoga, every movement is a dance, every breath is a melody. Feel the burn while embracing the serenity. 🕊️</p>
-                        <!--REPLY CONTAINER-->
-                        <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
-                        <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
-                        <button class="text-[#6B7280] text-[13px]">Delete</button>
-                        <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
-                            <input type="text" placeholder="Type your reply" class="py-1.0">
-                            <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
-                        </div>
-                        <!-- Dropdown for edit and delete -->
-                        <!-- <div class="dropdown mt-2 bg-red-500">
-                            <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                            <div class="dropdown-content bg-white border rounded-md hidden">
-                                <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
-                                <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+           <!--DIVISION 2--> <!---REMOVE HIDDEN PROPERTY-->
+            <div class="hidden postcontainer flex flex-col text-black font-550 text-base">
+                <div class="post">
+                    <div><p class="py-2 font-[550] text-base">username</p></div>
+                    <div><img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" class="rounded-[10px]" alt=""></div>
+                    <div><p class="py-2 text-center">quas, assumenda beatae repellendus modi nisi? Pariatur non distinctio perferendis blanditiis nulla nobis porro voluptatum corporis enim ab.</p></div>
+                    <div class="actions">
+                        <button><i class="fa-solid fa-thumbs-up"></i> <span class="px-4">2000</span> </button>
+                        <button><i class="fa-solid fa-comment"></i> <span class="px-4">2000</span> </button>
+                    </div>  
+                    <div class="flex justify-between items-center">
+                        <input type="text" placeholder="Type your comments" class="py-1.5">
+                        <button type="submit" class="comment  outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                    <!-- comments container -->
+                    <div class="postcomments border-gray-500 border-2 p-2">
+                        <div class="py-2">
+                            <p class="font-bold">username</p>
+                            <p>🌿 Mindful Movement, Mind-Blowing Results: Say goodbye to monotony! With yoga, every movement is a dance, every breath is a melody. Feel the burn while embracing the serenity. 🕊️</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
                             </div>
-                        </div> -->
-                    </div>
-                    <div class="py-2">
-                        <p class="font-bold">username</p>
-                        <p>🌸 Floral Symphony: In every petal and bloom, there's a story waiting to be told. The floral tapestry of nature is a symphony of colors, fragrances, and the delicate whispers of life. 🌺🌼</p>
-                        <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
-                        <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
-                        <button class="text-[#6B7280] text-[13px]">Delete</button>
-                        <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
-                            <input type="text" placeholder="Type your reply" class="py-1.0">
-                            <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
                         </div>
-                        
-                    </div>
-                </div>         
+                        <div class="py-2">
+                            <p class="font-bold">username</p>
+                            <p>🌸 Floral Symphony: In every petal and bloom, there's a story waiting to be told. The floral tapestry of nature is a symphony of colors, fragrances, and the delicate whispers of life. 🌺🌼</p>
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div> 
+                        </div>
+                    </div> 
+                </div>        
             </div>
-             
 
+            <!--MOCK POSTS START HERE-->
+           <div class="postcontainer flex flex-col text-black font-550 text-base">
+                <div class="post">
+                    <div><p class="py-2 font-[550] text-base">Emma Martinez</p></div>
+                    <div><img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" class="rounded-[10px]" alt=""></div>
+                    <div><p class="py-2 text-center">"Embracing the magic of the season, one twinkling light at a time. ✨🎄 #FestiveCheer #MerryAndBright"</p></div>
+                    <div class="actions">
+                        <button><i class="fa-solid fa-thumbs-up"></i> <span class="px-4">2200</span> </button>
+                        <button><i class="fa-solid fa-comment"></i> <span class="px-4">300</span> </button>
+                    </div>  
+                    <div class="flex justify-between items-center">
+                        <input type="text" placeholder="Type your comments" class="py-1.5">
+                        <button type="submit" class="comment  outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                    <!-- comments container -->
+                    <div class="postcomments border-gray-500 border-2 p-2">
+                        <div class="py-2">
+                            <p class="font-bold">Christopher Brown</p>
+                            <p>Wishing you a Christmas filled with love, laughter, and the joyous sound of festive bells ringing in harmony! 🎅🎁✨ #MerryChristmas #SpreadCheer</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="py-2">
+                            <p class="font-bold">Emma Li</p>
+                            <p>May the magic of the season wrap you in its warmth, and may every snowflake bring blessings your way! ❄️✨ Merry Christmas, dear friends! 🎄🌟 #SeasonsGreetings #CelebrateJoy</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="py-2">
+                            <p class="font-bold">Jane Doe</p>
+                            <p>In the cozy glow of holiday lights, may your heart be aglow with peace, and your spirit be wrapped in the gift of togetherness. 🕯️🎉 Merry Christmas and Happy Holidays! 🎅🎄 #ChristmasJoy #FamilyTime"</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="py-2">
+                            <p class="font-bold">Chris Star</p>
+                            <p>As the snowflakes dance and the carolers sing, may your days be merry and your heart be light. Here's to a season of warmth, love, and unforgettable moments! 🎶❤️🎄 #ChristmasMagic #JoyfulMoments</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div> 
+                </div>        
+            </div>
+
+            <div class="postcontainer flex flex-col text-black font-550 text-base">
+                <div class="post">
+                    <div><p class="py-2 font-[550] text-base">Wangari Mwiki</p></div>
+                    <div><img src="https://cdn.pixabay.com/photo/2021/03/27/10/43/yoga-6128116_640.jpg" class="rounded-[10px]" alt=""></div>
+                    <div><p class="py-2 text-center">Embarking on a transformative journey through the ancient practice of yoga, where each asana becomes a mindful step towards self-discovery and inner harmony. In the stillness of the mat, we find the strength to navigate life's challenges, the flexibility to adapt, and the peace to embrace the present moment. Join me in the sanctuary of breath and movement, where the symphony of mind, body, and soul harmonizes, creating a tapestry of well-being and resilience. 🌿🕉️ #YogaLife #MindfulMovement #InnerBalance</p></div>
+                    <div class="actions">
+                        <button><i class="fa-solid fa-thumbs-up"></i> <span class="px-4">100</span> </button>
+                        <button><i class="fa-solid fa-comment"></i> <span class="px-4">20</span> </button>
+                    </div>  
+                    <div class="flex justify-between items-center">
+                        <input type="text" placeholder="Type your comments" class="py-1.5">
+                        <button type="submit" class="comment  outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                    <!-- comments container -->
+                    <div class="postcomments border-gray-500 border-2 p-2">
+                        <div class="py-2">
+                            <p class="font-bold">Phoebe Wambui</p>
+                            <p>🌿 Mindful Movement, Mind-Blowing Results: Say goodbye to monotony! With yoga, every movement is a dance, every breath is a melody. Feel the burn while embracing the serenity. 🕊️</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="py-2">
+                            <p class="font-bold">Perez Annan</p>
+                            <p>Absolutely love the imagery of yoga as a transformative journey. Your words inspire me to roll out my mat and connect with the serene stillness within. 🧘‍♂️💖 #YogaInspiration #MindBodySoul</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="py-2">
+                            <p class="font-bold">Rushion Chegge</p>
+                            <p>The way you describe the practice of yoga as a tapestry of well-being is truly poetic. It reminds me of the beauty and strength that unfolds with each breath on the mat. Let's keep spreading the positive vibes! 🌟🤸‍♀️ #YogaCommunity #Namaste</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div> 
+                </div>        
+            </div>
+            
+            <div class="postcontainer flex flex-col text-black font-550 text-base">
+                <div class="post">
+                    <div><p class="py-2 font-[550] text-base">Jonathan Mwaniki</p></div>
+                    <div><img src="" class="rounded-[10px]" alt=""></div>
+                    <div><p class="py-2 text-center">Immersed in nature's poetry, where every rustle of leaves and dance of sunlight tells a story of serenity and timeless beauty. 🌿✨ #NatureMagic #EternalWonders</p></div>
+                    <div class="actions">
+                        <button><i class="fa-solid fa-thumbs-up"></i> <span class="px-4">2000</span> </button>
+                        <button><i class="fa-solid fa-comment"></i> <span class="px-4">2000</span> </button>
+                    </div>  
+                    <div class="flex justify-between items-center">
+                        <input type="text" placeholder="Type your comments" class="py-1.5">
+                        <button type="submit" class="comment  outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                    <!-- comments container -->
+                    <div class="postcomments border-gray-500 border-2 p-2">
+                        <div class="py-2">
+                            <p class="font-bold">Caleb Kellah</p>
+                            <p>🌿 Your caption captures the essence of nature's enchantment perfectly! It's incredible how a simple walk in the woods can feel like stepping into a living, breathing poem. 🍃🌳 #NatureLover #SoulfulEscape</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="py-2">
+                            <p class="font-bold">Stephen Ondieki</p>
+                            <p>🌿 This resonates with me so much. Nature has this incredible ability to calm the chaos within. It's a reminder to slow down, breathe, and appreciate the breathtaking artistry that surrounds us. 🌺🌲 #NatureConnection #InnerPeace</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="py-2">
+                            <p class="font-bold">Jeniffer Sammy</p>
+                            <p>🌿 Your caption captures the essence of nature's enchantment perfectly! It's incredible how a simple walk in the woods can feel like stepping into a living, breathing poem. 🍃🌳 #NatureLover #SoulfulEscape</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                            <!-- Dropdown for edit and delete -->
+                            <!-- <div class="dropdown mt-2 bg-red-500">
+                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="dropdown-content bg-white border rounded-md hidden">
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
+                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="py-2">
+                            <p class="font-bold">Joshua Otieno</p>
+                            <p>This resonates with me so much. Nature has this incredible ability to calm the chaos within. It's a reminder to slow down, breathe, and appreciate the breathtaking artistry that surrounds us. 🌺🌲 #NatureConnection #InnerPeace</p>
+                            <button (click)="toggleReply()" class="text-[#6B7280] text-[13px] text-right">Reply</button>
+                            <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button class="text-[#6B7280] text-[13px]">Delete</button>
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input type="text" placeholder="Type your reply" class="py-1.0">
+                                <button type="submit" class="comment outline-none"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div> 
+                        </div>
+                    </div> 
+                </div>        
+            </div>
+
+            <!--MOCK POSTS END HERE-->
+             
             <!---FORM CONTAINER-->
             <div class="postform overlay" *ngIf="isFormVisible">
                 <div class="container">
                     <form action=""  data-cy="addPostForm"  [formGroup] = "addPostForm" (ngSubmit)="newPost()" class="flex flex-col my-4 mx-6">
                         <div class="flex flex-col py-1 ">
                             <label class="text-[1rem]">Image</label>
-                            <input data-cy="image" type="text" formControlName="image" placeholder="Image Url" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
-                            <div *ngIf="addPostForm.get('image')?.invalid && addPostForm.get('image')?.touched" class="text-red-500">Image is required</div>
+                            <input data-cy="image" type="file" formControlName="image" placeholder="Image Url" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                            <!-- <div *ngIf="addPostForm.get('image')?.invalid && addPostForm.get('image')?.touched" class="text-red-500">Image is required</div> -->
                         </div>
                         <div class="flex flex-col py-1 ">
-                            <label class="text-[1rem]">Comment</label>
+                            <label class="text-[1rem]">Caption</label>
                             <input data-cy="content" type="text" formControlName="content" placeholder="content" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
-                            <div *ngIf="addPostForm.get('content')?.invalid && addPostForm.get('content')?.touched" class="text-red-500">Content is required</div>
+                            <!-- <div *ngIf="addPostForm.get('content')?.invalid && addPostForm.get('content')?.touched" class="text-red-500">Caption is required</div> -->
                         </div>
-                        <div class="btns flex justify-between">
-                            <input data-cy="add_post_btn" type="submit" value="Add new post" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">
-                            <input data-cy="add_post_btn" type="submit" value="Close Form" (click)="hideform()" class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">
+                        <div class="btns flex justify-between py-2">
+                            <input data-cy="add_post_btn" type="submit" value="Add new post" class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">
+                            <input data-cy="add_post_btn" type="submit" value="Close Form" (click)="hideform()" class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">
                         </div>
                     </form>  
                 </div>
             </div>
         </div>
        
-        <div class="personalinfo w-[20vw] text-white mr-[20px]">
-            <p>Suggestions</p>
-            <div class="my-[20px] rounded-[10px] py-1">
+        <div class="personalinfo w-[20vw] text-black mr-[20px]">
+            <p class="font-[550] text-lg">Suggestions</p>
+            <!-- <div class="my-[20px] rounded-[10px] py-1">
+                <img src="https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907_640.jpg" alt="">
                 <p>Username</p>
                 <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
+            </div> -->
+            <div class="my-[20px] rounded-[10px] py-1">
+                <img src="https://images.pexels.com/photos/4921131/pexels-photo-4921131.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                <p>Jane Smith</p>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button>
             </div>
             <div class="my-[20px] rounded-[10px] py-1">
-                <p>Username</p>
-                <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
+                <img src="https://images.pexels.com/photos/4769490/pexels-photo-4769490.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                <p>Jane Doe</p>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button>
+            </div>
+             <div class="my-[20px] rounded-[10px] py-1">
+                <img src="https://images.pexels.com/photos/3778212/pexels-photo-3778212.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                <p>John Doe</p>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button>
+            </div>
+             <div class="my-[20px] rounded-[10px] py-1">
+                <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                <p>Michael Johnson</p>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button>
+            </div>
+             <div class="my-[20px] rounded-[10px] py-1">
+                <img src="https://cdn.pixabay.com/photo/2018/02/24/20/40/fashion-3179178_640.jpg" alt="">
+                <p>Zhue Xue</p>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button>
+            </div>
+             <div class="my-[20px] rounded-[10px] py-1">
+                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                <p>Christopher Brown</p>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button>
+            </div>
+             <div class="my-[20px] rounded-[10px] py-1">
+                <img src="https://images.pexels.com/photos/3764119/pexels-photo-3764119.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                <p>Olivia White</p>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button>
+            </div>
+             <div class="my-[20px] rounded-[10px] py-1">
+                <img src="https://images.pexels.com/photos/19276623/pexels-photo-19276623/free-photo-of-close-up-of-a-young-man-with-curly-hair-and-a-stubble-looking-down.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                <p>Robert Wilson</p>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button>
+            </div>
+             <div class="my-[20px] rounded-[10px] py-1">
+                <img src="https://images.pexels.com/photos/1441151/pexels-photo-1441151.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                <p>Sophia Anderson</p>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button>
             </div>
             <div class="my-[20px] rounded-[10px] py-1">
-                <p>Username</p>
-                <button  class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow</button>
+                <img src="https://images.pexels.com/photos/7585607/pexels-photo-7585607.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                <p>Emma martinez</p>
+                <button  class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button>
             </div>
+
         </div>
     </div>
 </div>

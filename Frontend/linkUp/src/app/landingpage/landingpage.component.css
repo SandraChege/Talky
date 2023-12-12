@@ -1,22 +1,41 @@
 .land{
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   margin: 0;
-  padding: 0;
-  background-color: #17151e;
+  padding: 0; */
+  background-image: url("https://cdn.pixabay.com/photo/2016/09/22/10/43/eye-1686932_640.jpg");
   color: white;
-}
-.top h1 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   position: relative;
+}
+.land::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.textContainer{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.top h1{
   font-size: 4rem;
   color: #fff;
   padding: 100px;
   overflow: hidden;
+  position: relative;
 }
-
 .top h1::before {
   content: "";
   position: absolute;
@@ -27,7 +46,7 @@
   border: 2px solid #fff;
   box-sizing: border-box;
   animation: ringAnimation 3s infinite linear;
-}
+} 
 
 @keyframes ringAnimation {
   0% {
@@ -77,3 +96,11 @@ button:hover {
   background-color: #8800FF;
   cursor: pointer;
 }
+
+
+/* @media screen and (max-width:600px) {
+  .top h1::before{
+    width: 50%;
+    height: 50%;
+  }
+} */

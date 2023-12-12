@@ -1,14 +1,8 @@
 <div class="flex allsummarycontainer">
     <app-navbar></app-navbar>
-    <div class="summary w-[90vw] h-[100vh] flex bg-[#17151E] ml-[10vw]">
-        <div class="w-[90vw] summarycontainer flex flex-col text-white">
-            <!-- buttons -->
-            <div class="buttoncontainer flex justify-between">
-                <!-- <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]"><a routerLink="/people">Suggestions</a></button>
-                <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]"><a routerLink="/followers">Followers</a></button>
-                <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]"><a routerLink="/following">Following</a></button>           -->
-            </div>
-             <!--SEARCH FUNCTIONALITY-->
+    <div class="summary w-[90vw] h-[100vh] flex bg-[#17151E] ml-[10vw] text-base">
+        <div class="w-[90vw] summarycontainer flex flex-col text-black">
+            <!--SEARCH FUNCTIONALITY-->
             <div class="searchInput flex justify-end">
                 <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search user">
             </div>
@@ -16,16 +10,39 @@
             <div class="allPersonalInfo mt-[20px]">
                 <table class="">
                     <thead>
-                        <!-- <th>Profile Image</th> -->
+                        <th>Profile Image</th>
                         <th>Username</th>
                         <th></th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <!-- <th><img src="https://cdn.pixabay.com/photo/2023/11/21/00/13/ai-generated-8402129_640.png" alt=""></th> -->
+                        <!-- <tr>
+                            <th><img src="https://cdn.pixabay.com/photo/2023/11/21/00/13/ai-generated-8402129_640.png" alt=""></th>
                             <td>Jane Doe</td>
-                            <td><button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">follow</button></td>
+                            <td><button class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">follow</button></td>
+                        </tr> -->
+
+                        <!---MOCK DATA STARTS-->
+                        <tr>
+                            <th><img src="https://cdn.pixabay.com/photo/2023/11/21/00/13/ai-generated-8402129_640.png" alt=""></th>
+                            <td>Jane Doe</td>
+                            <td><button class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">follow</button></td>
                         </tr>
+                        <tr>
+                            <th><img src="https://images.pexels.com/photos/4921131/pexels-photo-4921131.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></th>
+                            <td>Jane Smith</td>
+                            <td><button class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button></td>
+                        </tr>
+                        <tr>
+                            <th><img src="https://images.pexels.com/photos/3778212/pexels-photo-3778212.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></th>
+                            <td>John Doe</td>
+                            <td><button class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button></td>
+                        </tr>
+                         <tr>
+                            <th><img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></th>
+                            <td>Michael Johnson</td>
+                            <td><button class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Follow</button></td>
+                        </tr>
+                        <!-- MOCK DATA ENDS -->
                     </tbody>
                 </table>
             </div>

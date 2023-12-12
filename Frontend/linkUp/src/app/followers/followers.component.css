@@ -1,8 +1,9 @@
 .summary {
   gap: 20px;
+  background-color: var(--white);
 }
 .searchInput {
-  width: 100%;
+  width: 90%;
   margin-top: 10px;
 }
 .searchInput input {
@@ -17,15 +18,22 @@
   border: 2px solid rgb(107, 114, 128);
 }
 table {
-  /* border-collapse: collapse; */
+  border-collapse: collapse;
   margin: 10px;
-  width: 95%;
+  width: 90%;
 }
 th,
 td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+  border: 1px solid black;
+  /* padding: 8px; */
+  text-align: center;
+}
+tr th img{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  display: block;
+  margin: 0 auto;
 }
 @media screen and (max-width: 700px) {
   .summary {

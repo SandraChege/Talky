@@ -8,11 +8,13 @@
 }
 
 :root{
-    --blue:#0000FF;
-    --purple:#8800FF;
-    --white:#FFFFFF;
-    --back:#17151E;
-    --grey:rgb(107, 114, 128);
+    --blue:#2563EB;
+    --purple:#7e22ce;
+    --darkpurple:#581C87;
+    --purple3:#A25BEA;
+    --white:#FEFEFE;
+    --black:#17151E;
+    --grey:#BDBEBE;
 }
-html, body { height: 100%; }
+/* html, body { height: 100%; } */
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
