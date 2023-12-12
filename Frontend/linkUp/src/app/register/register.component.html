@@ -6,13 +6,13 @@
             <img src="https://cdn.pixabay.com/photo/2016/04/14/07/56/icon-1328421_1280.jpg" alt="">
         </div>
         <div class="w-[35vw] textContainer">
-            <!-- <div  class="success-message" data-cy="registered-success-popup">
+            <div  class="success-message"  *ngIf="showSuccessMessage"  data-cy="registered-success-popup">
                 User created successfully.
             </div>
 
-            <div class="success-message" data-cy="registered-failure-popup">
+            <div class="error-message"  *ngIf="showErrorMessage" data-cy="registered-failure-popup">
                 User failed to register.
-            </div> -->
+            </div>
 
             <form data-cy="registrationForm"  [formGroup] = "registrationForm" (ngSubmit)="registerNewUser()" class="flex flex-col my-4 mx-6">
                 <div class="flex flex-col py-1 ">
@@ -23,14 +23,14 @@
 
                 <div class="flex flex-col py-1">
                     <label class="text-[1rem]">Enter Full Name:</label> 
-                    <input data-cy="userFullName" type="text" formControlName="userFullName" placeholder="Enter your full name" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
-                    <div *ngIf="registrationForm.get('userFullName')?.invalid && registrationForm.get('userFullName')?.touched" class="text-red-500">Full name is required</div>
+                    <input data-cy="fullname" type="text" formControlName="fullname" placeholder="Enter your full name" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                    <div *ngIf="registrationForm.get('fullname')?.invalid && registrationForm.get('fullname')?.touched" class="text-red-500">Full name is required</div>
                 </div>
             
                 <div class="flex flex-col py-1">
                     <label class="text-[1rem]">Username</label>
-                    <input data-cy="userName" type="text" formControlName="userName" placeholder="Enter your username" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
-                    <div *ngIf="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched" class="text-red-500">User name is required</div>
+                    <input data-cy="username" type="text" formControlName="username" placeholder="Enter your username" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                    <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched" class="text-red-500">User name is required</div>
                 </div>
                 <div class="flex flex-col py-1">
                     <label class="text-[1rem]">Password</label>

@@ -1,3 +1,17 @@
+.success-message{
+  background-color: var(--darkpurple);
+  padding: 10px;
+  color: var(--white);
+  border-radius: 10px;
+  margin: 2px;
+}
+.error-message{
+  background-color: red;
+  padding: 10px;
+  color: var(--white);
+  border-radius: 10px;
+  margin: 2px;
+}
 .register {
   margin: 0;
   padding: 0;

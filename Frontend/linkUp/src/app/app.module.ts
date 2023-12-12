@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -44,6 +45,7 @@ import { FollowingComponent } from './following/following.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
