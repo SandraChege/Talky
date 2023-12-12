@@ -2,6 +2,7 @@ import Router from "express";
 import {
     checkUserDetails,
   forgotPassword,
+  getAllUsers,
   getOneUser,
   loginUser,
   registerUser,
@@ -14,7 +15,7 @@ import { verifyToken } from "../middlewares/verfiyToken";
 
 const user_router = Router();
 
-// user_router.get("/getallusers", verifyToken, getAllUsers);
+user_router.get("/getallusers", verifyToken, getAllUsers);
 user_router.post("/register", registerUser);
 user_router.post("/login", loginUser);
 user_router.get("/checkuserdetails", verifyToken, checkUserDetails);

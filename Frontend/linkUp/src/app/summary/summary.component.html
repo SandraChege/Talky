@@ -1,16 +1,16 @@
-<div>
+<div class="h-[100vh]"><!--Adds  height-->
     <app-navbar></app-navbar>
     <div class="profilecontainer flex ml-[10vw] w-[90vw] text-black text-base">
         <div class="profile text-base">
             <!--username and image-->
             <div class="top flex p-[10px] gap-x-4">
                 <div class="image">
-                    <img src="https://cdn.pixabay.com/photo/2021/10/27/13/15/digital-graphicscat-6747298_640.jpg" alt="">
+                    <img src="{{userDetails.profileUrl}}" alt="">
                 </div>
                 <div class="topleft">
-                    <p class="py-1">Hello, <span>Sandra Chege</span></p>
-                    <p class="py-1">_sandra_chege</p>
-                    <p class="py-4">I love beauty and emotion. 🥰 I'm passionate about photography and learning. 📚 I explore genres and styles. 🌈 I think photography is storytelling. 📖 I hope you like and feel my photos.😊</p>
+                    <p class="py-1">Hello, <span>{{userDetails.fullname}}</span></p>
+                    <p class="py-1">{{userDetails.username}}</p>
+                    <p class="py-4">{{userDetails.profileCaption}}</p>
                     <button (click)="updateProfile()" class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Edit Profile</button>
                 </div>
             </div>
@@ -24,21 +24,6 @@
             </div>
             <!-- POST CONTAINER -->
             <div class="myposts">
-                <div>
-                    <a routerLink="/myposts">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
-                    </a>
-                </div>
-                <div>
-                    <a routerLink="/myposts">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
-                    </a>
-                </div>
-                <div>
-                    <a routerLink="/myposts">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
-                    </a>
-                </div>
                 <div>
                     <a routerLink="/myposts">
                         <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
@@ -89,8 +74,8 @@
                     <div class="closeicon"><button (click)="hideform()"><i class="fa-solid fa-xmark"></i></button></div>
                     <div class="flex flex-col py-1">
                         <label class="text-[1rem] text-black">Enter Full Name:</label> 
-                        <input data-cy="userFullName" type="text" formControlName="userFullName" placeholder="Enter your full name" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
-                        <div *ngIf="profileForm.get('userFullName')?.invalid && profileForm.get('userFullName')?.touched" class="text-red-500">Full name is required</div>
+                        <input data-cy="fullName" type="text" formControlName="fullName" placeholder="Enter your full name" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                        <div *ngIf="profileForm.get('fullName')?.invalid && profileForm.get('fullName')?.touched" class="text-red-500">Full name is required</div>
                     </div>
        
                     <div class="flex flex-col py-1">
@@ -101,12 +86,12 @@
 
                     <div class="flex flex-col py-1">
                         <label class="text-[1rem] text-black">Enter profile caption:</label> 
-                        <input data-cy="usercaption" type="text" formControlName="usercaption" placeholder="Enter your profile caption" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
-                        <div *ngIf="profileForm.get('usercaption')?.invalid && profileForm.get('usercaption')?.touched" class="text-red-500">Profile Caption is required</div>
+                        <input data-cy="usercaption" type="text" formControlName="profileCaption" placeholder="Enter your profile caption" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                        <div *ngIf="profileForm.get('profileCaption')?.invalid && profileForm.get('profileCaption')?.touched" class="text-red-500">Profile Caption is required</div>
                     </div>
 
                     <div class="flex flex-col">
-                        <input data-cy="update_user_btn" type="submit" value="update" class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white my-2">
+                        <input data-cy="update_user_btn" type="submit" value="Update" class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white my-2">
                     </div>
                 </form>
             </div>

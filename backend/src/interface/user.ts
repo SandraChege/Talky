@@ -16,6 +16,7 @@ export interface updateUser {
   userID: string;
   fullname: string;
   profileUrl: string;
+  profileCaption: string;
 }
 
 export interface User1 {

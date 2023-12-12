@@ -5,7 +5,8 @@ CREATE TABLE Users (
     username VARCHAR(255) UNIQUE,
     password VARCHAR(255),
     role VARCHAR(255) DEFAULT 'user',
-    profileUrl VARCHAR(255) NULL,
+    profileUrl VARCHAR(255) DEFAULT 'no-image',
+    profileCaption VARCHAR(5000) DEFAULT 'No Caption',
     isWelcomed BIT DEFAULT 0,
     isDeleted BIT DEFAULT 0,
     resetPassword BIT DEFAULT 0,
@@ -14,4 +15,4 @@ CREATE TABLE Users (
 );
 
 SELECT * FROM Users;
-DROP TABLE users;
+DROP TABLE Users;

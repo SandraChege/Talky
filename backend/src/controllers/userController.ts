@@ -168,16 +168,33 @@ export const getOneUser = async (req: Request, res: Response) => {
   }
 };
 
+//FETCH ALL USERS
+export const getAllUsers = async (req: Request, res: Response) => {
+  try {
+    const pool = await mssql.connect(sqlConfig);
+
+    let users = (await pool.request().execute("fetchAllUsers")).recordset;
+    return res.json({
+      users: users,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: error,
+    });
+  }
+};
+
 //UPDATE USER
 export const updateUserDetails = async (req: Request, res: Response) => {
   try {
-    const { userID, fullname, profileUrl } = req.body;
+    const { userID, fullname, profileUrl, profileCaption } = req.body;
 
-    if (!userID || !fullname || !profileUrl) {
+    if (!userID || !fullname || !profileUrl || !profileCaption) {
       return res.status(400).json({
         error: "Invalid request",
         details:
-          "Both userID, profileUrl and fullname are required for updating user details.",
+          "Both userID, profileUrl,profileCaption and fullname are required for updating user details.",
       });
     }
 
@@ -185,6 +202,7 @@ export const updateUserDetails = async (req: Request, res: Response) => {
       userID,
       fullname,
       profileUrl,
+      profileCaption
     };
     const updateuserprocedureName = "updateUserDetails";
     const params = updatedUser;

@@ -13,6 +13,7 @@ export class SummaryComponent {
   isFollowersVisible: boolean = false;
   isProfileFormVisible: boolean = false;
   user: any;
+  userDetails: any;
   
   ngOnInit() { 
     this.getUserProfile()
@@ -23,8 +24,9 @@ export class SummaryComponent {
     private register: RegisterService
   ) {
     this.profileForm = this.formBuilder.group({
-      userFullName: ['', Validators.required],
+      fullName: ['', Validators.required],
       profileUrl: ['', Validators.required],
+      profileCaption:['', Validators.required],
     });
   }
 
@@ -36,6 +38,17 @@ export class SummaryComponent {
   }
   updateProfile() {
     this.isProfileFormVisible = true;
+    this.register.getuser().subscribe((response) => {
+      this.user = response;
+      this.userDetails = this.user.user;
+      console.log(this.userDetails);
+
+      this.profileForm.patchValue({
+        fullname: this.userDetails.fullname,
+        profileUrl: this.userDetails.profileUrl,
+        profileCaption: this.userDetails.profileCaption,
+      });
+    });
   }
   hideform() {
     this.isFormVisible = false;
@@ -46,13 +59,8 @@ export class SummaryComponent {
   getUserProfile() {
     this.register.getuser().subscribe((response) => {
       this.user = response;
-      console.log(this.user.user);
-
-      // this.ProfileForm.patchValue({
-      //   userName: this.user.user.userName,
-      //   email: this.user.user.email,
-      //   phone_no: this.user.user.phone_no,
-      // });
+      this.userDetails= this.user.user
+      console.log(this.userDetails);
     });
   }
 }

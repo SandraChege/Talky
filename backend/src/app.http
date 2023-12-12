@@ -20,7 +20,11 @@ Content-Type: application/json
 
 ###CHECK USER DETAILS
 GET http://localhost:4500/user/checkuserdetails
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJhN2UzY2U2Mi02N2FlLTQ2ZTctYTgyNC0wYTFhYzk0YjAwYjgiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6bnVsbCwiaXNXZWxjb21lZCI6ZmFsc2UsImlzRGVsZXRlZCI6ZmFsc2UsInJlc2V0UGFzc3dvcmQiOmZhbHNlLCJPVFAiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIzLTEyLTExVDEyOjMzOjE3LjYyMFoiLCJpYXQiOjE3MDIyODcxOTksImV4cCI6MTcwMjM3MzU5OX0.LjYLQD4S5Vaw2PjpcUByDDJhf8bn4cpSMgXG6j24rj4
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Im5vLWltYWdlIiwicHJvZmlsZUNhcHRpb24iOiJObyBDYXB0aW9uIiwiaXNXZWxjb21lZCI6ZmFsc2UsImlzRGVsZXRlZCI6ZmFsc2UsInJlc2V0UGFzc3dvcmQiOmZhbHNlLCJPVFAiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIzLTEyLTEyVDIxOjEzOjMzLjUyN1oiLCJpYXQiOjE3MDI0MDQ4MTUsImV4cCI6MTcwMjQ5MTIxNX0.rbe2rrD43E0kGLS9giBjX56paKMiqjlM1045Aj9xZPw
+
+###GET ALL USERS
+GET http://localhost:4500/user/getallusers
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Im5vLWltYWdlIiwicHJvZmlsZUNhcHRpb24iOiJObyBDYXB0aW9uIiwiaXNXZWxjb21lZCI6ZmFsc2UsImlzRGVsZXRlZCI6ZmFsc2UsInJlc2V0UGFzc3dvcmQiOmZhbHNlLCJPVFAiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIzLTEyLTEyVDIxOjEzOjMzLjUyN1oiLCJpYXQiOjE3MDI0MDQ4MTUsImV4cCI6MTcwMjQ5MTIxNX0.rbe2rrD43E0kGLS9giBjX56paKMiqjlM1045Aj9xZPw
 
 ###getoneuser
 POST http://localhost:4500/user/getoneuser
@@ -35,9 +39,10 @@ PUT http://localhost:4500/user/updateuser
 Content-Type: application/json
 
 {
-    "userID":"d010438b-52d5-47dc-ba9c-15a4011d2ee4",
+    "userID":"57084b05-0aa1-40eb-8692-f6a81b123ac5",
     "fullname": "Sandra Chege",
-    "profileUrl": "https://cdn.pixabay.com/photo/2023/11/21/00/09/ai-generated-8402112_1280.png"
+    "profileUrl": "https://cdn.pixabay.com/photo/2023/11/21/00/09/ai-generated-8402112_1280.png",
+    "profileCaption": "Embarking on literary adventures where every page is a portal to another world, unlocking emotions unexplored. In the realm of books, I traverse landscapes of imagination, dance with diverse characters, and taste the sweetness of words. Closing each book, I carry fragments of these extraordinary journeys into the tapestry of my real-world existence."
 }
 
 #### FORGOT PASSWORD
