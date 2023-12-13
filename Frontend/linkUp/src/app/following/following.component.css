@@ -18,13 +18,12 @@
 }
 table {
   border-collapse: collapse;
-  margin: 10px;
-  width: 90%;
+  width: 100%;
+  align-items: center;  
 }
 th,
 td {
   border: 1px solid black;
-  /* padding: 8px; */
   text-align: center;
 }
 tr th img{
@@ -36,13 +35,13 @@ tr th img{
 }
 @media screen and (max-width: 700px) {
   .summary {
-    margin-left: 0;
-    width: 100vw;
+    /* margin-left: 0;
+    width: 100vw; */
     flex-direction: column;
   }
-  .summarycontainer {
+  /* .summarycontainer {
     width: 100%;
-  }
+  } */
   .buttoncontainer {
     padding-top: 90px;
     gap: 10px;
@@ -56,7 +55,7 @@ tr th img{
     width: 80%;
   }
   .allPersonalInfo{
-    width: 100%;
+    /* width: 100%; */
     justify-content: center;
     align-items: center;
   }

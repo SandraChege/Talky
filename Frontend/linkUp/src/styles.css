@@ -3,18 +3,23 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-:root{
-    --blue:#2563EB;
-    --purple:#7e22ce;
-    --darkpurple:#581C87;
-    --purple3:#A25BEA;
-    --white:#FEFEFE;
-    --black:#17151E;
-    --grey:#BDBEBE;
+:root {
+  --blue: #2563eb;
+  --purple: #7e22ce;
+  --darkpurple: #581c87;
+  --purple3: #a25bea;
+  --white: #fefefe;
+  --black: #17151e;
+  --grey: #bdbebe;
 }
 /* html, body { height: 100%; } */
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--grey);
+  overflow-x: hidden;
+}

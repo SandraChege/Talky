@@ -13,6 +13,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { PeopleComponent } from './people/people.component';
 import { FollowersComponent } from './followers/followers.component';
 import { FollowingComponent } from './following/following.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -23,10 +24,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'addpost', component: PostformComponent },
   { path: 'myposts', component: MypostsComponent },
-  { path: 'profile', component: SummaryComponent },
+  { path: 'mock', component: SummaryComponent },
   { path: 'people', component: PeopleComponent },
   { path: 'followers', component: FollowersComponent },
-  { path:'following', component: FollowingComponent},
+  { path: 'following', component: FollowingComponent },
+  { path: 'profile', component: ProfileComponent },
 
   { path: '**', component: NotfoundComponent },
 ];

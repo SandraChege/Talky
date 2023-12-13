@@ -3,11 +3,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from '../services/register.service';
 
 @Component({
-  selector: 'app-summary',
-  templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.css'],
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css'],
 })
-export class SummaryComponent {
+export class ProfileComponent {
   profileForm!: FormGroup;
   isFormVisible: boolean = false;
   isFollowersVisible: boolean = false;
@@ -16,9 +16,9 @@ export class SummaryComponent {
 
   user: any;
   userDetails: any;
-  
-  ngOnInit() { 
-    this.getUserProfile()
+
+  ngOnInit() {
+    this.getUserProfile();
   }
 
   constructor(
@@ -28,7 +28,7 @@ export class SummaryComponent {
     this.profileForm = this.formBuilder.group({
       fullName: ['', Validators.required],
       profileUrl: ['', Validators.required],
-      profileCaption:['', Validators.required],
+      profileCaption: ['', Validators.required],
     });
   }
   viewmyposts() {
@@ -43,6 +43,8 @@ export class SummaryComponent {
   }
   viewFollowing() {
     this.isFormVisible = true;
+    this.isFollowersVisible = false;
+    this.viewposts = false;
   }
   updateProfile() {
     this.isProfileFormVisible = true;
@@ -67,8 +69,9 @@ export class SummaryComponent {
   getUserProfile() {
     this.register.getuser().subscribe((response) => {
       this.user = response;
-      this.userDetails= this.user.user
+      this.userDetails = this.user.user;
       console.log(this.userDetails);
     });
   }
 }
+

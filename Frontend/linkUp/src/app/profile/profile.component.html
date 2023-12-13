@@ -1,6 +1,6 @@
-<div class="h-[100vh]"><!--Adds  height-->
+<div><!--Adds  height-->
     <app-navbar></app-navbar>
-    <div class="profilecontainer flex ml-[10vw] w-[90vw] text-black text-base">
+    <div class="profilecontainer  flex ml-[10vw] w-[90vw] text-black text-base">
         <div class="profile text-base">
             <!--username and image-->
             <div class="top flex p-[10px] gap-x-4">
@@ -15,12 +15,9 @@
                 </div>
             </div>
             <div class="total flex justify-around">
-                <!-- <p>posts: <span> 202</span> </p> -->
-                <button>Posts:<span class="px-2">202</span></button>
-                <button><a routerLink="/followers">Followers<span class="px-2">300</span></a></button>
-                <button><a routerLink="/following">Following<span class="px-2">300</span></a></button>
-                <!-- <button (click) = "viewFollowers()" class="hover:text-[#0000FF] hover:text-bold hover:text-[18px]">Followers: <span class="px-2">300</span></button> -->
-                <!-- <button (click) = "viewFollowing()" class="hover:text-[#8800FF] hover:text-bold hover:text-[18px]">Following: <span class="px-2">300</span></button> -->
+                <button (click)="viewmyposts()">Posts:<span class="px-2">202</span></button>
+                <button (click) = "viewFollowers()" class="hover:text-[#0000FF] hover:text-bold hover:text-[18px]">Followers: <span class="px-2">300</span></button>
+                <button (click) = "viewFollowing()" class="hover:text-[#8800FF] hover:text-bold hover:text-[18px]">Following: <span class="px-2">300</span></button>
             </div>
             <!-- POST CONTAINER -->
             <div class="myposts" *ngIf="viewposts">
@@ -40,36 +37,18 @@
                     </a>
                 </div>
             </div>
-        </div>
-        <!--Followers container-->
-        <div class="followersform overlay" *ngIf="isFollowersVisible">
-            <div class="container flex flex-col">
-                <div class="closeicon"><button (click)="hideform()"><i class="fa-solid fa-xmark"></i></button></div>
-                <div class="searchInput">
-                    <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search post">
-                </div>
-                <div class="flex flex-wrap justify-around">
-                    <p class="py-4 text-black">Sandra Mwihaki</p> 
-                    <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Follow Back</button>
-                </div>
+             <!--Followers container-->
+            <div *ngIf="isFollowersVisible">
+                <app-followers></app-followers>
+            </div>
+
+            <!--Following container-->
+            <div *ngIf="isFormVisible">
+                <app-following></app-following>
             </div>
         </div>
-        <!-- <div *ngIf="isFollowersVisible">
-            <app-followers></app-followers>
-        </div> -->
-        <!--Following container-->
-        <div class="followingform overlay" *ngIf="isFormVisible">
-            <div class="container flex flex-col">
-                <div class="closeicon"><button (click)="hideform()"><i class="fa-solid fa-xmark"></i></button></div>
-                <div class="searchInput">
-                    <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search post">
-                </div>
-                <div class="flex flex-wrap justify-around">
-                    <p class="py-4 text-black">Sandra Mwihaki</p> 
-                    <button class="rounded-[10px] border-solid border-[1px] bg-[#0000FF] border-[#0000FF] outline-none px-4 py-[6px] hover:cursor-pointer hover:bg-[#8800FF] hover:border-[#8800FF]">Unfollow</button>
-                </div>
-            </div>
-        </div>
+       
+
         <!--Profile form-->
         <div class="profileform overlay" *ngIf="isProfileFormVisible">
             <div class="container text-black">
