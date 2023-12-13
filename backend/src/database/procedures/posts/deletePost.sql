@@ -8,5 +8,5 @@ BEGIN
 	UPDATE Posts
 	SET isDeleted = 1
 	
-	WHERE postID = @postID;
+	WHERE postID = @postID AND isDeleted = 0;
 END;

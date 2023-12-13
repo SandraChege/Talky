@@ -6,13 +6,13 @@ export const validateComment = joi.object().keys({
   postID: joi.string().required(),
 });
 
-export const validateUpdatePost = joi.object().keys({
+export const validateUpdateComment = joi.object().keys({
   postID: joi.string().required(),
-  imageUrl: joi.string().required(),
+  comment: joi.string().required(),
   userID: joi.string().required(),
-  postContent: joi.string().required(),
+  commentID: joi.string().required(),
 });
 
-export const validatePostId = joi.object().keys({
-  postID: joi.string().min(8).required(),
+export const validateCommentId = joi.object().keys({
+  commentID: joi.string().min(8).required(),
 });
