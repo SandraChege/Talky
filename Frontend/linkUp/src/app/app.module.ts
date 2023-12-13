@@ -21,6 +21,7 @@ import { PeopleComponent } from './people/people.component';
 import { FollowersComponent } from './followers/followers.component';
 import { FollowingComponent } from './following/following.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ProfileComponent } from './profile/profile.component';
     BrowserAnimationsModule,
     MatSlideToggleModule,
     HttpClientModule,
+    NgxDropzoneModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

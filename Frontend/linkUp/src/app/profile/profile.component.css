@@ -1,11 +1,13 @@
 .profilecontainer {
   justify-content: center;
   background-color: var(--grey);
+  padding-top: 15px;
   /* height: 100%; */
 }
 .profilecontainer .profile {
   width: 60vw;
   background-color: var(--white);
+  border-radius: 15px;
   /* height: 100%; */
 }
 .top .image {

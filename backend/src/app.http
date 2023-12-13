@@ -3,9 +3,9 @@ POST http://localhost:4500/user/register
 Content-Type: application/json
 
 {
-    "fullname":"Sandra Chege",
-    "username": "sandrachege123",
-    "email":"9superbikes@gmail.com",
+    "fullname":"Robinson Ngecu",
+    "username": "Robinson123",
+    "email":"devngecu@gmail.com",
     "password":"12345678"
 }
 
@@ -20,11 +20,11 @@ Content-Type: application/json
 
 ###CHECK USER DETAILS
 GET http://localhost:4500/user/checkuserdetails
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Im5vLWltYWdlIiwicHJvZmlsZUNhcHRpb24iOiJObyBDYXB0aW9uIiwiaXNXZWxjb21lZCI6ZmFsc2UsImlzRGVsZXRlZCI6ZmFsc2UsInJlc2V0UGFzc3dvcmQiOmZhbHNlLCJPVFAiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIzLTEyLTEyVDIxOjEzOjMzLjUyN1oiLCJpYXQiOjE3MDI0MDQ4MTUsImV4cCI6MTcwMjQ5MTIxNX0.rbe2rrD43E0kGLS9giBjX56paKMiqjlM1045Aj9xZPw
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMjMvMTEvMjEvMDAvMDkvYWktZ2VuZXJhdGVkLTg0MDIxMTJfMTI4MC5wbmciLCJwcm9maWxlQ2FwdGlvbiI6IkVtYmFya2luZyBvbiBsaXRlcmFyeSBhZHZlbnR1cmVzIHdoZXJlIGV2ZXJ5IHBhZ2UgaXMgYSBwb3J0YWwgdG8gYW5vdGhlciB3b3JsZCwgdW5sb2NraW5nIGVtb3Rpb25zIHVuZXhwbG9yZWQuIEluIHRoZSByZWFsbSBvZiBib29rcywgSSB0cmF2ZXJzZSBsYW5kc2NhcGVzIG9mIGltYWdpbmF0aW9uLCBkYW5jZSB3aXRoIGRpdmVyc2UgY2hhcmFjdGVycywgYW5kIHRhc3RlIHRoZSBzd2VldG5lc3Mgb2Ygd29yZHMuIENsb3NpbmcgZWFjaCBib29rLCBJIGNhcnJ5IGZyYWdtZW50cyBvZiB0aGVzZSBleHRyYW9yZGluYXJ5IGpvdXJuZXlzIGludG8gdGhlIHRhcGVzdHJ5IG9mIG15IHJlYWwtd29ybGQgZXhpc3RlbmNlLiIsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xMlQyMToxMzozMy41MjdaIiwiaWF0IjoxNzAyNDU3NjQzLCJleHAiOjE3MDI1NDQwNDN9.Sb4cpd6oekDh5MRFaD0ismqswC8RRU5d37XIOpFO-2Y
 
 ###GET ALL USERS
 GET http://localhost:4500/user/getallusers
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Im5vLWltYWdlIiwicHJvZmlsZUNhcHRpb24iOiJObyBDYXB0aW9uIiwiaXNXZWxjb21lZCI6ZmFsc2UsImlzRGVsZXRlZCI6ZmFsc2UsInJlc2V0UGFzc3dvcmQiOmZhbHNlLCJPVFAiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIzLTEyLTEyVDIxOjEzOjMzLjUyN1oiLCJpYXQiOjE3MDI0MDQ4MTUsImV4cCI6MTcwMjQ5MTIxNX0.rbe2rrD43E0kGLS9giBjX56paKMiqjlM1045Aj9xZPw
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMjMvMTEvMjEvMDAvMDkvYWktZ2VuZXJhdGVkLTg0MDIxMTJfMTI4MC5wbmciLCJwcm9maWxlQ2FwdGlvbiI6IkVtYmFya2luZyBvbiBsaXRlcmFyeSBhZHZlbnR1cmVzIHdoZXJlIGV2ZXJ5IHBhZ2UgaXMgYSBwb3J0YWwgdG8gYW5vdGhlciB3b3JsZCwgdW5sb2NraW5nIGVtb3Rpb25zIHVuZXhwbG9yZWQuIEluIHRoZSByZWFsbSBvZiBib29rcywgSSB0cmF2ZXJzZSBsYW5kc2NhcGVzIG9mIGltYWdpbmF0aW9uLCBkYW5jZSB3aXRoIGRpdmVyc2UgY2hhcmFjdGVycywgYW5kIHRhc3RlIHRoZSBzd2VldG5lc3Mgb2Ygd29yZHMuIENsb3NpbmcgZWFjaCBib29rLCBJIGNhcnJ5IGZyYWdtZW50cyBvZiB0aGVzZSBleHRyYW9yZGluYXJ5IGpvdXJuZXlzIGludG8gdGhlIHRhcGVzdHJ5IG9mIG15IHJlYWwtd29ybGQgZXhpc3RlbmNlLiIsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xMlQyMToxMzozMy41MjdaIiwiaWF0IjoxNzAyNDU3NjQzLCJleHAiOjE3MDI1NDQwNDN9.Sb4cpd6oekDh5MRFaD0ismqswC8RRU5d37XIOpFO-2Y
 
 ###getoneuser
 POST http://localhost:4500/user/getoneuser
@@ -61,3 +61,50 @@ Content-Type: application/json
     "userID": "a7e3ce62-67ae-46e7-a824-0a1ac94b00b8",
     "password": "12345678"
 }
+
+###CREATE POST
+POST http://localhost:4500/post/create
+Content-Type: application/json
+
+{
+    "postContent":"Just stumbled upon this hidden gem in the heart of the forest. The gentle rustle of leaves, the soothing sounds of birdsong, and the warm sunlight filtering through the trees create a perfect symphony of serenity. Sometimes, all you need is a peaceful escape to reconnect with the simplicity and beauty of nature. #NatureLover #IntoTheWild #NatureEscape",
+    "imageUrl":"https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681_640.jpg",
+    "userID":"57084b05-0aa1-40eb-8692-f6a81b123ac5"
+}
+
+###GET ALL POSTS
+GET http://localhost:4500/post/all 
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMjMvMTEvMjEvMDAvMDkvYWktZ2VuZXJhdGVkLTg0MDIxMTJfMTI4MC5wbmciLCJwcm9maWxlQ2FwdGlvbiI6IkVtYmFya2luZyBvbiBsaXRlcmFyeSBhZHZlbnR1cmVzIHdoZXJlIGV2ZXJ5IHBhZ2UgaXMgYSBwb3J0YWwgdG8gYW5vdGhlciB3b3JsZCwgdW5sb2NraW5nIGVtb3Rpb25zIHVuZXhwbG9yZWQuIEluIHRoZSByZWFsbSBvZiBib29rcywgSSB0cmF2ZXJzZSBsYW5kc2NhcGVzIG9mIGltYWdpbmF0aW9uLCBkYW5jZSB3aXRoIGRpdmVyc2UgY2hhcmFjdGVycywgYW5kIHRhc3RlIHRoZSBzd2VldG5lc3Mgb2Ygd29yZHMuIENsb3NpbmcgZWFjaCBib29rLCBJIGNhcnJ5IGZyYWdtZW50cyBvZiB0aGVzZSBleHRyYW9yZGluYXJ5IGpvdXJuZXlzIGludG8gdGhlIHRhcGVzdHJ5IG9mIG15IHJlYWwtd29ybGQgZXhpc3RlbmNlLiIsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xMlQyMToxMzozMy41MjdaIiwiaWF0IjoxNzAyNDU3NjQzLCJleHAiOjE3MDI1NDQwNDN9.Sb4cpd6oekDh5MRFaD0ismqswC8RRU5d37XIOpFO-2Y
+
+###GET SINGLE POST
+GET http://localhost:4500/post/single/b5a0fe1f-19f0-4050-9838-0b53c88456e7
+
+###UPDATE PRODUCT
+PUT http://localhost:4500/post/update
+Content-Type: application/json
+
+{
+    "postID":"b5a0fe1f-19f0-4050-9838-0b53c88456e7",
+    "userID": "57084b05-0aa1-40eb-8692-f6a81b123ac5",
+    "postContent": "Just stumbled upon this hidden gem in the heart of the forest. The gentle rustle of leaves, the soothing sounds of birdsong, and the warm sunlight filtering through the trees create a perfect symphony of serenity. Sometimes, all you need is a peaceful escape to reconnect with the simplicity and beauty of nature.  ##NatureLover 3#IntoTheWild ##NatureEscape",
+    "imageUrl": "https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681_640.jpg"
+}
+###DELETE PRODUCT
+DELETE http://localhost:4500/post/delete/b5a0fe1f-19f0-4050-9838-0b53c88456e7
+
+
+###FOLLOW AND UNFOLLOW USERS
+POST http://localhost:4500/user/toggleFollowUser
+Content-Type: application/json
+
+{
+   "following_userID":"ee33de52-1ef0-4cfe-b435-61a6b04eb520", 
+   "followed_userID":"57084b05-0aa1-40eb-8692-f6a81b123ac5"
+}
+
+### GET FOLLOWERS
+GET http://localhost:4500/user/getFollowers/57084b05-0aa1-40eb-8692-f6a81b123ac5
+
+
+### GET FOLLOWINGS
+GET http://localhost:4500/user/getFollowings/ee33de52-1ef0-4cfe-b435-61a6b04eb520

@@ -1,9 +1,9 @@
 import joi from "joi";
 
-export const validatePost = joi.object().keys({
-  postContent: joi.string(),
-  imageUrl: joi.string(),
-  userID: joi.string().required(),
+export const validateComment = joi.object().keys({
+  comment: joi.string(),
+  userID: joi.string(),
+  postID: joi.string().required(),
 });
 
 export const validateUpdatePost = joi.object().keys({

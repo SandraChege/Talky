@@ -11,10 +11,11 @@ import {
   validateResetpassword,
   validateUserEmailForgotPassword,
 } from "../Validators/user";
-import { execute } from "../helpers/dbHelper";
+import { query, execute } from "../helpers/dbHelper";
 import { ExtendedUser } from "../middlewares/verfiyToken";
 import { updateUser } from "../interface/user";
 import { hashPass } from "../Services/passwordHash";
+import { isEmpty } from "lodash";
 // import { execute } from "../helpers/dbHelper";
 // import { ExtendedUser, ExtendedUser1 } from "../middlewares/verifytoken";
 
@@ -293,5 +294,102 @@ export const resetPassword = async (req: Request, res: Response) => {
   } catch (error) {
     console.log(error);
     res.send({ error: (error as Error).message });
+  }
+};
+
+//GET FOLLOWERS
+export const getFollowers = async (req: Request, res: Response) => {
+  try {
+    let  followed_userID  = req.params.ID;
+
+    let followers = (
+      await execute("fetchFollowers", {
+        followed_userID,
+      })
+    ).recordset;
+
+    return res.status(200).json({
+      followers: followers,
+    });
+  } catch (error) {
+    return res.json({
+      error: error,
+    });
+  }
+};
+
+//GET FOLLOWINGS
+export const getFollowings = async (req: Request, res: Response) => {
+  try {
+    let  following_userID  = req.params.ID;
+
+    let followers = (
+      await execute("fetchFollowings", {
+        following_userID,
+      })
+    ).recordset;
+
+    return res.status(200).json({
+      followings: followers,
+    });
+  } catch (error) {
+    return res.json({
+      error: error,
+    });
+  }
+};
+
+//FOLLOW AND UNFOLLOW USER
+export const toggleFollowUser = async (req: Request, res: Response) => {
+  console.log(req.body);
+
+  try {
+    let followerID = v4();
+
+    let { following_userID, followed_userID } = req.body;
+    const relationsexists = (
+      await query(
+        `SELECT * FROM Followers WHERE following_userID = '${following_userID}' AND followed_userID= '${followed_userID}'`
+      )
+    ).recordset;
+
+    if (!isEmpty(relationsexists)) {
+      let result = await execute("unfollowUser", {
+        following_userID,
+        followed_userID,
+      });
+
+      if (result.rowsAffected[0] === 0) {
+        return res.status(404).json({
+          message: "Something went wrong, user not followed",
+        });
+      } else {
+        return res.status(200).json({
+          message: "User Unfollowed",
+        });
+      }
+    } else {
+      let result = await execute("followUser", {
+        followerID,
+        following_userID,
+        followed_userID,
+      });
+
+      if (result.rowsAffected[0] === 0) {
+        return res.status(404).json({
+          message: "Something went wrong, user not followed",
+        });
+      } else {
+        return res.status(200).json({
+          message: "User Followed",
+        });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+
+    return res.json({
+      error,
+    });
   }
 };
