@@ -9,3 +9,5 @@ CREATE TABLE Followers(
 )
 
 SELECT * FROM Followers;
+
+DROP TABLE Followers

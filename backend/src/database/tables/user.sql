@@ -1,3 +1,5 @@
+USE talky
+
 CREATE TABLE Users (
     userID VARCHAR(255) PRIMARY KEY,
     email VARCHAR(255) UNIQUE,
@@ -10,6 +12,8 @@ CREATE TABLE Users (
     isWelcomed BIT DEFAULT 0,
     isDeleted BIT DEFAULT 0,
     resetPassword BIT DEFAULT 0,
+    resetToken VARCHAR (255) DEFAULT NULL,
+    expiryTime DATETIME DEFAULT NULL,
     OTP vARCHAR(255),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

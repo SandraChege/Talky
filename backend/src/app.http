@@ -3,9 +3,9 @@ POST http://localhost:4500/user/register
 Content-Type: application/json
 
 {
-    "fullname":"Robinson Ngecu",
-    "username": "Robinson123",
-    "email":"devngecu@gmail.com",
+    "fullname":"Mwihaki Chege",
+    "username": "MwihakiChege123",
+    "email":"chegemwihaki88@gmail.com",
     "password":"12345678"
 }
 
@@ -14,8 +14,8 @@ POST http://localhost:4500/user/login
 Content-Type: application/json
 
 {
-    "email":"9superbikes@gmail.com",
-    "password":"12345678"
+    "email":"chegemwihaki88@gmail.com",
+    "password":"123456789"
 }
 
 ###CHECK USER DETAILS
@@ -24,7 +24,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQw
 
 ###GET ALL USERS
 GET http://localhost:4500/user/getallusers
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMjMvMTEvMjEvMDAvMDkvYWktZ2VuZXJhdGVkLTg0MDIxMTJfMTI4MC5wbmciLCJwcm9maWxlQ2FwdGlvbiI6IkVtYmFya2luZyBvbiBsaXRlcmFyeSBhZHZlbnR1cmVzIHdoZXJlIGV2ZXJ5IHBhZ2UgaXMgYSBwb3J0YWwgdG8gYW5vdGhlciB3b3JsZCwgdW5sb2NraW5nIGVtb3Rpb25zIHVuZXhwbG9yZWQuIEluIHRoZSByZWFsbSBvZiBib29rcywgSSB0cmF2ZXJzZSBsYW5kc2NhcGVzIG9mIGltYWdpbmF0aW9uLCBkYW5jZSB3aXRoIGRpdmVyc2UgY2hhcmFjdGVycywgYW5kIHRhc3RlIHRoZSBzd2VldG5lc3Mgb2Ygd29yZHMuIENsb3NpbmcgZWFjaCBib29rLCBJIGNhcnJ5IGZyYWdtZW50cyBvZiB0aGVzZSBleHRyYW9yZGluYXJ5IGpvdXJuZXlzIGludG8gdGhlIHRhcGVzdHJ5IG9mIG15IHJlYWwtd29ybGQgZXhpc3RlbmNlLiIsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xMlQyMToxMzozMy41MjdaIiwiaWF0IjoxNzAyNDU3NjQzLCJleHAiOjE3MDI1NDQwNDN9.Sb4cpd6oekDh5MRFaD0ismqswC8RRU5d37XIOpFO-2Y
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzYjBhOTkzYi1iZTBlLTQzYWEtOGFmNC1lMmI1ZjQ0ZDk4ZmEiLCJlbWFpbCI6ImlzYWFja2lsaW1vazJAZ21haWwuY29tIiwiZnVsbG5hbWUiOiJJc2FhYyBLaXB0b28iLCJ1c2VybmFtZSI6IklzYWFjS2lsaW1vMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjp0cnVlLCJyZXNldFRva2VuIjoiNGUyYTdjMDUtZWY3OC00NTY5LWE5YmMtMGYyYzE4YTdjNTQ3IiwiZXhwaXJ5VGltZSI6IjIwMjMtMTItMTRUMTM6MzQ6MTIuMjk3WiIsIk9UUCI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMTItMTRUMTU6MjE6NDIuMzkwWiIsImlhdCI6MTcwMjU1NzU2NCwiZXhwIjoxNzAyNjQzOTY0fQ.U9GDGftrD0fNz8-4IjYAjsEZM2UPxVidyKaGqNgW7D0
 
 ###getoneuser
 POST http://localhost:4500/user/getoneuser
@@ -50,7 +50,7 @@ POST http://localhost:4500/user/forgot
 Content-Type: application/json
 
 {
-    "email":"9superbikes@gmail.com"
+    "email":"chegemwihaki88@gmail.com"
 }
 
 ###RESET PASSWORD
@@ -58,8 +58,9 @@ POST http://localhost:4500/user/resetpassword
 Content-Type: application/json
 
 {
-    "userID": "a7e3ce62-67ae-46e7-a824-0a1ac94b00b8",
-    "password": "12345678"
+    "email": "chegemwihaki88@gmail.com",
+    "resetToken": "863de0ce-9145-48f1-83a9-171ec346a5c6",
+    "newPassword": "123456789"
 }
 
 ###CREATE POST

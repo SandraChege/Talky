@@ -1,7 +1,7 @@
 import Router from "express";
 import {
   checkUserDetails,
-  forgotPassword,
+  initiatePasswordReset,
   getAllUsers,
   getOneUser,
   loginUser,
@@ -24,7 +24,7 @@ user_router.get("/checkuserdetails", verifyToken, checkUserDetails);
 user_router.post("/getoneuser", getOneUser);
 user_router.put("/updateuser", updateUserDetails);
 user_router.post("/resetpassword", resetPassword);
-user_router.post("/forgot", forgotPassword);
+user_router.post("/forgot", initiatePasswordReset);
 
 user_router.get("/getFollowers/:ID", getFollowers);
 user_router.get("/getFollowings/:ID", getFollowings);

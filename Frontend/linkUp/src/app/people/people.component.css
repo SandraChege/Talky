@@ -1,41 +1,51 @@
 .summary {
   gap: 20px;
+  background-color: var(--grey);
+  justify-content: center;
+}
+.summarycontainer{
   background-color: var(--white);
+  margin-top: 20px;
+  border-radius: 15px;
 }
 .searchInput {
-  width: 90%;
+  width: 100%;
   margin-top: 10px;
 }
 .searchInput input {
   width: 50%;
   border-radius: 10px;
-  border: 2px solid var(--purple);
+  border: 1px solid var(--purple);
   color: black;
   outline: none;
+    margin-right: 10px;
 }
 .searchInput input:focus,
 .searchInput input:hover {
   border: 2px solid var(--purple);
   outline: none;
 }
-table {
-  border-collapse: collapse;
+.allPersonalInfo > div > .pdetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 10px;
-  width: 90%;
 }
-th,
-td {
-  border: 1px solid black;
-  /* padding: 8px; */
-  text-align: center;
+.pdetails .top{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
-tr th img{
-  width: 100px;
-  height: 100px;
-  border-radius: 100px;
-  display: block;
-  margin: 0 auto;
+.allPersonalInfo > div > .pdetails img{
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
 }
+.allPersonalInfo hr{
+  border: 0.1px solid #e3e3e3;
+}
+
 
 @media screen and (max-width: 700px) {
   .summary {

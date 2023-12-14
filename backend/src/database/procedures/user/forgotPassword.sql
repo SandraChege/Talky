@@ -8,5 +8,5 @@ begin
 	UPDATE Users
 	SET 
 	resetPassword = 1
-	WHERE userID = @userID;
+	WHERE userID = @userID AND resetPassword = 0;
 end;

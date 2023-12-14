@@ -15,9 +15,9 @@
                 </div>
             </div>
             <div class="total flex justify-around">
-                <button (click)="viewmyposts()">Posts:<span class="px-2">202</span></button>
-                <button (click) = "viewFollowers()" class="hover:text-[#0000FF] hover:text-bold hover:text-[18px]">Followers: <span class="px-2">300</span></button>
-                <button (click) = "viewFollowing()" class="hover:text-[#8800FF] hover:text-bold hover:text-[18px]">Following: <span class="px-2">300</span></button>
+                <button (click)="viewmyposts()" [class.active]="isFavourite1">Posts:<span class="px-2">202</span></button>
+                <button (click) = "viewFollowers()" [class.active]="isFavourite2" class="hover:text-[#0000FF] hover:text-bold hover:text-[18px]">Followers: <span class="px-2">300</span></button>
+                <button (click) = "viewFollowing()" [class.active]="isFavourite3" class="hover:text-[#8800FF] hover:text-bold hover:text-[18px]">Following: <span class="px-2">300</span></button>
             </div>
             <!-- POST CONTAINER -->
             <div class="myposts" *ngIf="viewposts">

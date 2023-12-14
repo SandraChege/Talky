@@ -21,6 +21,9 @@
   height: 80%;
   border-radius: 50%;
 }
+.total button.active{
+  border-bottom: 2px solid var(--purple);
+}
 .myposts{
   flex-wrap: wrap;
   display: flex;

@@ -12,6 +12,9 @@ export class ProfileComponent {
   isFormVisible: boolean = false;
   isFollowersVisible: boolean = false;
   isProfileFormVisible: boolean = false;
+  isFavourite1: boolean = true;
+  isFavourite2: boolean = false;
+  isFavourite3: boolean = false;
   viewposts = true;
 
   user: any;
@@ -35,16 +38,25 @@ export class ProfileComponent {
     this.isFormVisible = false;
     this.isFollowersVisible = false;
     this.viewposts = true;
+    this.isFavourite1 = true;
+    this.isFavourite2 = false;
+    this.isFavourite3 = false;
   }
   viewFollowers() {
     this.isFollowersVisible = true;
     this.isFormVisible = false;
     this.viewposts = false;
+    this.isFavourite2 = true;
+    this.isFavourite1 = false;
+    this.isFavourite3 = false;
   }
   viewFollowing() {
     this.isFormVisible = true;
     this.isFollowersVisible = false;
     this.viewposts = false;
+    this.isFavourite3 = true;
+    this.isFavourite1 = false;
+    this.isFavourite2 = false;
   }
   updateProfile() {
     this.isProfileFormVisible = true;
