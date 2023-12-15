@@ -7,9 +7,9 @@ import { createComment, createPost, deleteComment, deletePost, getAllComments, g
 const post_router = Router();
 
 post_router.post("/create", createPost);
-post_router.get("/single/:ID", getSinglePost);
-post_router.get("/all", getAllPosts)
-post_router.put("/update", updatePost);
+post_router.get("/single/:ID",verifyToken, getSinglePost);
+post_router.get("/all",verifyToken, getAllPosts)
+post_router.put("/update",verifyToken, updatePost);
 post_router.delete("/delete/:ID", deletePost);
 post_router.post("/createcomment", createComment)
 post_router.get("/allcomments", verifyToken, getAllComments)
@@ -17,6 +17,6 @@ post_router.put("/updatecomment", updateComment)
 post_router.delete("/deletecomment/:ID", deleteComment)
 post_router.get("/getcomments/:ID", verifyToken, getPostComments)
 post_router.post('/likepost', toggleLikePost)
-post_router.get("/getlikes/:ID",verifyToken, getPostLikes)
+post_router.get("/getlikes/:postID",verifyToken, getPostLikes)
 
 export default post_router;

@@ -325,11 +325,13 @@ export const getPostLikes = async (req: Request, res: Response) => {
     const { postID } = req.params;
 
     const likes = await query(`
-      SELECT userID,
+      SELECT *
       FROM likes
       WHERE postID = '${postID}'
     `);
 
+    console.log(likes);
+    
     // Check if there are any likes for the post
     if (likes.recordset.length === 0) {
       return res.status(404).json({

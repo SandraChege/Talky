@@ -4,5 +4,5 @@ AS
 BEGIN
     SELECT followerID
     FROM Followers
-    WHERE followed_userID = @followed_userID;
+    WHERE followed_userID = @followed_userID
 END

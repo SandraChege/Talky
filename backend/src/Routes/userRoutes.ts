@@ -11,6 +11,7 @@ import {
   getFollowers,
   getFollowings,
   toggleFollowUser,
+  deleteUser,
 } from "../controllers/userController";
 import { verifyToken } from "../middlewares/verfiyToken";
 // import { verifyToken } from "../middlewares/verifytoken";
@@ -21,13 +22,14 @@ user_router.get("/getallusers", verifyToken, getAllUsers);
 user_router.post("/register", registerUser);
 user_router.post("/login", loginUser);
 user_router.get("/checkuserdetails", verifyToken, checkUserDetails);
-user_router.post("/getoneuser", getOneUser);
-user_router.put("/updateuser", updateUserDetails);
+user_router.post("/getoneuser", verifyToken, getOneUser);
+user_router.put("/updateuser", verifyToken, updateUserDetails);
+user_router.delete("/deleteuser/:id", verifyToken, deleteUser);
 user_router.post("/resetpassword", resetPassword);
 user_router.post("/forgot", initiatePasswordReset);
 
-user_router.get("/getFollowers/:ID", getFollowers);
-user_router.get("/getFollowings/:ID", getFollowings);
+user_router.get("/getFollowers/:ID", verifyToken, getFollowers);
+user_router.get("/getFollowings/:ID",verifyToken, getFollowings);
 user_router.post("/toggleFollowUser", toggleFollowUser);
 
 export default user_router;

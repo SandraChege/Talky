@@ -224,40 +224,26 @@ export const updateUserDetails = async (req: Request, res: Response) => {
   }
 };
 
-//FORGOT PASSWORD
-// export const forgotPassword = async (req: Request, res: Response) => {
-//   try {
-//     const { email } = req.body;
-//     console.log(req.body);
+//DELETE USER
+export const deleteUser = async (req: Request, res: Response) => {
+  try {
+    const userID = req.params.id;
 
-//     if (!email) return res.status(400).send({ message: "email is required" });
+    if (!userID) {
+      return res.send({ message: "enter id" });
+    }
 
-//     const { error } = validateUserEmailForgotPassword.validate(req.body);
-//     console.log(error);
+    const result = await execute("deleteUser", { userID });
 
-//     if (error) {
-//       return res.status(400).send({ error: "enter a valid email" });
-//     }
+    console.log(result.recordset);
 
-//     const procedure1 = "getUserByEmail";
-//     const result = await execute(procedure1, { email });
-
-//     const userWithEmail = result.recordset[0];
-
-//     if (!userWithEmail)
-//       return res.status(404).send({ error: "Invalid Email Provided " });
-
-//     const procedureName = "forgotPassword";
-//     await execute(procedureName, { userID: userWithEmail.userID });
-
-//     res
-//       .status(201)
-//       .send({ message: "check your email for a password reset link" });
-//   } catch (error) {
-//     console.log(error);
-//     res.send({ error: (error as Error).message });
-//   }
-// };
+    res.send({ message: "user deleted successfuly" });
+  } catch (error) {
+    return res.status(500).json({
+      message: error,
+    });
+  }
+};
 
 export const initiatePasswordReset = async (
   req: Request,
@@ -337,51 +323,6 @@ export const resetPassword = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
-//RESET PASSWORD
-// export const resetPassword = async (req: Request, res: Response) => {
-//   try {
-//     const { userID, password } = req.body;
-//     console.log(req.body);
-
-//     if (!userID) return res.status(400).send({ error: "id is required" });
-//     if (!password)
-//       return res.status(400).send({ error: "password is required" });
-
-//     const { error } = validateResetpassword.validate(req.body);
-
-//     if (error) {
-//       return res.status(400).send({
-//         error:
-//           "check correct Email or password should be atleast 8 characters long with letters symbols and uppercase",
-//       });
-//     }
-
-//     const procedure1 = "getUserById";
-//     const result = await execute(procedure1, { userID });
-
-//     const userWithId = result.recordset[0];
-
-//     if (!userWithId)
-//       return res.status(404).send({ error: "User Doesn't Exist" });
-
-//     const newPassword = await hashPass(password);
-
-//     const params = {
-//       userID: userWithId.userID,
-//       password: newPassword,
-//     };
-
-//     const procedureName = "resetPassword";
-
-//     await execute(procedureName, params);
-
-//     res.send({ message: "Password Updated succesfully" });
-//   } catch (error) {
-//     console.log(error);
-//     res.send({ error: (error as Error).message });
-//   }
-// };
 
 //GET FOLLOWERS
 export const getFollowers = async (req: Request, res: Response) => {

@@ -3,9 +3,9 @@ POST http://localhost:4500/user/register
 Content-Type: application/json
 
 {
-    "fullname":"Perez Annan",
-    "username": "PAnnan",
-    "email":"perezannan@gmail.com",
+    "fullname":"Daniel Kitheka",
+    "username": "DanielKitheka123",
+    "email":"gamemy177@gmail.com",
     "password":"12345678"
 }
 
@@ -14,21 +14,22 @@ POST http://localhost:4500/user/login
 Content-Type: application/json
 
 {
-    "email":"perezannan@gmail.com",
+    "email":"gamemy177@gmail.com",
     "password":"12345678"
 }
 
 ###CHECK USER DETAILS
 GET http://localhost:4500/user/checkuserdetails
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJkYzY2NzRmYi02ZDA2LTRhYjQtODYzYi01NmE2Yjg2NWI4ZWQiLCJlbWFpbCI6InBlcmV6YW5uYW5AZ21haWwuY29tIiwiZnVsbG5hbWUiOiJQZXJleiBBbm5hbiIsInVzZXJuYW1lIjoiUEFubmFuIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMDoyNzozMC4yOTBaIiwiaWF0IjoxNzAyNjI1MjcyLCJleHAiOjE3MDI3MTE2NzJ9.w_W2NekxMt3jdI2xvXipIUnFCmsduSK7uVdJPdQANa8
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQzMjYtOTkwZS0yZGZhYTdmM2JiZmEiLCJlbWFpbCI6ImdhbWVteTE3N0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6IkRhbmllbCBLaXRoZWthIiwidXNlcm5hbWUiOiJEYW5pZWxLaXRoZWthMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMTo0Mjo1MS40MjNaIiwiaWF0IjoxNzAyNjMxNjQ3LCJleHAiOjE3MDI3MTgwNDd9.IFWgLnwNU05bqRh3g9uJ2bJSk4Bq6AT8I1UAANVa7bM
 
 ###GET ALL USERS
 GET http://localhost:4500/user/getallusers
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzYjBhOTkzYi1iZTBlLTQzYWEtOGFmNC1lMmI1ZjQ0ZDk4ZmEiLCJlbWFpbCI6ImlzYWFja2lsaW1vazJAZ21haWwuY29tIiwiZnVsbG5hbWUiOiJJc2FhYyBLaXB0b28iLCJ1c2VybmFtZSI6IklzYWFjS2lsaW1vMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjp0cnVlLCJyZXNldFRva2VuIjoiNGUyYTdjMDUtZWY3OC00NTY5LWE5YmMtMGYyYzE4YTdjNTQ3IiwiZXhwaXJ5VGltZSI6IjIwMjMtMTItMTRUMTM6MzQ6MTIuMjk3WiIsIk9UUCI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMTItMTRUMTU6MjE6NDIuMzkwWiIsImlhdCI6MTcwMjU1NzU2NCwiZXhwIjoxNzAyNjQzOTY0fQ.U9GDGftrD0fNz8-4IjYAjsEZM2UPxVidyKaGqNgW7D0
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQzMjYtOTkwZS0yZGZhYTdmM2JiZmEiLCJlbWFpbCI6ImdhbWVteTE3N0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6IkRhbmllbCBLaXRoZWthIiwidXNlcm5hbWUiOiJEYW5pZWxLaXRoZWthMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMTo0Mjo1MS40MjNaIiwiaWF0IjoxNzAyNjMxNjQ3LCJleHAiOjE3MDI3MTgwNDd9.IFWgLnwNU05bqRh3g9uJ2bJSk4Bq6AT8I1UAANVa7bM
 
 ###getoneuser
 POST http://localhost:4500/user/getoneuser
 Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQzMjYtOTkwZS0yZGZhYTdmM2JiZmEiLCJlbWFpbCI6ImdhbWVteTE3N0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6IkRhbmllbCBLaXRoZWthIiwidXNlcm5hbWUiOiJEYW5pZWxLaXRoZWthMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMTo0Mjo1MS40MjNaIiwiaWF0IjoxNzAyNjMxNjQ3LCJleHAiOjE3MDI3MTgwNDd9.IFWgLnwNU05bqRh3g9uJ2bJSk4Bq6AT8I1UAANVa7bM
 
 {
     "email": "perezannan@gmail.com"
@@ -36,14 +37,18 @@ Content-Type: application/json
 
 ###updateuser
 PUT http://localhost:4500/user/updateuser
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQzMjYtOTkwZS0yZGZhYTdmM2JiZmEiLCJlbWFpbCI6ImdhbWVteTE3N0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6IkRhbmllbCBLaXRoZWthIiwidXNlcm5hbWUiOiJEYW5pZWxLaXRoZWthMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMTo0Mjo1MS40MjNaIiwiaWF0IjoxNzAyNjMxNjQ3LCJleHAiOjE3MDI3MTgwNDd9.IFWgLnwNU05bqRh3g9uJ2bJSk4Bq6AT8I1UAANVa7bM
 Content-Type: application/json
 
 {
     "userID":"dc6674fb-6d06-4ab4-863b-56a6b865b8ed",
-    "fullname": "Perez Annan",
+    "fullname": "Perez Annan Odiyo",
     "profileUrl": "https://cdn.pixabay.com/photo/2023/11/21/00/09/ai-generated-8402112_1280.png",
     "profileCaption": "Embarking on literary adventures where every page is a portal to another world, unlocking emotions unexplored. In the realm of books, I traverse landscapes of imagination, dance with diverse characters, and taste the sweetness of words. Closing each book, I carry fragments of these extraordinary journeys into the tapestry of my real-world existence."
 }
+###DELETE USER
+DELETE http://localhost:4500/user/deleteuser/3b0a993b-be0e-43aa-8af4-e2b5f44d98fa
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQzMjYtOTkwZS0yZGZhYTdmM2JiZmEiLCJlbWFpbCI6ImdhbWVteTE3N0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6IkRhbmllbCBLaXRoZWthIiwidXNlcm5hbWUiOiJEYW5pZWxLaXRoZWthMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMTo0Mjo1MS40MjNaIiwiaWF0IjoxNzAyNjMxNjQ3LCJleHAiOjE3MDI3MTgwNDd9.IFWgLnwNU05bqRh3g9uJ2bJSk4Bq6AT8I1UAANVa7bM
 
 #### FORGOT PASSWORD
 POST http://localhost:4500/user/forgot 
@@ -59,8 +64,8 @@ Content-Type: application/json
 
 {
     "email": "ngecu16@gmail.com",
-    "resetToken": "863de0ce-9145-48f1-83a9-171ec346a5c6",
-    "newPassword": "123456789"
+    "resetToken": "dfe3f7fe-c959-43f2-8a50-ff1f50d37db5",
+    "newPassword": "1234567890"
 }
 
 ###CREATE POST
@@ -68,17 +73,19 @@ POST http://localhost:4500/post/create
 Content-Type: application/json
 
 {
-    "postContent":"Robin post content today at 10:48am",
+    "postContent":"Review session",
     "imageUrl":"https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681_640.jpg",
-    "userID":"fe6f8885-6aaa-4957-a596-32cdfd53cec3"
+    "userID":"5e4dcc44-1f18-4326-990e-2dfaa7f3bbfa"
 }
 
 ###GET ALL POSTS
 GET http://localhost:4500/post/all 
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMjMvMTEvMjEvMDAvMDkvYWktZ2VuZXJhdGVkLTg0MDIxMTJfMTI4MC5wbmciLCJwcm9maWxlQ2FwdGlvbiI6IkVtYmFya2luZyBvbiBsaXRlcmFyeSBhZHZlbnR1cmVzIHdoZXJlIGV2ZXJ5IHBhZ2UgaXMgYSBwb3J0YWwgdG8gYW5vdGhlciB3b3JsZCwgdW5sb2NraW5nIGVtb3Rpb25zIHVuZXhwbG9yZWQuIEluIHRoZSByZWFsbSBvZiBib29rcywgSSB0cmF2ZXJzZSBsYW5kc2NhcGVzIG9mIGltYWdpbmF0aW9uLCBkYW5jZSB3aXRoIGRpdmVyc2UgY2hhcmFjdGVycywgYW5kIHRhc3RlIHRoZSBzd2VldG5lc3Mgb2Ygd29yZHMuIENsb3NpbmcgZWFjaCBib29rLCBJIGNhcnJ5IGZyYWdtZW50cyBvZiB0aGVzZSBleHRyYW9yZGluYXJ5IGpvdXJuZXlzIGludG8gdGhlIHRhcGVzdHJ5IG9mIG15IHJlYWwtd29ybGQgZXhpc3RlbmNlLiIsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xMlQyMToxMzozMy41MjdaIiwiaWF0IjoxNzAyNDU3NjQzLCJleHAiOjE3MDI1NDQwNDN9.Sb4cpd6oekDh5MRFaD0ismqswC8RRU5d37XIOpFO-2Y
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQzMjYtOTkwZS0yZGZhYTdmM2JiZmEiLCJlbWFpbCI6ImdhbWVteTE3N0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6IkRhbmllbCBLaXRoZWthIiwidXNlcm5hbWUiOiJEYW5pZWxLaXRoZWthMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMTo0Mjo1MS40MjNaIiwiaWF0IjoxNzAyNjMxNjQ3LCJleHAiOjE3MDI3MTgwNDd9.IFWgLnwNU05bqRh3g9uJ2bJSk4Bq6AT8I1UAANVa7bM
 
 ###GET SINGLE POST
-GET http://localhost:4500/post/single/e6cf50ce-8c06-49b7-b5bc-a1aca881c94b
+GET http://localhost:4500/post/single/f0e568c3-5a03-419e-8fcc-a9ce483957e2
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQzMjYtOTkwZS0yZGZhYTdmM2JiZmEiLCJlbWFpbCI6ImdhbWVteTE3N0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6IkRhbmllbCBLaXRoZWthIiwidXNlcm5hbWUiOiJEYW5pZWxLaXRoZWthMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMTo0Mjo1MS40MjNaIiwiaWF0IjoxNzAyNjMxNjQ3LCJleHAiOjE3MDI3MTgwNDd9.IFWgLnwNU05bqRh3g9uJ2bJSk4Bq6AT8I1UAANVa7bM
+
 
 ###UPDATE POST
 PUT http://localhost:4500/post/update
@@ -100,15 +107,17 @@ POST http://localhost:4500/user/toggleFollowUser
 Content-Type: application/json
 
 {
-   "following_userID":"370125a4-7f70-4399-bc81-1d3f80863dcf", 
-   "followed_userID":"3b0a993b-be0e-43aa-8af4-e2b5f44d98fa"
+   "following_userID":"5e4dcc44-1f18-4326-990e-2dfaa7f3bbfa", 
+   "followed_userID":"816e529e-b670-4f66-ad26-d3f658abd01d"
 }
 
 ### GET FOLLOWINGS
-GET http://localhost:4500/user/getFollowings/370125a4-7f70-4399-bc81-1d3f80863dcf
+GET http://localhost:4500/user/getFollowings/5e4dcc44-1f18-4326-990e-2dfaa7f3bbfa
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQzMjYtOTkwZS0yZGZhYTdmM2JiZmEiLCJlbWFpbCI6ImdhbWVteTE3N0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6IkRhbmllbCBLaXRoZWthIiwidXNlcm5hbWUiOiJEYW5pZWxLaXRoZWthMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMTo0Mjo1MS40MjNaIiwiaWF0IjoxNzAyNjMxNjQ3LCJleHAiOjE3MDI3MTgwNDd9.IFWgLnwNU05bqRh3g9uJ2bJSk4Bq6AT8I1UAANVa7bM
 
 ### GET FOLLOWERS
-GET http://localhost:4500/user/getFollowers/370125a4-7f70-4399-bc81-1d3f80863dcf
+GET http://localhost:4500/user/getFollowers/5e4dcc44-1f18-4326-990e-2dfaa7f3bbfa
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQzMjYtOTkwZS0yZGZhYTdmM2JiZmEiLCJlbWFpbCI6ImdhbWVteTE3N0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6IkRhbmllbCBLaXRoZWthIiwidXNlcm5hbWUiOiJEYW5pZWxLaXRoZWthMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMTo0Mjo1MS40MjNaIiwiaWF0IjoxNzAyNjMxNjQ3LCJleHAiOjE3MDI3MTgwNDd9.IFWgLnwNU05bqRh3g9uJ2bJSk4Bq6AT8I1UAANVa7bM
 
 ###CREATE COMMENTS
 POST http://localhost:4500/post/createcomment
@@ -116,8 +125,8 @@ Content-Type: application/json
 
 {
     "comment":"Are you sure?",
-    "postID":"60e33a99-5391-4371-8ef3-fb06916ab17a",
-    "userID":"dc6674fb-6d06-4ab4-863b-56a6b865b8ed"
+    "postID":"f0e568c3-5a03-419e-8fcc-a9ce483957e2",
+    "userID":"5e4dcc44-1f18-4326-990e-2dfaa7f3bbfa"
 }
 
 ###GET ALL COMMENTS
@@ -129,10 +138,10 @@ PUT http://localhost:4500/post/updatecomment
 Content-Type: application/json
 
 {
-    "postID":"60e33a99-5391-4371-8ef3-fb06916ab17a",
-    "userID": "dc6674fb-6d06-4ab4-863b-56a6b865b8ed",
-    "comment": "Are you sure? Hahahaha",
-    "commentID": "23feeee6-46d2-4dd1-8421-d563535b3631"
+    "postID":"f0e568c3-5a03-419e-8fcc-a9ce483957e2",
+    "userID": "5e4dcc44-1f18-4326-990e-2dfaa7f3bbfa",
+    "comment": "Hello world",
+    "commentID": "b17d5b61-bde3-468f-9e00-6607ae6414b0"
 }
 
 ###GET ALL COMMENTS USING POSTID
@@ -140,7 +149,7 @@ GET http://localhost:4500/post/getcomments/60e33a99-5391-4371-8ef3-fb06916ab17a
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJkYzY2NzRmYi02ZDA2LTRhYjQtODYzYi01NmE2Yjg2NWI4ZWQiLCJlbWFpbCI6InBlcmV6YW5uYW5AZ21haWwuY29tIiwiZnVsbG5hbWUiOiJQZXJleiBBbm5hbiIsInVzZXJuYW1lIjoiUEFubmFuIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoiaHR0cHM6Ly9jZG4ucGl4YWJheS5jb20vcGhvdG8vMjAyMy8xMS8yMS8wMC8wOS9haS1nZW5lcmF0ZWQtODQwMjExMl8xMjgwLnBuZyIsInByb2ZpbGVDYXB0aW9uIjoiRW1iYXJraW5nIG9uIGxpdGVyYXJ5IGFkdmVudHVyZXMgd2hlcmUgZXZlcnkgcGFnZSBpcyBhIHBvcnRhbCB0byBhbm90aGVyIHdvcmxkLCB1bmxvY2tpbmcgZW1vdGlvbnMgdW5leHBsb3JlZC4gSW4gdGhlIHJlYWxtIG9mIGJvb2tzLCBJIHRyYXZlcnNlIGxhbmRzY2FwZXMgb2YgaW1hZ2luYXRpb24sIGRhbmNlIHdpdGggZGl2ZXJzZSBjaGFyYWN0ZXJzLCBhbmQgdGFzdGUgdGhlIHN3ZWV0bmVzcyBvZiB3b3Jkcy4gQ2xvc2luZyBlYWNoIGJvb2ssIEkgY2FycnkgZnJhZ21lbnRzIG9mIHRoZXNlIGV4dHJhb3JkaW5hcnkgam91cm5leXMgaW50byB0aGUgdGFwZXN0cnkgb2YgbXkgcmVhbC13b3JsZCBleGlzdGVuY2UuIiwiaXNXZWxjb21lZCI6dHJ1ZSwiaXNEZWxldGVkIjpmYWxzZSwicmVzZXRQYXNzd29yZCI6ZmFsc2UsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIk9UUCI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMTItMTVUMTA6Mjc6MzAuMjkwWiIsImlhdCI6MTcwMjYyNzE5MSwiZXhwIjoxNzAyNzEzNTkxfQ.6LV4IDSocI7WiHvoxasfyDmDVLcM3KY83pjFbn1CAQ8
 
 ###DELETE COMMENT
-DELETE http://localhost:4500/post/deletecomment/4f960d7e-04f6-433e-ac67-10bce9489191
+DELETE http://localhost:4500/post/deletecomment/23feeee6-46d2-4dd1-8421-d563535b3631
 
 ###like and unlike post
 POST http://localhost:4500/post/likepost
@@ -148,10 +157,10 @@ Content-Type: application/json
 
 {
    "userID":"fe6f8885-6aaa-4957-a596-32cdfd53cec3", 
-   "postID":"60e33a99-5391-4371-8ef3-fb06916ab17a"
+   "postID":"f0e568c3-5a03-419e-8fcc-a9ce483957e2"
 }
 
 ###GET ALLLIKES FROM POST
-GET http://localhost:4500/post/getlikes/60e33a99-5391-4371-8ef3-fb06916ab17a
+GET http://localhost:4500/post/getlikes/f0e568c3-5a03-419e-8fcc-a9ce483957e2
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJkYzY2NzRmYi02ZDA2LTRhYjQtODYzYi01NmE2Yjg2NWI4ZWQiLCJlbWFpbCI6InBlcmV6YW5uYW5AZ21haWwuY29tIiwiZnVsbG5hbWUiOiJQZXJleiBBbm5hbiIsInVzZXJuYW1lIjoiUEFubmFuIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoiaHR0cHM6Ly9jZG4ucGl4YWJheS5jb20vcGhvdG8vMjAyMy8xMS8yMS8wMC8wOS9haS1nZW5lcmF0ZWQtODQwMjExMl8xMjgwLnBuZyIsInByb2ZpbGVDYXB0aW9uIjoiRW1iYXJraW5nIG9uIGxpdGVyYXJ5IGFkdmVudHVyZXMgd2hlcmUgZXZlcnkgcGFnZSBpcyBhIHBvcnRhbCB0byBhbm90aGVyIHdvcmxkLCB1bmxvY2tpbmcgZW1vdGlvbnMgdW5leHBsb3JlZC4gSW4gdGhlIHJlYWxtIG9mIGJvb2tzLCBJIHRyYXZlcnNlIGxhbmRzY2FwZXMgb2YgaW1hZ2luYXRpb24sIGRhbmNlIHdpdGggZGl2ZXJzZSBjaGFyYWN0ZXJzLCBhbmQgdGFzdGUgdGhlIHN3ZWV0bmVzcyBvZiB3b3Jkcy4gQ2xvc2luZyBlYWNoIGJvb2ssIEkgY2FycnkgZnJhZ21lbnRzIG9mIHRoZXNlIGV4dHJhb3JkaW5hcnkgam91cm5leXMgaW50byB0aGUgdGFwZXN0cnkgb2YgbXkgcmVhbC13b3JsZCBleGlzdGVuY2UuIiwiaXNXZWxjb21lZCI6dHJ1ZSwiaXNEZWxldGVkIjpmYWxzZSwicmVzZXRQYXNzd29yZCI6ZmFsc2UsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIk9UUCI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMTItMTVUMTA6Mjc6MzAuMjkwWiIsImlhdCI6MTcwMjYyNzE5MSwiZXhwIjoxNzAyNzEzNTkxfQ.6LV4IDSocI7WiHvoxasfyDmDVLcM3KY83pjFbn1CAQ8
 

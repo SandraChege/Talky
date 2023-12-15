@@ -14,12 +14,14 @@ import { PeopleComponent } from './people/people.component';
 import { FollowersComponent } from './followers/followers.component';
 import { FollowingComponent } from './following/following.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reset', component: ResetpasswordComponent },
+  { path: 'forgot', component: ForgotpasswordComponent },
   // { path: 'navbar', component:NavbarComponent},
   { path: 'home', component: HomeComponent },
   { path: 'addpost', component: PostformComponent },

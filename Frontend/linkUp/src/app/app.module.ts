@@ -22,6 +22,7 @@ import { FollowersComponent } from './followers/followers.component';
 import { FollowingComponent } from './following/following.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     FollowersComponent,
     FollowingComponent,
     ProfileComponent,
+    ForgotpasswordComponent,
   ],
   imports: [
     BrowserModule,

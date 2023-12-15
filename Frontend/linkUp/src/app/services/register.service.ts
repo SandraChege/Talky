@@ -69,4 +69,19 @@ export class RegisterService {
     }
     return this.http.post(`http://localhost:4500/user/getoneuser`, { email });
   }
+
+  //FORGOT PASSWORD
+  forgot(email: string) {
+    let res = await fetch('http://localhost:4500/user/forgotpassword', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify({email})
+    });
+
+    let data = await res.json();
+    
+    return data
+  }
 }
