@@ -209,7 +209,13 @@ export const updateUserDetails = async (req: Request, res: Response) => {
     const updateuserprocedureName = "updateUserDetails";
     const params = updatedUser;
     await execute(updateuserprocedureName, params);
-    return res.send({ message: "User updated successfully" });
+    return res.send({ message: "User updated successfully" }, );
+    //  const updateSuccess = await execute(updateuserprocedureName, params);
+    //  if (!updateSuccess) {
+    //    return res.send({ message: "User updated unsuccessfully" });
+    //  } else {
+    //    return res.send({ message: "User updated successfully" });
+    //  }
   } catch (error) {
     console.error("Error updating user details:", error);
     res.status(500).send({

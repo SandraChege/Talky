@@ -3,9 +3,9 @@ POST http://localhost:4500/user/register
 Content-Type: application/json
 
 {
-    "fullname":"Mwihaki Chege",
-    "username": "MwihakiChege123",
-    "email":"chegemwihaki88@gmail.com",
+    "fullname":"Perez Annan",
+    "username": "PAnnan",
+    "email":"perezannan@gmail.com",
     "password":"12345678"
 }
 
@@ -14,13 +14,13 @@ POST http://localhost:4500/user/login
 Content-Type: application/json
 
 {
-    "email":"chegemwihaki88@gmail.com",
-    "password":"123456789"
+    "email":"perezannan@gmail.com",
+    "password":"12345678"
 }
 
 ###CHECK USER DETAILS
 GET http://localhost:4500/user/checkuserdetails
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMjMvMTEvMjEvMDAvMDkvYWktZ2VuZXJhdGVkLTg0MDIxMTJfMTI4MC5wbmciLCJwcm9maWxlQ2FwdGlvbiI6IkVtYmFya2luZyBvbiBsaXRlcmFyeSBhZHZlbnR1cmVzIHdoZXJlIGV2ZXJ5IHBhZ2UgaXMgYSBwb3J0YWwgdG8gYW5vdGhlciB3b3JsZCwgdW5sb2NraW5nIGVtb3Rpb25zIHVuZXhwbG9yZWQuIEluIHRoZSByZWFsbSBvZiBib29rcywgSSB0cmF2ZXJzZSBsYW5kc2NhcGVzIG9mIGltYWdpbmF0aW9uLCBkYW5jZSB3aXRoIGRpdmVyc2UgY2hhcmFjdGVycywgYW5kIHRhc3RlIHRoZSBzd2VldG5lc3Mgb2Ygd29yZHMuIENsb3NpbmcgZWFjaCBib29rLCBJIGNhcnJ5IGZyYWdtZW50cyBvZiB0aGVzZSBleHRyYW9yZGluYXJ5IGpvdXJuZXlzIGludG8gdGhlIHRhcGVzdHJ5IG9mIG15IHJlYWwtd29ybGQgZXhpc3RlbmNlLiIsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xMlQyMToxMzozMy41MjdaIiwiaWF0IjoxNzAyNDU3NjQzLCJleHAiOjE3MDI1NDQwNDN9.Sb4cpd6oekDh5MRFaD0ismqswC8RRU5d37XIOpFO-2Y
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJkYzY2NzRmYi02ZDA2LTRhYjQtODYzYi01NmE2Yjg2NWI4ZWQiLCJlbWFpbCI6InBlcmV6YW5uYW5AZ21haWwuY29tIiwiZnVsbG5hbWUiOiJQZXJleiBBbm5hbiIsInVzZXJuYW1lIjoiUEFubmFuIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMDoyNzozMC4yOTBaIiwiaWF0IjoxNzAyNjI1MjcyLCJleHAiOjE3MDI3MTE2NzJ9.w_W2NekxMt3jdI2xvXipIUnFCmsduSK7uVdJPdQANa8
 
 ###GET ALL USERS
 GET http://localhost:4500/user/getallusers
@@ -31,7 +31,7 @@ POST http://localhost:4500/user/getoneuser
 Content-Type: application/json
 
 {
-    "email": "9superbikes@gmail.com"
+    "email": "perezannan@gmail.com"
 }
 
 ###updateuser
@@ -39,8 +39,8 @@ PUT http://localhost:4500/user/updateuser
 Content-Type: application/json
 
 {
-    "userID":"57084b05-0aa1-40eb-8692-f6a81b123ac5",
-    "fullname": "Sandra Chege",
+    "userID":"dc6674fb-6d06-4ab4-863b-56a6b865b8ed",
+    "fullname": "Perez Annan",
     "profileUrl": "https://cdn.pixabay.com/photo/2023/11/21/00/09/ai-generated-8402112_1280.png",
     "profileCaption": "Embarking on literary adventures where every page is a portal to another world, unlocking emotions unexplored. In the realm of books, I traverse landscapes of imagination, dance with diverse characters, and taste the sweetness of words. Closing each book, I carry fragments of these extraordinary journeys into the tapestry of my real-world existence."
 }
@@ -50,7 +50,7 @@ POST http://localhost:4500/user/forgot
 Content-Type: application/json
 
 {
-    "email":"chegemwihaki88@gmail.com"
+    "email":"ngecu16@gmail.com"
 }
 
 ###RESET PASSWORD
@@ -58,7 +58,7 @@ POST http://localhost:4500/user/resetpassword
 Content-Type: application/json
 
 {
-    "email": "chegemwihaki88@gmail.com",
+    "email": "ngecu16@gmail.com",
     "resetToken": "863de0ce-9145-48f1-83a9-171ec346a5c6",
     "newPassword": "123456789"
 }
@@ -68,9 +68,9 @@ POST http://localhost:4500/post/create
 Content-Type: application/json
 
 {
-    "postContent":"Just stumbled upon this hidden gem in the heart of the forest. The gentle rustle of leaves, the soothing sounds of birdsong, and the warm sunlight filtering through the trees create a perfect symphony of serenity. Sometimes, all you need is a peaceful escape to reconnect with the simplicity and beauty of nature. #NatureLover #IntoTheWild #NatureEscape",
+    "postContent":"Robin post content today at 10:48am",
     "imageUrl":"https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681_640.jpg",
-    "userID":"57084b05-0aa1-40eb-8692-f6a81b123ac5"
+    "userID":"fe6f8885-6aaa-4957-a596-32cdfd53cec3"
 }
 
 ###GET ALL POSTS
@@ -78,20 +78,21 @@ GET http://localhost:4500/post/all
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMjMvMTEvMjEvMDAvMDkvYWktZ2VuZXJhdGVkLTg0MDIxMTJfMTI4MC5wbmciLCJwcm9maWxlQ2FwdGlvbiI6IkVtYmFya2luZyBvbiBsaXRlcmFyeSBhZHZlbnR1cmVzIHdoZXJlIGV2ZXJ5IHBhZ2UgaXMgYSBwb3J0YWwgdG8gYW5vdGhlciB3b3JsZCwgdW5sb2NraW5nIGVtb3Rpb25zIHVuZXhwbG9yZWQuIEluIHRoZSByZWFsbSBvZiBib29rcywgSSB0cmF2ZXJzZSBsYW5kc2NhcGVzIG9mIGltYWdpbmF0aW9uLCBkYW5jZSB3aXRoIGRpdmVyc2UgY2hhcmFjdGVycywgYW5kIHRhc3RlIHRoZSBzd2VldG5lc3Mgb2Ygd29yZHMuIENsb3NpbmcgZWFjaCBib29rLCBJIGNhcnJ5IGZyYWdtZW50cyBvZiB0aGVzZSBleHRyYW9yZGluYXJ5IGpvdXJuZXlzIGludG8gdGhlIHRhcGVzdHJ5IG9mIG15IHJlYWwtd29ybGQgZXhpc3RlbmNlLiIsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xMlQyMToxMzozMy41MjdaIiwiaWF0IjoxNzAyNDU3NjQzLCJleHAiOjE3MDI1NDQwNDN9.Sb4cpd6oekDh5MRFaD0ismqswC8RRU5d37XIOpFO-2Y
 
 ###GET SINGLE POST
-GET http://localhost:4500/post/single/b5a0fe1f-19f0-4050-9838-0b53c88456e7
+GET http://localhost:4500/post/single/e6cf50ce-8c06-49b7-b5bc-a1aca881c94b
 
-###UPDATE PRODUCT
+###UPDATE POST
 PUT http://localhost:4500/post/update
 Content-Type: application/json
 
 {
-    "postID":"b5a0fe1f-19f0-4050-9838-0b53c88456e7",
-    "userID": "57084b05-0aa1-40eb-8692-f6a81b123ac5",
-    "postContent": "Just stumbled upon this hidden gem in the heart of the forest. The gentle rustle of leaves, the soothing sounds of birdsong, and the warm sunlight filtering through the trees create a perfect symphony of serenity. Sometimes, all you need is a peaceful escape to reconnect with the simplicity and beauty of nature.  ##NatureLover 3#IntoTheWild ##NatureEscape",
+    "postID":"e6cf50ce-8c06-49b7-b5bc-a1aca881c94b",
+    "userID": "fe6f8885-6aaa-4957-a596-32cdfd53cec3",
+    "postContent": "Robin post content twice :Just stumbled upon this hidden gem in the heart of the forest.",
     "imageUrl": "https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681_640.jpg"
 }
-###DELETE PRODUCT
-DELETE http://localhost:4500/post/delete/b5a0fe1f-19f0-4050-9838-0b53c88456e7
+
+###DELETE POST
+DELETE http://localhost:4500/post/delete/e6cf50ce-8c06-49b7-b5bc-a1aca881c94b
 
 
 ###FOLLOW AND UNFOLLOW USERS
@@ -99,46 +100,58 @@ POST http://localhost:4500/user/toggleFollowUser
 Content-Type: application/json
 
 {
-   "following_userID":"ee33de52-1ef0-4cfe-b435-61a6b04eb520", 
-   "followed_userID":"57084b05-0aa1-40eb-8692-f6a81b123ac5"
+   "following_userID":"370125a4-7f70-4399-bc81-1d3f80863dcf", 
+   "followed_userID":"3b0a993b-be0e-43aa-8af4-e2b5f44d98fa"
 }
 
-### GET FOLLOWERS
-GET http://localhost:4500/user/getFollowers/57084b05-0aa1-40eb-8692-f6a81b123ac5
-
-
 ### GET FOLLOWINGS
-GET http://localhost:4500/user/getFollowings/ee33de52-1ef0-4cfe-b435-61a6b04eb520
+GET http://localhost:4500/user/getFollowings/370125a4-7f70-4399-bc81-1d3f80863dcf
+
+### GET FOLLOWERS
+GET http://localhost:4500/user/getFollowers/370125a4-7f70-4399-bc81-1d3f80863dcf
 
 ###CREATE COMMENTS
 POST http://localhost:4500/post/createcomment
 Content-Type: application/json
 
 {
-    "comment":"Nature is lovely",
-    "postID":"d52acc0a-b38d-4b95-b2c0-71de8c484d74",
-    "userID":"57084b05-0aa1-40eb-8692-f6a81b123ac5"
+    "comment":"Are you sure?",
+    "postID":"60e33a99-5391-4371-8ef3-fb06916ab17a",
+    "userID":"dc6674fb-6d06-4ab4-863b-56a6b865b8ed"
 }
 
 ###GET ALL COMMENTS
 GET http://localhost:4500/post/allcomments
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMjMvMTEvMjEvMDAvMDkvYWktZ2VuZXJhdGVkLTg0MDIxMTJfMTI4MC5wbmciLCJwcm9maWxlQ2FwdGlvbiI6IkVtYmFya2luZyBvbiBsaXRlcmFyeSBhZHZlbnR1cmVzIHdoZXJlIGV2ZXJ5IHBhZ2UgaXMgYSBwb3J0YWwgdG8gYW5vdGhlciB3b3JsZCwgdW5sb2NraW5nIGVtb3Rpb25zIHVuZXhwbG9yZWQuIEluIHRoZSByZWFsbSBvZiBib29rcywgSSB0cmF2ZXJzZSBsYW5kc2NhcGVzIG9mIGltYWdpbmF0aW9uLCBkYW5jZSB3aXRoIGRpdmVyc2UgY2hhcmFjdGVycywgYW5kIHRhc3RlIHRoZSBzd2VldG5lc3Mgb2Ygd29yZHMuIENsb3NpbmcgZWFjaCBib29rLCBJIGNhcnJ5IGZyYWdtZW50cyBvZiB0aGVzZSBleHRyYW9yZGluYXJ5IGpvdXJuZXlzIGludG8gdGhlIHRhcGVzdHJ5IG9mIG15IHJlYWwtd29ybGQgZXhpc3RlbmNlLiIsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xMlQyMToxMzozMy41MjdaIiwiaWF0IjoxNzAyNDU3NjQzLCJleHAiOjE3MDI1NDQwNDN9.Sb4cpd6oekDh5MRFaD0ismqswC8RRU5d37XIOpFO-2Y
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJkYzY2NzRmYi02ZDA2LTRhYjQtODYzYi01NmE2Yjg2NWI4ZWQiLCJlbWFpbCI6InBlcmV6YW5uYW5AZ21haWwuY29tIiwiZnVsbG5hbWUiOiJQZXJleiBBbm5hbiIsInVzZXJuYW1lIjoiUEFubmFuIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoiaHR0cHM6Ly9jZG4ucGl4YWJheS5jb20vcGhvdG8vMjAyMy8xMS8yMS8wMC8wOS9haS1nZW5lcmF0ZWQtODQwMjExMl8xMjgwLnBuZyIsInByb2ZpbGVDYXB0aW9uIjoiRW1iYXJraW5nIG9uIGxpdGVyYXJ5IGFkdmVudHVyZXMgd2hlcmUgZXZlcnkgcGFnZSBpcyBhIHBvcnRhbCB0byBhbm90aGVyIHdvcmxkLCB1bmxvY2tpbmcgZW1vdGlvbnMgdW5leHBsb3JlZC4gSW4gdGhlIHJlYWxtIG9mIGJvb2tzLCBJIHRyYXZlcnNlIGxhbmRzY2FwZXMgb2YgaW1hZ2luYXRpb24sIGRhbmNlIHdpdGggZGl2ZXJzZSBjaGFyYWN0ZXJzLCBhbmQgdGFzdGUgdGhlIHN3ZWV0bmVzcyBvZiB3b3Jkcy4gQ2xvc2luZyBlYWNoIGJvb2ssIEkgY2FycnkgZnJhZ21lbnRzIG9mIHRoZXNlIGV4dHJhb3JkaW5hcnkgam91cm5leXMgaW50byB0aGUgdGFwZXN0cnkgb2YgbXkgcmVhbC13b3JsZCBleGlzdGVuY2UuIiwiaXNXZWxjb21lZCI6dHJ1ZSwiaXNEZWxldGVkIjpmYWxzZSwicmVzZXRQYXNzd29yZCI6ZmFsc2UsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIk9UUCI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMTItMTVUMTA6Mjc6MzAuMjkwWiIsImlhdCI6MTcwMjYyNzE5MSwiZXhwIjoxNzAyNzEzNTkxfQ.6LV4IDSocI7WiHvoxasfyDmDVLcM3KY83pjFbn1CAQ8
 
 ###update COMMENT
 PUT http://localhost:4500/post/updatecomment
 Content-Type: application/json
 
 {
-    "postID":"d52acc0a-b38d-4b95-b2c0-71de8c484d74",
-    "userID": "57084b05-0aa1-40eb-8692-f6a81b123ac5",
-    "comment": "Green is everywhere that why nature is lovely",
-    "commentID": "4f960d7e-04f6-433e-ac67-10bce9489191"
+    "postID":"60e33a99-5391-4371-8ef3-fb06916ab17a",
+    "userID": "dc6674fb-6d06-4ab4-863b-56a6b865b8ed",
+    "comment": "Are you sure? Hahahaha",
+    "commentID": "23feeee6-46d2-4dd1-8421-d563535b3631"
 }
 
 ###GET ALL COMMENTS USING POSTID
-GET http://localhost:4500/post/getcomments/d52acc0a-b38d-4b95-b2c0-71de8c484d74
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1NzA4NGIwNS0wYWExLTQwZWItODY5Mi1mNmE4MWIxMjNhYzUiLCJlbWFpbCI6IjlzdXBlcmJpa2VzQGdtYWlsLmNvbSIsImZ1bGxuYW1lIjoiU2FuZHJhIENoZWdlIiwidXNlcm5hbWUiOiJzYW5kcmFjaGVnZTEyMyIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZVVybCI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMjMvMTEvMjEvMDAvMDkvYWktZ2VuZXJhdGVkLTg0MDIxMTJfMTI4MC5wbmciLCJwcm9maWxlQ2FwdGlvbiI6IkVtYmFya2luZyBvbiBsaXRlcmFyeSBhZHZlbnR1cmVzIHdoZXJlIGV2ZXJ5IHBhZ2UgaXMgYSBwb3J0YWwgdG8gYW5vdGhlciB3b3JsZCwgdW5sb2NraW5nIGVtb3Rpb25zIHVuZXhwbG9yZWQuIEluIHRoZSByZWFsbSBvZiBib29rcywgSSB0cmF2ZXJzZSBsYW5kc2NhcGVzIG9mIGltYWdpbmF0aW9uLCBkYW5jZSB3aXRoIGRpdmVyc2UgY2hhcmFjdGVycywgYW5kIHRhc3RlIHRoZSBzd2VldG5lc3Mgb2Ygd29yZHMuIENsb3NpbmcgZWFjaCBib29rLCBJIGNhcnJ5IGZyYWdtZW50cyBvZiB0aGVzZSBleHRyYW9yZGluYXJ5IGpvdXJuZXlzIGludG8gdGhlIHRhcGVzdHJ5IG9mIG15IHJlYWwtd29ybGQgZXhpc3RlbmNlLiIsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xMlQyMToxMzozMy41MjdaIiwiaWF0IjoxNzAyNDU3NjQzLCJleHAiOjE3MDI1NDQwNDN9.Sb4cpd6oekDh5MRFaD0ismqswC8RRU5d37XIOpFO-2Y
+GET http://localhost:4500/post/getcomments/60e33a99-5391-4371-8ef3-fb06916ab17a
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJkYzY2NzRmYi02ZDA2LTRhYjQtODYzYi01NmE2Yjg2NWI4ZWQiLCJlbWFpbCI6InBlcmV6YW5uYW5AZ21haWwuY29tIiwiZnVsbG5hbWUiOiJQZXJleiBBbm5hbiIsInVzZXJuYW1lIjoiUEFubmFuIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoiaHR0cHM6Ly9jZG4ucGl4YWJheS5jb20vcGhvdG8vMjAyMy8xMS8yMS8wMC8wOS9haS1nZW5lcmF0ZWQtODQwMjExMl8xMjgwLnBuZyIsInByb2ZpbGVDYXB0aW9uIjoiRW1iYXJraW5nIG9uIGxpdGVyYXJ5IGFkdmVudHVyZXMgd2hlcmUgZXZlcnkgcGFnZSBpcyBhIHBvcnRhbCB0byBhbm90aGVyIHdvcmxkLCB1bmxvY2tpbmcgZW1vdGlvbnMgdW5leHBsb3JlZC4gSW4gdGhlIHJlYWxtIG9mIGJvb2tzLCBJIHRyYXZlcnNlIGxhbmRzY2FwZXMgb2YgaW1hZ2luYXRpb24sIGRhbmNlIHdpdGggZGl2ZXJzZSBjaGFyYWN0ZXJzLCBhbmQgdGFzdGUgdGhlIHN3ZWV0bmVzcyBvZiB3b3Jkcy4gQ2xvc2luZyBlYWNoIGJvb2ssIEkgY2FycnkgZnJhZ21lbnRzIG9mIHRoZXNlIGV4dHJhb3JkaW5hcnkgam91cm5leXMgaW50byB0aGUgdGFwZXN0cnkgb2YgbXkgcmVhbC13b3JsZCBleGlzdGVuY2UuIiwiaXNXZWxjb21lZCI6dHJ1ZSwiaXNEZWxldGVkIjpmYWxzZSwicmVzZXRQYXNzd29yZCI6ZmFsc2UsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIk9UUCI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMTItMTVUMTA6Mjc6MzAuMjkwWiIsImlhdCI6MTcwMjYyNzE5MSwiZXhwIjoxNzAyNzEzNTkxfQ.6LV4IDSocI7WiHvoxasfyDmDVLcM3KY83pjFbn1CAQ8
 
 ###DELETE COMMENT
 DELETE http://localhost:4500/post/deletecomment/4f960d7e-04f6-433e-ac67-10bce9489191
+
+###like and unlike post
+POST http://localhost:4500/post/likepost
+Content-Type: application/json
+
+{
+   "userID":"fe6f8885-6aaa-4957-a596-32cdfd53cec3", 
+   "postID":"60e33a99-5391-4371-8ef3-fb06916ab17a"
+}
+
+###GET ALLLIKES FROM POST
+GET http://localhost:4500/post/getlikes/60e33a99-5391-4371-8ef3-fb06916ab17a
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJkYzY2NzRmYi02ZDA2LTRhYjQtODYzYi01NmE2Yjg2NWI4ZWQiLCJlbWFpbCI6InBlcmV6YW5uYW5AZ21haWwuY29tIiwiZnVsbG5hbWUiOiJQZXJleiBBbm5hbiIsInVzZXJuYW1lIjoiUEFubmFuIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoiaHR0cHM6Ly9jZG4ucGl4YWJheS5jb20vcGhvdG8vMjAyMy8xMS8yMS8wMC8wOS9haS1nZW5lcmF0ZWQtODQwMjExMl8xMjgwLnBuZyIsInByb2ZpbGVDYXB0aW9uIjoiRW1iYXJraW5nIG9uIGxpdGVyYXJ5IGFkdmVudHVyZXMgd2hlcmUgZXZlcnkgcGFnZSBpcyBhIHBvcnRhbCB0byBhbm90aGVyIHdvcmxkLCB1bmxvY2tpbmcgZW1vdGlvbnMgdW5leHBsb3JlZC4gSW4gdGhlIHJlYWxtIG9mIGJvb2tzLCBJIHRyYXZlcnNlIGxhbmRzY2FwZXMgb2YgaW1hZ2luYXRpb24sIGRhbmNlIHdpdGggZGl2ZXJzZSBjaGFyYWN0ZXJzLCBhbmQgdGFzdGUgdGhlIHN3ZWV0bmVzcyBvZiB3b3Jkcy4gQ2xvc2luZyBlYWNoIGJvb2ssIEkgY2FycnkgZnJhZ21lbnRzIG9mIHRoZXNlIGV4dHJhb3JkaW5hcnkgam91cm5leXMgaW50byB0aGUgdGFwZXN0cnkgb2YgbXkgcmVhbC13b3JsZCBleGlzdGVuY2UuIiwiaXNXZWxjb21lZCI6dHJ1ZSwiaXNEZWxldGVkIjpmYWxzZSwicmVzZXRQYXNzd29yZCI6ZmFsc2UsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIk9UUCI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMTItMTVUMTA6Mjc6MzAuMjkwWiIsImlhdCI6MTcwMjYyNzE5MSwiZXhwIjoxNzAyNzEzNTkxfQ.6LV4IDSocI7WiHvoxasfyDmDVLcM3KY83pjFbn1CAQ8
 

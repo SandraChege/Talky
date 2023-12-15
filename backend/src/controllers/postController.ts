@@ -13,6 +13,7 @@ import {
 import { Post, Comment } from "../interface/post";
 import { execute, query } from "../helpers/dbHelper";
 import { validateComment, validateCommentId, validateUpdateComment } from "../Validators/comment";
+import { isEmpty } from "lodash";
 
 //CREATE POSTS
 export const createPost = async (req: Request, res: Response) => {
@@ -261,6 +262,90 @@ export const getPostComments = async (req: Request, res: Response) => {
   } catch (error) {
     console.log(error);
     res.status(404).send({ message: "internal server error" });
+  }
+};
+
+//TOGGLE BETWEEN LIKE AND UNLIKE
+ export const toggleLikePost = async (req: Request, res: Response) => {
+   console.log(req.body);
+
+   try {
+     let likeID = v4();
+
+     let { userID, postID } = req.body;
+     const likeexists = (
+       await query(
+         `SELECT * FROM likes WHERE userID = '${userID}' AND postID= '${postID}'`
+       )
+     ).recordset;
+
+     if (!isEmpty(likeexists)) {
+       let result = await execute("unLikePost", {
+         userID,
+         postID,
+       });
+
+       if (result.rowsAffected[0] === 0) {
+         return res.status(404).json({
+           message: "Something went wrong, Pots not unliked",
+         });
+       } else {
+         return res.status(200).json({
+           message: "Post Unliked",
+         });
+       }
+     } else {
+       let result = await execute("likePost", {
+         likeID,
+         userID,
+         postID
+       });
+
+       if (result.rowsAffected[0] === 0) {
+         return res.status(404).json({
+           message: "Something went wrong, Post not lked",
+         });
+       } else {
+         return res.status(200).json({
+           message: "Post Liked",
+         });
+       }
+     }
+   } catch (error) {
+     console.log(error);
+
+     return res.json({
+       error,
+     });
+   }
+}; 
+ 
+export const getPostLikes = async (req: Request, res: Response) => {
+  try {
+    const { postID } = req.params;
+
+    const likes = await query(`
+      SELECT userID,
+      FROM likes
+      WHERE postID = '${postID}'
+    `);
+
+    // Check if there are any likes for the post
+    if (likes.recordset.length === 0) {
+      return res.status(404).json({
+        message: "No likes found for the specified post",
+      });
+    }
+
+    // Return the likes information
+    return res.status(200).json({
+      likes: likes.recordset,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      error: "Internal Server Error",
+    });
   }
 };
 
