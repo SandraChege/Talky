@@ -23,6 +23,7 @@ import { FollowingComponent } from './following/following.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     FollowingComponent,
     ProfileComponent,
     ForgotpasswordComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

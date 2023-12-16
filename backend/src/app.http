@@ -3,9 +3,9 @@ POST http://localhost:4500/user/register
 Content-Type: application/json
 
 {
-    "fullname":"Daniel Kitheka",
-    "username": "DanielKitheka123",
-    "email":"gamemy177@gmail.com",
+    "fullname":"Sandra Mwihaki",
+    "username": "SandraMwihaki123",
+    "email":"sandramwihaki@gmail.com",
     "password":"12345678"
 }
 
@@ -73,9 +73,9 @@ POST http://localhost:4500/post/create
 Content-Type: application/json
 
 {
-    "postContent":"Review session",
-    "imageUrl":"https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681_640.jpg",
-    "userID":"5e4dcc44-1f18-4326-990e-2dfaa7f3bbfa"
+    "postContent":"Unwrapping joy and spreading cheer - it's the most wonderful time of the year! 🎄✨ #ChristmasMagic #JoyfulMoments",
+    "imageUrl":"https://cdn.pixabay.com/photo/2019/02/04/07/36/new-year-3974099_640.jpg",
+    "userID":"04947279-d765-4eac-b6f6-96beed409ba9"
 }
 
 ###GET ALL POSTS
@@ -89,13 +89,14 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQz
 
 ###UPDATE POST
 PUT http://localhost:4500/post/update
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZTRkY2M0NC0xZjE4LTQzMjYtOTkwZS0yZGZhYTdmM2JiZmEiLCJlbWFpbCI6ImdhbWVteTE3N0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6IkRhbmllbCBLaXRoZWthIiwidXNlcm5hbWUiOiJEYW5pZWxLaXRoZWthMTIzIiwicm9sZSI6InVzZXIiLCJwcm9maWxlVXJsIjoibm8taW1hZ2UiLCJwcm9maWxlQ2FwdGlvbiI6Ik5vIENhcHRpb24iLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJyZXNldFBhc3N3b3JkIjpmYWxzZSwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwiT1RQIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyMy0xMi0xNVQxMTo0Mjo1MS40MjNaIiwiaWF0IjoxNzAyNjMxNjQ3LCJleHAiOjE3MDI3MTgwNDd9.IFWgLnwNU05bqRh3g9uJ2bJSk4Bq6AT8I1UAANVa7bM
 Content-Type: application/json
 
 {
-    "postID":"e6cf50ce-8c06-49b7-b5bc-a1aca881c94b",
-    "userID": "fe6f8885-6aaa-4957-a596-32cdfd53cec3",
-    "postContent": "Robin post content twice :Just stumbled upon this hidden gem in the heart of the forest.",
-    "imageUrl": "https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681_640.jpg"
+    "postID":"da336a69-a734-4568-9b72-0d9f747e1a9b",
+    "userID": "33f9de61-d6b8-4d61-b1f4-b8fec2e4052f",
+    "postContent": "Cheers to the holiday season! May your days be merry and bright, and your heart be light. ??? #HolidayJoy #CheersToTheSeason",
+    "imageUrl": "https://cdn.pixabay.com/photo/2020/12/20/10/01/christmas-tree-5846564_640.jpg"
 }
 
 ###DELETE POST

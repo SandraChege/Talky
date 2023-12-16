@@ -9,3 +9,4 @@ CREATE TABLE likes (
 
 
 );
+DROP TABLE likes;

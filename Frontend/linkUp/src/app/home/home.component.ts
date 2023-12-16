@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UploadService } from '../services/cloudinary/upload.service';
+import { RegisterService } from '../services/register.service';
+import { getAllUsers } from '../interface/user';
+import { getAllPosts } from '../interface/post';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +14,21 @@ import { UploadService } from '../services/cloudinary/upload.service';
 export class HomeComponent {
   addPostForm!: FormGroup;
   files: any[] = [];
+  allusers: getAllUsers[] = [];
+  allPosts: getAllPosts[] = [];
   user_id: string = '';
   storedUser: string | null = localStorage.getItem('user_details');
 
-  constructor(private upload: UploadService) {
+  ngOnInit() {
+    this.getAllUsers();
+    this.fetchAllPosts();
+  }
+
+  constructor(
+    private upload: UploadService,
+    private register: RegisterService,
+    private postService: PostService
+  ) {
     this.addPostForm = new FormGroup({
       image: new FormControl([]),
       content: new FormControl('', Validators.required),
@@ -53,14 +68,10 @@ export class HomeComponent {
     this.showReply = true;
   }
 
-  // onFileChanged(event: any) {
-  //   this.files = event.target.files;
-  // }
-
   newPost() {
     // Your logic to share the post
     console.log(this.addPostForm.value);
-    this.addPostForm.value.image  = this.files
+    this.addPostForm.value.image = this.files;
 
     if (this.addPostForm.valid) {
       const imageUrls: string[] = [];
@@ -73,20 +84,30 @@ export class HomeComponent {
         data.append('upload_preset', 'x1zwskyt');
         data.append('cloud_name', 'dg5qb7ntu');
 
-        console.log("data is ",data);
-        
+        console.log('data is ', data);
+
         this.upload.uploadImage(data).subscribe((res) => {
           // console.log(res.secure_url);
           imageUrls.push(res.secure_url);
 
-          console.log("my image urls is ",imageUrls);
+          console.log('my image urls is ', imageUrls);
         });
       }
+    } else {
+      console.log('dat is not valid');
     }
-    else{
+  }
+  //FETCH ALL POSTS
+  fetchAllPosts() {
+    this.postService.fetchAllPosts()?.subscribe((response: any) => { 
+      this.allPosts = response;
+    })
+  }
 
-      console.log("dat is not valid");
-      
-    }
+  //FETCH SUGGESTIONS/USERS
+  getAllUsers() {
+    this.register.fetchAllUsers()?.subscribe((response: any) => {
+      this.allusers = response.users;
+    });
   }
 }

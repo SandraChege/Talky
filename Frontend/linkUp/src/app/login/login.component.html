@@ -6,11 +6,13 @@
         </div>
         <div class="w-[35vw] textContainer">
             <div  class="success-message"  *ngIf="showSuccessMessage" data-cy="registered-success-popup">
-                User login successfully.
+                    <img src="https://i.gifer.com/7efs.gif" alt="">
+                <!-- User login successfully. -->
             </div>
 
             <div class="error-message"  *ngIf="showErrorMessage" data-cy="registered-failure-popup">
-                User login failed.
+                  <img src="https://cdn.dribbble.com/users/251873/screenshots/9388228/error-img.gif" alt="">
+                <!-- User login failed. -->
             </div>
 
             <form data-cy="loginForm"  [formGroup] = "loginForm" (ngSubmit)="loginNewUser()" class="flex flex-col my-4 mx-6">
