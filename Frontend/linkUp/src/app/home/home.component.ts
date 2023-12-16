@@ -5,6 +5,7 @@ import { RegisterService } from '../services/register.service';
 import { getAllUsers } from '../interface/user';
 import { getAllPosts } from '../interface/post';
 import { PostService } from '../services/post.service';
+import { Comment } from '../interface/comment';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,12 @@ export class HomeComponent {
   allPosts: any[] = [];
   user_id: string = '';
   storedUser: string | null = localStorage.getItem('user_details');
+  isFormVisible: boolean = false;
+  showReply: boolean = false;
+  iseditCommentVisible: boolean = false;
+  editedCommentText: string = '';
+  currentComment: any;
+  newcommentText: string = '';
 
   ngOnInit() {
     this.getAllUsers();
@@ -51,9 +58,6 @@ export class HomeComponent {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
-
-  isFormVisible: boolean = false;
-  showReply: boolean = false;
 
   viewForm() {
     // this.addPost = true;
@@ -99,40 +103,115 @@ export class HomeComponent {
   }
   //FETCH ALL POSTS
   fetchAllPosts() {
-    this.postService.fetchAllPosts()?.subscribe((response: any) => { 
-    this.allPosts = response.map((post: any) => ({
-      ...post,
-      creatorName: this.fetchUsernameById(post.userID),
-    }));
+    this.postService.fetchAllPosts()?.subscribe((response: any) => {
+      this.allPosts = response.map((post: any) => ({
+        ...post,
+        creatorName: this.fetchUsernameById(post.userID),
+      }));
       console.log(this.allPosts);
       this.allPosts.forEach((post) => {
         this.fetchAllCommentsByPostId(post.postID);
       });
-    })
+    });
   }
 
   //FETCHALLCOMMENTS BY POSTID
-  fetchAllCommentsByPostId(postID: string) { 
+  fetchAllCommentsByPostId(postID: string) {
     // console.log(postID);
     this.postService.getCommentsByPostId(postID)?.subscribe((response: any) => {
       console.log(response);
-      const postIndex = this.allPosts.findIndex((post) => post.postID === postID);
+      const postIndex = this.allPosts.findIndex(
+        (post) => post.postID === postID
+      );
       if (postIndex !== -1) {
-        this.allPosts[postIndex].comments = response.map((comment:any)=> ({
+        this.allPosts[postIndex].comments = response.map((comment: any) => ({
           ...comment,
-        fullname: this.fetchUsernameById(comment.userID),
-        }))
+          fullname: this.fetchUsernameById(comment.userID),
+        }));
       }
-    })
+    });
   }
   //FETCH USERNAME BY THEIR ID
   fetchUsernameById(userID: string) {
-    const userIndex = this.allusers.findIndex(user => user.userID === userID);
-    if(userIndex !== -1) {
+    const userIndex = this.allusers.findIndex((user) => user.userID === userID);
+    if (userIndex !== -1) {
       return this.allusers[userIndex].fullname;
     } else {
       return 'Name not found';
     }
+  }
+
+  //CREATE COMMENT
+  onSubmitComment(postID: string) { 
+    console.log(postID);
+    console.log(this.newcommentText);
+    this.postService.createComment(postID, this.newcommentText)?.subscribe((response) => { 
+      console.log(response);
+      this.fetchAllCommentsByPostId(postID);
+      this.newcommentText = '';
+    });
+    
+  }
+
+  //EDIT COMMENT
+  editComment(userID: string, postID: string, commentID: string) {
+    // console.log(userID);
+    // console.log(postID);
+    // console.log(commentID);
+    const currentUser = localStorage.getItem('userID');
+
+    for (const post of this.allPosts) {
+      const foundComment = post.comments.find(
+        (comment: Comment) => comment.commentID === commentID
+      );
+      if (foundComment && foundComment.userID === currentUser) {
+        // console.log(foundComment);
+
+        this.currentComment = foundComment;
+        this.iseditCommentVisible = true;
+        this.editedCommentText = this.currentComment.comment;
+        break;
+      }
+    }
+  }
+  saveEdit() {
+    if (this.editedCommentText) {
+      console.log(this.editedCommentText);
+
+      this.postService
+        .editComment(
+          this.currentComment.userID,
+          this.currentComment.postID,
+          this.currentComment.commentID,
+          this.editedCommentText
+        )
+        ?.subscribe((response) => {
+
+          console.log(response);
+          // Update comment text
+          this.currentComment.comment = this.editedCommentText;
+          // Reset editingComment and editedCommentText
+          this.iseditCommentVisible = false;
+          this.editedCommentText = '';
+        });
+    }
+  }
+
+  //DELETE COMMENT
+  deleteComment(commentID: string, postID: string, userID: string) {
+    console.log(commentID);
+    console.log(postID);
+    console.log(userID);
+    const currentuserID = localStorage.getItem('userID');
+
+    console.log(currentuserID);
+    
+    // if(currentuserID === userID){
+    //   this.postService.deleteComment(commentID)?.subscribe((response) => {
+    //     console.log(response);
+    //     this.fetchAllCommentsByPostId(postID);
+    //   });
+    // }
   }
 
   //FETCH SUGGESTIONS/USERS

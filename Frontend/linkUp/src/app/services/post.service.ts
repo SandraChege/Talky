@@ -31,6 +31,31 @@ export class PostService {
   //GET ALL POSTS BY ID
 
   //CREATE COMMENTS
+  createComment(postID: string, comment: string) { 
+    const token = localStorage.getItem('token');
+    const userID = localStorage.getItem('userID');
+
+    if(token) {
+      const commentBody = {
+        postID: postID,
+        userID: userID,
+        comment: comment
+      };
+
+      return this.http.post(
+        'http://localhost:4500/post/createcomment',
+        commentBody,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            token: token
+          })
+        }
+      );
+    } else {
+      return null;
+    }
+  }
   //GET ALL COMMENTS
   //GET COMMENTS BY POSTID
   getCommentsByPostId(postID: string) { 
@@ -50,6 +75,49 @@ export class PostService {
       return null;
     }
   }
-  //DELET COMMENTS
-  //UPDATE COMMENTS
+  //DELETE COMMENTS
+  deleteComment(commentID: string) { 
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      return this.http.delete(
+        `http://localhost:4500/post/deletecomment/${commentID}`,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            token: token,
+          }),
+        }
+      );
+    } else {
+      return null;
+    }
+  }
+  //UPDATE OR EDIT COMMENTS
+  editComment(commentID: string, postID: string, userID: string, comment: string) { 
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      const commentbody = {
+        postID: postID,
+        userID: userID,
+        comment: comment,
+        commentID: commentID
+      };
+      // console.log(commentbody);
+      
+      return this.http.put(
+        'http://localhost:4500/post/updatecomment',
+        commentbody,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            token: token,
+          }),
+        }
+      );
+    } else {
+      return null;
+    }
+  }
 }

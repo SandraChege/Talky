@@ -53,8 +53,9 @@
               type="text"
               placeholder="Type your comments"
               class="py-1.5"
+              [(ngModel)]="newcommentText"
             />
-            <button type="submit" class="comment outline-none">
+            <button type="submit" class="comment outline-none" (click)="onSubmitComment(post.postID)">
               <i class="fa-solid fa-paper-plane"></i>
             </button>
           </div>
@@ -70,8 +71,8 @@
               >
                 Reply
               </button>
-              <!-- <button (click)="startEdit(comment)" class="text-[#6B7280] text-[13px] mx-8">Edit</button> -->
-              <button class="text-[#6B7280] text-[13px]">Delete</button>
+              <button (click)="editComment(comment.userID, comment.postID, comment.commentID)" class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+              <button class="text-[#6B7280] text-[13px]" (click)="deleteComment(comment.commentID, comment.postID, comment.userID)">Delete</button>
 
               <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
                 <input type="text"placeholder="Type your reply" class="py-1.0"/>
@@ -81,12 +82,12 @@
               </div>
 
                <!-- EDIT INPUT FIELD -->
-              <!-- <div *ngIf="comment.editMode">
-                <input [(ngModel)]="comment.editContent" type="text" class="py-1.0" />
-                <button (click)="saveEdit(comment)" class="comment outline-none">
+              <div *ngIf="iseditCommentVisible" class="reply-container flex justify-between items-center py-2">
+                <input [(ngModel)]="editedCommentText" type="text" class="py-1.0" />
+                <button (click)="saveEdit()" class="comment outline-none">
                   <i class="fa-solid fa-paper-plane"></i>
                 </button>
-              </div> -->
+              </div>
              
             </div>
           </div>

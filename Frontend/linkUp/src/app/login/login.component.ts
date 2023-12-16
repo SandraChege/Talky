@@ -27,10 +27,11 @@ export class LoginComponent {
         localStorage.setItem('token', data.token);
 
         this.register.checkuserdetails().then((data) => {
-          //console.log(data);
+          console.log(data);
           // console.log(data.info.role);
           localStorage.setItem('email', data.info.email);
           localStorage.setItem('username', data.info.username);
+          localStorage.setItem('userID', data.info.userID);
 
           this.showSuccessMessage = true;
 

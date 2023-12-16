@@ -13,8 +13,8 @@ post_router.put("/update",verifyToken, updatePost);
 post_router.delete("/delete/:ID", deletePost);
 post_router.post("/createcomment", createComment)
 post_router.get("/allcomments", verifyToken, getAllComments)
-post_router.put("/updatecomment", updateComment)
-post_router.delete("/deletecomment/:ID", deleteComment)
+post_router.put("/updatecomment", verifyToken, updateComment)
+post_router.delete("/deletecomment/:ID", verifyToken, deleteComment)
 post_router.get("/getcomments/:ID", verifyToken, getPostComments)
 post_router.post('/likepost', toggleLikePost)
 post_router.get("/getlikes/:postID",verifyToken, getPostLikes)

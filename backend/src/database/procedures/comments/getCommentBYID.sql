@@ -6,5 +6,5 @@ CREATE OR ALTER PROCEDURE getAllComments
 SET NOCOUNT ON;
 BEGIN
 	SELECT * FROM Comments 
-    WHERE postID = @postID
+    WHERE postID = @postID and isDeleted = 0
 END
