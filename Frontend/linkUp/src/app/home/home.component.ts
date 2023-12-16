@@ -29,6 +29,7 @@ export class HomeComponent {
   ngOnInit() {
     this.getAllUsers();
     this.fetchAllPosts();
+    // this.getLikesCount(postID);
   }
 
   constructor(
@@ -206,12 +207,35 @@ export class HomeComponent {
 
     console.log(currentuserID);
     
-    // if(currentuserID === userID){
-    //   this.postService.deleteComment(commentID)?.subscribe((response) => {
-    //     console.log(response);
-    //     this.fetchAllCommentsByPostId(postID);
-    //   });
-    // }
+    if(currentuserID === userID){
+      this.postService.deleteComment(commentID)?.subscribe((response) => {
+        console.log(response);
+        this.fetchAllCommentsByPostId(postID);
+      });
+    }
+  }
+
+  //TOGGLE BETWEEN LIKE AND UNLIKE A POST
+  toggleLike(postID: string) { 
+    console.log(postID);
+    
+    this.postService.toggleLike(postID)?.subscribe((response) => {
+     console.log(response);
+      // this.fetchAllPosts();
+     
+    });
+  }
+  getLikesCount(postID: string) { 
+    this.postService.getLikesCount(postID)?.subscribe((response) => {
+      console.log(response);
+      // Update likes count
+      const postIndex = this.allPosts.findIndex(post => post.postID === postID);
+      if(postIndex !== -1) {
+        this.allPosts[postIndex].likes = response;
+      }
+      console.log(typeof(postIndex));
+      
+    });
   }
 
   //FETCH SUGGESTIONS/USERS

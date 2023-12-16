@@ -6,7 +6,7 @@ CREATE TABLE likes (
 
  FOREIGN KEY (userID) REFERENCES Users(userID),
  FOREIGN KEY (postID) REFERENCES Posts(postID),
-
-
 );
+
+SELECT * FROM likes;
 DROP TABLE likes;

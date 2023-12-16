@@ -266,7 +266,7 @@ export const getPostComments = async (req: Request, res: Response) => {
 };
 
 //TOGGLE BETWEEN LIKE AND UNLIKE
- export const toggleLikePost = async (req: Request, res: Response) => {
+export const toggleLikePost = async (req: Request, res: Response) => {
    console.log(req.body);
 
    try {

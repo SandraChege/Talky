@@ -40,9 +40,9 @@
             </p>
           </div>
           <div class="actions">
-            <button>
+            <button (click) = "toggleLike(post.postID)">
               <i class="fa-solid fa-thumbs-up"></i>
-              <span class="px-4">2200</span>
+              <!-- <span class="px-4">{{ getLikesCount(post.postID) }}</span> -->
             </button>
             <button>
               <i class="fa-solid fa-comment"></i> <span class="px-4">300</span>

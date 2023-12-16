@@ -120,4 +120,40 @@ export class PostService {
       return null;
     }
   }
+  //TOGGLE BETWEEN LIKE AND UNLIKE
+  toggleLike(postID: string) {
+    const token = localStorage.getItem('token');
+    const userID = localStorage.getItem('userID');
+
+    if(token && userID) {
+      return this.http.post(
+        'http://localhost:4500/post/likepost',
+        {userID: userID, postID: postID},
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            token: token
+          })
+        }
+      );
+    } else {
+      return null;
+    }
+  }
+
+  //GET NUMBER OF LIKES
+  getLikesCount(postID: string) { 
+    const token = localStorage.getItem('token');
+
+    if(token) {
+      return this.http.get(`http://localhost:4500/post/getlikes/${postID}`, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          token: token,
+        }),
+      });
+    } else {
+      return null;
+    }
+  }
 }

@@ -16,7 +16,7 @@ post_router.get("/allcomments", verifyToken, getAllComments)
 post_router.put("/updatecomment", verifyToken, updateComment)
 post_router.delete("/deletecomment/:ID", verifyToken, deleteComment)
 post_router.get("/getcomments/:ID", verifyToken, getPostComments)
-post_router.post('/likepost', toggleLikePost)
+post_router.post('/likepost', verifyToken, toggleLikePost)
 post_router.get("/getlikes/:postID",verifyToken, getPostLikes)
 
 export default post_router;
