@@ -47,16 +47,7 @@ export class RegisterService {
   async checkuserdetails() {
     let token = localStorage.getItem('token');
     
-    // if (token) {
-    //   return this.http.get<{user:getAllUsers}>(`http://localhost:4500/user/checkuserdetails`, {
-    //     headers: new HttpHeaders({
-    //       'Content-Type': 'application/json',
-    //       token: token,
-    //     }),
-    //   });
-    // } else {
-    //   return throwError('User not authenticated');
-    // }
+    
 
     let res = await fetch('http://localhost:4500/user/checkuserdetails', {
       headers: {
@@ -67,18 +58,17 @@ export class RegisterService {
     });
 
     let data = await res.json();
-
-    // console.log(data);
     return data;
   }
 
   //GET USER DETAILS
   getuser() {
     const email = localStorage.getItem('email');
-    if (!email) {
+    const token = localStorage.getItem('token');
+    if (!email ) {
       return throwError('User not found');
     }
-    return this.http.post(`http://localhost:4500/user/getoneuser`, { email });
+    return this.http.post(`http://localhost:4500/user/getoneuser`, { email});
   }
 
   //FORGOT PASSWORD
@@ -131,4 +121,25 @@ export class RegisterService {
       return null;
     }
   }
+  
+  //GET USER BY USERID
+  getUserByID(userID: string) {
+    const token = localStorage.getItem('token');
+
+    if(token) {
+      return this.http.get<UserDetails>(
+        `http://localhost:4500/user/getoneuser/${userID}`,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            token: token
+          })
+        }
+      );
+    } else {
+      return null;
+    }
+  }
+
+  //FOLLOW AND UFOLLOW USER
 }

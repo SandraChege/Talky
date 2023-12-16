@@ -119,7 +119,7 @@ export const deletePost = async (req: Request, res: Response) => {
   }
 };
 
-// //GET SINGLE POST
+// GET SINGLE POST
 export const getSinglePost = async (req: Request, res: Response) => {
   try {
     const postID = req.params.ID;

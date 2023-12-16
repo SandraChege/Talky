@@ -15,7 +15,7 @@ export class HomeComponent {
   addPostForm!: FormGroup;
   files: any[] = [];
   allusers: getAllUsers[] = [];
-  allPosts: getAllPosts[] = [];
+  allPosts: any[] = [];
   user_id: string = '';
   storedUser: string | null = localStorage.getItem('user_details');
 
@@ -100,8 +100,39 @@ export class HomeComponent {
   //FETCH ALL POSTS
   fetchAllPosts() {
     this.postService.fetchAllPosts()?.subscribe((response: any) => { 
-      this.allPosts = response;
+    this.allPosts = response.map((post: any) => ({
+      ...post,
+      creatorName: this.fetchUsernameById(post.userID),
+    }));
+      console.log(this.allPosts);
+      this.allPosts.forEach((post) => {
+        this.fetchAllCommentsByPostId(post.postID);
+      });
     })
+  }
+
+  //FETCHALLCOMMENTS BY POSTID
+  fetchAllCommentsByPostId(postID: string) { 
+    // console.log(postID);
+    this.postService.getCommentsByPostId(postID)?.subscribe((response: any) => {
+      console.log(response);
+      const postIndex = this.allPosts.findIndex((post) => post.postID === postID);
+      if (postIndex !== -1) {
+        this.allPosts[postIndex].comments = response.map((comment:any)=> ({
+          ...comment,
+        fullname: this.fetchUsernameById(comment.userID),
+        }))
+      }
+    })
+  }
+  //FETCH USERNAME BY THEIR ID
+  fetchUsernameById(userID: string) {
+    const userIndex = this.allusers.findIndex(user => user.userID === userID);
+    if(userIndex !== -1) {
+      return this.allusers[userIndex].fullname;
+    } else {
+      return 'Name not found';
+    }
   }
 
   //FETCH SUGGESTIONS/USERS

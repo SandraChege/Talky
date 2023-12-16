@@ -26,7 +26,7 @@
       <!--MOCK POSTS START HERE-->
       <div class="postcontainer flex flex-col text-black font-550 text-base rounded-[15px]" *ngFor="let post of allPosts">
         <div class="post">
-          <!-- <div><p class="py-2 font-[550] text-base">{{post.fullname}}</p></div> -->
+          <div><p class="py-2 font-[550] text-base">{{post.creatorName}}</p></div>
           <div>
             <img
               src="{{post.imageUrl}}"
@@ -59,14 +59,10 @@
             </button>
           </div>
           <!-- comments container -->
-          <div class="postcomments p-2">
-            <div class="py-2">
-              <p class="font-bold">Christopher Brown</p>
-              <p>
-                Wishing you a Christmas filled with love, laughter, and the
-                joyous sound of festive bells ringing in harmony! 🎅🎁✨
-                #MerryChristmas #SpreadCheer
-              </p>
+          <div class="postcomments p-2" *ngIf="post.comments && post.comments.length > 0">
+            <div class="py-2" *ngFor="let comment of post.comments">
+              <p class="font-bold">{{comment.fullname}}</p>
+              <p>{{comment.comment}}</p>
               <!--REPLY CONTAINER-->
               <button
                 (click)="toggleReply()"
@@ -74,145 +70,24 @@
               >
                 Reply
               </button>
-              <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+              <!-- <button (click)="startEdit(comment)" class="text-[#6B7280] text-[13px] mx-8">Edit</button> -->
               <button class="text-[#6B7280] text-[13px]">Delete</button>
-              <div
-                *ngIf="showReply"
-                class="reply-container flex justify-between items-center py-2"
-              >
-                <input
-                  type="text"
-                  placeholder="Type your reply"
-                  class="py-1.0"
-                />
+
+              <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                <input type="text"placeholder="Type your reply" class="py-1.0"/>
                 <button type="submit" class="comment outline-none">
                   <i class="fa-solid fa-paper-plane"></i>
                 </button>
               </div>
-              <!-- Dropdown for edit and delete -->
-              <!-- <div class="dropdown mt-2 bg-red-500">
-                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                <div class="dropdown-content bg-white border rounded-md hidden">
-                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
-                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
-                                </div>
-                            </div> -->
-            </div>
-            <div class="py-2">
-              <p class="font-bold">Emma Li</p>
-              <p>
-                May the magic of the season wrap you in its warmth, and may
-                every snowflake bring blessings your way! ❄️✨ Merry Christmas,
-                dear friends! 🎄🌟 #SeasonsGreetings #CelebrateJoy
-              </p>
-              <!--REPLY CONTAINER-->
-              <button
-                (click)="toggleReply()"
-                class="text-[#6B7280] text-[13px] text-right"
-              >
-                Reply
-              </button>
-              <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
-              <button class="text-[#6B7280] text-[13px]">Delete</button>
-              <div
-                *ngIf="showReply"
-                class="reply-container flex justify-between items-center py-2"
-              >
-                <input
-                  type="text"
-                  placeholder="Type your reply"
-                  class="py-1.0"
-                />
-                <button type="submit" class="comment outline-none">
+
+               <!-- EDIT INPUT FIELD -->
+              <!-- <div *ngIf="comment.editMode">
+                <input [(ngModel)]="comment.editContent" type="text" class="py-1.0" />
+                <button (click)="saveEdit(comment)" class="comment outline-none">
                   <i class="fa-solid fa-paper-plane"></i>
                 </button>
-              </div>
-              <!-- Dropdown for edit and delete -->
-              <!-- <div class="dropdown mt-2 bg-red-500">
-                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                <div class="dropdown-content bg-white border rounded-md hidden">
-                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
-                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
-                                </div>
-                            </div> -->
-            </div>
-            <div class="py-2">
-              <p class="font-bold">Jane Doe</p>
-              <p>
-                In the cozy glow of holiday lights, may your heart be aglow with
-                peace, and your spirit be wrapped in the gift of togetherness.
-                🕯️🎉 Merry Christmas and Happy Holidays! 🎅🎄 #ChristmasJoy
-                #FamilyTime"
-              </p>
-              <!--REPLY CONTAINER-->
-              <button
-                (click)="toggleReply()"
-                class="text-[#6B7280] text-[13px] text-right"
-              >
-                Reply
-              </button>
-              <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
-              <button class="text-[#6B7280] text-[13px]">Delete</button>
-              <div
-                *ngIf="showReply"
-                class="reply-container flex justify-between items-center py-2"
-              >
-                <input
-                  type="text"
-                  placeholder="Type your reply"
-                  class="py-1.0"
-                />
-                <button type="submit" class="comment outline-none">
-                  <i class="fa-solid fa-paper-plane"></i>
-                </button>
-              </div>
-              <!-- Dropdown for edit and delete -->
-              <!-- <div class="dropdown mt-2 bg-red-500">
-                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                <div class="dropdown-content bg-white border rounded-md hidden">
-                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
-                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
-                                </div>
-                            </div> -->
-            </div>
-            <div class="py-2">
-              <p class="font-bold">Chris Star</p>
-              <p>
-                As the snowflakes dance and the carolers sing, may your days be
-                merry and your heart be light. Here's to a season of warmth,
-                love, and unforgettable moments! 🎶❤️🎄 #ChristmasMagic
-                #JoyfulMoments
-              </p>
-              <!--REPLY CONTAINER-->
-              <button
-                (click)="toggleReply()"
-                class="text-[#6B7280] text-[13px] text-right"
-              >
-                Reply
-              </button>
-              <button class="text-[#6B7280] text-[13px] mx-8">Edit</button>
-              <button class="text-[#6B7280] text-[13px]">Delete</button>
-              <div
-                *ngIf="showReply"
-                class="reply-container flex justify-between items-center py-2"
-              >
-                <input
-                  type="text"
-                  placeholder="Type your reply"
-                  class="py-1.0"
-                />
-                <button type="submit" class="comment outline-none">
-                  <i class="fa-solid fa-paper-plane"></i>
-                </button>
-              </div>
-              <!-- Dropdown for edit and delete -->
-              <!-- <div class="dropdown mt-2 bg-red-500">
-                                <button class=""><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                <div class="dropdown-content bg-white border rounded-md hidden">
-                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Edit</button>
-                                    <button class="block w-full text-left py-2 px-4 hover:bg-gray-200">Delete</button>
-                                </div>
-                            </div> -->
+              </div> -->
+             
             </div>
           </div>
         </div>

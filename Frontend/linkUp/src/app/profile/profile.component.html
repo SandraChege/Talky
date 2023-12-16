@@ -62,8 +62,20 @@
        
                     <div class="flex flex-col py-1">
                         <label class="text-[1rem] text-black">Enter profile Url:</label>
-                        <input data-cy="profileUrl" type="file" formControlName="profileUrl" placeholder="Enter profile image url" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
-                        <div *ngIf="profileForm.get('profileUrl')?.invalid && profileForm.get('profileUrl')?.touched" class="text-red-500">Profile Url is required</div>
+                        <ngx-dropzone (change)="onSelectPostImage($event)">
+                            <ngx-dropzone-label>Drop Post Image</ngx-dropzone-label>
+                            <ngx-dropzone-preview
+                            *ngFor="let f of files"
+                            [removable]="true"
+                            (removed)="onRemovePostImage(f)"
+                            >
+                            <ngx-dropzone-label
+                                >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                            >
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                        <!-- <input data-cy="profileUrl" type="file" formControlName="profileUrl" placeholder="Enter profile image url" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]">
+                        <div *ngIf="profileForm.get('profileUrl')?.invalid && profileForm.get('profileUrl')?.touched" class="text-red-500">Profile Url is required</div> -->
                     </div>
 
                     <div class="flex flex-col py-1">

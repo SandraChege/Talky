@@ -12,6 +12,7 @@ import {
   getFollowings,
   toggleFollowUser,
   deleteUser,
+  getOneUserById,
 } from "../controllers/userController";
 import { verifyToken } from "../middlewares/verfiyToken";
 // import { verifyToken } from "../middlewares/verifytoken";
@@ -22,7 +23,8 @@ user_router.get("/getallusers", verifyToken, getAllUsers);
 user_router.post("/register", registerUser);
 user_router.post("/login", loginUser);
 user_router.get("/checkuserdetails", verifyToken, checkUserDetails);
-user_router.post("/getoneuser", verifyToken, getOneUser);
+user_router.post("/getoneuser", getOneUser);
+user_router.get("/byId/:userID",  getOneUserById);
 user_router.put("/updateuser", verifyToken, updateUserDetails);
 user_router.delete("/deleteuser/:id", verifyToken, deleteUser);
 user_router.post("/resetpassword", resetPassword);

@@ -148,7 +148,7 @@ export const checkUserDetails = async (req: ExtendedUser, res: Response) => {
   }
 };
 
-//GET SINGLE USER
+//GET SINGLE USER USING EMAIL
 export const getOneUser = async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
@@ -161,6 +161,37 @@ export const getOneUser = async (req: Request, res: Response) => {
 
     return res.status(200).json({
       user: singleUser.recordset[0],
+      message: "Single User retrieved successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: error,
+    });
+  }
+};
+
+//GET ONE USER USING ID
+export const getOneUserById = async (req: Request, res: Response) => {
+  try {
+    const userID = req.params.userID;
+    console.log("user id is:", userID);
+    
+    const pool = await mssql.connect(sqlConfig);
+    const result = await pool
+      .request()
+      .input("userID", userID)
+      .execute("getById");
+    
+     if (result.recordset.length === 0) {
+       return res.status(404).json({
+         message: "User not found",
+       });
+     }
+    const singleUser = result.recordset[0];
+    console.log(singleUser);
+    
+    return res.status(200).json({
+      user: singleUser,
       message: "Single User retrieved successfully",
     });
   } catch (error) {

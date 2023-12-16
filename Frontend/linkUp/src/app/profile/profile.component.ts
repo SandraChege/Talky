@@ -16,6 +16,7 @@ export class ProfileComponent {
   isFavourite2: boolean = false;
   isFavourite3: boolean = false;
   viewposts = true;
+  files: any[] = [];
 
   user: any;
   userDetails: any;
@@ -30,7 +31,7 @@ export class ProfileComponent {
   ) {
     this.profileForm = this.formBuilder.group({
       fullName: ['', Validators.required],
-      profileUrl: ['', Validators.required],
+      profileUrl: ([ ]),
       profileCaption: ['', Validators.required],
     });
   }
@@ -58,12 +59,21 @@ export class ProfileComponent {
     this.isFavourite1 = false;
     this.isFavourite2 = false;
   }
+  onSelectPostImage(event: any) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemovePostImage(event: any) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
   updateProfile() {
     this.isProfileFormVisible = true;
     this.register.getuser().subscribe((response) => {
       this.user = response;
       this.userDetails = this.user.user;
-      console.log(this.userDetails);
+      // console.log(this.userDetails);
 
       this.profileForm.patchValue({
         fullname: this.userDetails.fullname,
@@ -72,6 +82,35 @@ export class ProfileComponent {
       });
     });
   }
+  // newPost() {
+  //   // Your logic to share the post
+  //   console.log(this.addPostForm.value);
+  //   this.addPostForm.value.image = this.files;
+
+  //   if (this.addPostForm.valid) {
+  //     const imageUrls: string[] = [];
+
+  //     // Upload all images
+  //     for (let index = 0; index < this.files.length; index++) {
+  //       const data = new FormData();
+  //       const file_data = this.files[index];
+  //       data.append('file', file_data);
+  //       data.append('upload_preset', 'x1zwskyt');
+  //       data.append('cloud_name', 'dg5qb7ntu');
+
+  //       console.log('data is ', data);
+
+  //       this.upload.uploadImage(data).subscribe((res) => {
+  //         // console.log(res.secure_url);
+  //         imageUrls.push(res.secure_url);
+
+  //         console.log('my image urls is ', imageUrls);
+  //       });
+  //     }
+  //   } else {
+  //     console.log('dat is not valid');
+  //   }
+  // }
   hideform() {
     this.isFormVisible = false;
     this.isFollowersVisible = false;
@@ -82,8 +121,11 @@ export class ProfileComponent {
     this.register.getuser().subscribe((response) => {
       this.user = response;
       this.userDetails = this.user.user;
-      console.log(this.userDetails);
+      // console.log(this.userDetails);
     });
   }
+
+  //GET ALL POSTS BY USERID
+  
 }
 
