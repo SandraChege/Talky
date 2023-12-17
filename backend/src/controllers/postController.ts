@@ -12,7 +12,11 @@ import {
 } from "../Validators/post";
 import { Post, Comment } from "../interface/post";
 import { execute, query } from "../helpers/dbHelper";
-import { validateComment, validateCommentId, validateUpdateComment } from "../Validators/comment";
+import {
+  validateComment,
+  validateCommentId,
+  validateUpdateComment,
+} from "../Validators/comment";
 import { isEmpty } from "lodash";
 
 //CREATE POSTS
@@ -267,59 +271,59 @@ export const getPostComments = async (req: Request, res: Response) => {
 
 //TOGGLE BETWEEN LIKE AND UNLIKE
 export const toggleLikePost = async (req: Request, res: Response) => {
-   console.log(req.body);
+  console.log(req.body);
 
-   try {
-     let likeID = v4();
+  try {
+    let likeID = v4();
 
-     let { userID, postID } = req.body;
-     const likeexists = (
-       await query(
-         `SELECT * FROM likes WHERE userID = '${userID}' AND postID= '${postID}'`
-       )
-     ).recordset;
+    let { userID, postID } = req.body;
+    const likeexists = (
+      await query(
+        `SELECT * FROM likes WHERE userID = '${userID}' AND postID= '${postID}'`
+      )
+    ).recordset;
 
-     if (!isEmpty(likeexists)) {
-       let result = await execute("unLikePost", {
-         userID,
-         postID,
-       });
+    if (!isEmpty(likeexists)) {
+      let result = await execute("unLikePost", {
+        userID,
+        postID,
+      });
 
-       if (result.rowsAffected[0] === 0) {
-         return res.status(404).json({
-           message: "Something went wrong, Pots not unliked",
-         });
-       } else {
-         return res.status(200).json({
-           message: "Post Unliked",
-         });
-       }
-     } else {
-       let result = await execute("likePost", {
-         likeID,
-         userID,
-         postID
-       });
+      if (result.rowsAffected[0] === 0) {
+        return res.status(404).json({
+          message: "Something went wrong, Pots not unliked",
+        });
+      } else {
+        return res.status(200).json({
+          message: "Post Unliked",
+        });
+      }
+    } else {
+      let result = await execute("likePost", {
+        likeID,
+        userID,
+        postID,
+      });
 
-       if (result.rowsAffected[0] === 0) {
-         return res.status(404).json({
-           message: "Something went wrong, Post not lked",
-         });
-       } else {
-         return res.status(200).json({
-           message: "Post Liked",
-         });
-       }
-     }
-   } catch (error) {
-     console.log(error);
+      if (result.rowsAffected[0] === 0) {
+        return res.status(404).json({
+          message: "Something went wrong, Post not lked",
+        });
+      } else {
+        return res.status(200).json({
+          message: "Post Liked",
+        });
+      }
+    }
+  } catch (error) {
+    console.log(error);
 
-     return res.json({
-       error,
-     });
-   }
-}; 
- 
+    return res.json({
+      error,
+    });
+  }
+};
+
 export const getPostLikes = async (req: Request, res: Response) => {
   try {
     const { postID } = req.params;
@@ -331,7 +335,7 @@ export const getPostLikes = async (req: Request, res: Response) => {
     `);
 
     console.log(likes);
-    
+
     // Check if there are any likes for the post
     if (likes.recordset.length === 0) {
       return res.status(404).json({
@@ -351,4 +355,127 @@ export const getPostLikes = async (req: Request, res: Response) => {
   }
 };
 
+// TOGGLE BETWEEN LIKE AND UNLIKE
+export const toggleLikePost2 = async (req: Request, res: Response) => {
+  console.log(req.body);
+
+  try {
+    let likeID = v4();
+
+    let { userID, postID } = req.body;
+    const likeExists = (
+      await query(
+        `SELECT * FROM likes WHERE userID = '${userID}' AND postID = '${postID}'`
+      )
+    ).recordset;
+
+    if (!isEmpty(likeExists)) {
+      let result = await execute("unLikePost2", {
+        userID,
+        postID,
+      });
+      console.log("the result is:",result);
+      
+
+      if (result.rowsAffected[0] === 0) {
+        return res.status(404).json({
+          message: "Something went wrong, Post not unliked",
+        });
+      } else {
+        // Get updated like count
+        const updatedLikes = await query(`
+                    SELECT likeCount FROM likes
+                    WHERE userID = '${userID}' AND postID = '${postID}'
+                `);
+
+        console.log("userID:", userID);
+        console.log("postID:", postID);
+        console.log("updatedLikes:", updatedLikes);
+
+        if (updatedLikes.recordset.length > 0) {
+          const likeCount = updatedLikes.recordset[0].likeCount;
+          console.log("meeee",likeCount);
+          
+
+          return res.status(200).json({
+            message: "Post Unliked",
+            likeCount,
+          });
+        } else {
+          // Handle the case where no rows were returned (likeCount is undefined)
+          return res.status(404).json({
+            message: "Post Unliked, but likeCount not available",
+          });
+        }
+      }
+    } else {
+      let result = await execute("likePost2", {
+        likeID,
+        userID,
+        postID,
+      });
+
+      if (result.rowsAffected[0] === 0) {
+        return res.status(404).json({
+          message: "Something went wrong, Post not liked",
+        });
+      } else {
+        // Get updated like count
+        const updatedLikes = await query(`
+                    SELECT likeCount FROM likes
+                    WHERE userID = '${userID}' AND postID = '${postID}'
+                `);
+
+        console.log("userID:", userID);
+        console.log("postID:", postID);
+        console.log("updatedLikes:", updatedLikes);
+
+        if (updatedLikes.recordset.length > 0) {
+          const likeCount = updatedLikes.recordset[0].likeCount;
+
+          return res.status(200).json({
+            message: "Post Liked",
+            likeCount,
+          });
+        } else {
+          // Handle the case where no rows were returned (likeCount is undefined)
+          return res.status(404).json({
+            message: "Post Liked, but likeCount not available",
+          });
+        }
+      }
+    }
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      message: "Internal server error",
+      error,
+    });
+  }
+};
+
+export const getPostLikes2 = async (req: Request, res: Response) => {
+  try {
+    const { postID } = req.params;
+
+    const likesCountResult = await query(`
+      SELECT COUNT(*) AS likeCount
+      FROM likes
+      WHERE postID = '${postID}'
+    `);
+
+    const likeCount = likesCountResult.recordset[0].likeCount;
+
+    // Return the likes count
+    return res.status(200).json({
+      likeCount: likeCount,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      error: "Internal Server Error",
+    });
+  }
+};
 

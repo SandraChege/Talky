@@ -121,6 +121,51 @@ img {
   width: 50%;
   max-width: 60%;
 }
+/*DROPDOWN CONTENT*/
+.post-actions-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown {
+  display: inline-block;
+}
+.dropbtn {
+  /* background-color: #3498db; */
+  color: var(--purple);
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  text-align: right;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content button:hover {
+  color: var(--purple);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* .dropdown:hover .dropbtn {
+  background-color: #2980B9;
+} */
 
 @media screen and (max-width: 920px) {
   .personalinfo div {

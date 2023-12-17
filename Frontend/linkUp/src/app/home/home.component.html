@@ -26,7 +26,20 @@
       <!--MOCK POSTS START HERE-->
       <div class="postcontainer flex flex-col text-black font-550 text-base rounded-[15px]" *ngFor="let post of allPosts">
         <div class="post">
-          <div><p class="py-2 font-[550] text-base">{{post.creatorName}}</p></div>
+          <div class="flex justify-between">
+            <p class="py-2 font-[550] text-base">{{post.creatorName}}</p>
+            <!--DROPDOWN FOR EDITING AND DDELETING POST-->
+            <div class="post-actions-dropdown">
+              <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                <div class="dropdown-content">
+                  <button (click)="editPost(post.userID, post.postID)">Edit Post</button>
+                  <button (click)="deletePost(post.postID, post.userID)">Delete Post</button>
+                </div>
+            </div>
+          </div>
+          <!--END OF DROPDOWN-->
+          </div>
           <div>
             <img
               src="{{post.imageUrl}}"
@@ -40,12 +53,17 @@
             </p>
           </div>
           <div class="actions">
-            <button (click) = "toggleLike(post.postID)">
-              <i class="fa-solid fa-thumbs-up"></i>
-              <!-- <span class="px-4">{{ getLikesCount(post.postID) }}</span> -->
-            </button>
+            <div class="flex flex-row items-center">
+              <div>
+                <button (click) = "toggleLike(post.postID)">
+                <i class="fa-solid fa-thumbs-up"></i>
+                </button>
+              </div>
+              <div><span class="px-4">{{ postLikeCount }}</span></div>
+            </div>
             <button>
-              <i class="fa-solid fa-comment"></i> <span class="px-4">300</span>
+              <i class="fa-solid fa-comment"></i>
+              <!-- <span class="px-4">300</span> -->
             </button>
           </div>
           <div class="flex justify-between items-center">
@@ -95,7 +113,7 @@
       </div>
       <!--MOCK POSTS END HERE-->
 
-      <!---FORM CONTAINER-->
+      <!---ADD POST FORM CONTAINER-->
       <div class="postform overlay" *ngIf="isFormVisible">
         <div class="container">
           <div class="btns flex justify-end py-2">
@@ -154,6 +172,61 @@
           </form>
         </div>
       </div>
+
+      <!--UPDATE FROM CONTAINER-->
+      <div class="postform overlay" *ngIf="isUpdateFormVisible">
+        <div class="container">
+          <div class="btns flex justify-end py-2">
+            <button (click)="hideform()"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <form
+            action=""
+            data-cy="addPostForm"
+            [formGroup]="addPostForm"
+            (ngSubmit)="newPost()"
+            class="flex flex-col my-4 mx-6"
+          >
+            <div class="flex flex-col py-1">
+              <label class="text-[1rem]">Image</label>
+              <ngx-dropzone (change)="onSelectPostImage($event)">
+                <ngx-dropzone-label>Drop Post Image</ngx-dropzone-label>
+                <ngx-dropzone-preview
+                  *ngFor="let f of files"
+                  [removable]="true"
+                  (removed)="onRemovePostImage(f)"
+                >
+                  <ngx-dropzone-label
+                    >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                  >
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+
+              <!-- <input data-cy="image" type="file" name="file" (change)="onFileChanged($event)" formControlName="image" placeholder="Image Url" class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]"> -->
+              <!-- <div *ngIf="addPostForm.get('image')?.invalid && addPostForm.get('image')?.touched" class="text-red-500">Image is required</div> -->
+            </div>
+            <div class="flex flex-col py-1">
+              <label class="text-[1rem]">Caption</label>
+              <input
+                data-cy="content"
+                type="text"
+                formControlName="content"
+               
+                placeholder="content"
+                class="rounded-[10px] border-solid border-[1px] border-gray-500 outline-none px-4 py-[4px] mt-[5px]"
+              />
+            </div>
+            <div class="btns flex justify-end py-2">
+              <input
+                data-cy="add_post_btn"
+                type="submit"
+                value="Update post"
+                class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--UPDATE FROM CONTAINER ENDS-->
     </div>
 
     <div class="personalinfo w-[20vw] text-black mr-[20px]">

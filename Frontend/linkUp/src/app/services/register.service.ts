@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserDetails, getAllUsers, loginUserDetails, resetPasswordDetails } from '../interface/user';
+import { UserDetails, getAllUsers, loginUserDetails, resetPasswordDetails, toggleFollowUserInterface } from '../interface/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
 
@@ -46,8 +46,6 @@ export class RegisterService {
   //CHECK USER DEATAILS
   async checkuserdetails() {
     let token = localStorage.getItem('token');
-    
-    
 
     let res = await fetch('http://localhost:4500/user/checkuserdetails', {
       headers: {
@@ -65,10 +63,10 @@ export class RegisterService {
   getuser() {
     const email = localStorage.getItem('email');
     const token = localStorage.getItem('token');
-    if (!email ) {
+    if (!email) {
       return throwError('User not found');
     }
-    return this.http.post(`http://localhost:4500/user/getoneuser`, { email});
+    return this.http.post(`http://localhost:4500/user/getoneuser`, { email });
   }
 
   //FORGOT PASSWORD
@@ -102,7 +100,7 @@ export class RegisterService {
   }
 
   //GET ALL USERS
-  fetchAllUsers() { 
+  fetchAllUsers() {
     const token = localStorage.getItem('token');
     //console.log(token);
 
@@ -121,19 +119,19 @@ export class RegisterService {
       return null;
     }
   }
-  
+
   //GET USER BY USERID
   getUserByID(userID: string) {
     const token = localStorage.getItem('token');
 
-    if(token) {
+    if (token) {
       return this.http.get<UserDetails>(
         `http://localhost:4500/user/getoneuser/${userID}`,
         {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
-            token: token
-          })
+            token: token,
+          }),
         }
       );
     } else {
@@ -141,5 +139,72 @@ export class RegisterService {
     }
   }
 
-  //FOLLOW AND UFOLLOW USER
+  //FOLLOW AND UNFOLLOW USER
+  toggleFollowUser(usersDetails: toggleFollowUserInterface) {
+    return this.http.post(
+      'http://localhost:4500/user/toggleFollowUser',
+      usersDetails
+    );
+  }
+
+  //GET FOLLOWINGS
+  getFollowings() {
+    let token = localStorage.getItem('token') as string;
+    let userID = localStorage.getItem('userID') as string;
+    if (token) {
+      return this.http.get(
+        `http://localhost:4500/user/getFollowings/${userID}`,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            token: token,
+          }),
+        }
+      );
+    } else {
+      return null;
+    }
+    //   .pipe(map((response) => response.followers));
+  }
+
+  // GET FOLLOWERS
+  getFollowers() {
+    let token = localStorage.getItem('token') as string;
+    let userID = localStorage.getItem('userID') as string
+    if (token) {
+      return this.http.get(
+        `http://localhost:4500/user/getFollowers/${userID}`,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            token: token,
+          }),
+        }
+      )
+    } else {
+      return null;
+    }
+    //   .pipe(map((response) => response.followers));
+  }
+
+  //UPDATE PROFILE
+  updateProfile(profile: any) {
+    const token = localStorage.getItem('token');
+    const userID = localStorage.getItem('userID');
+
+    if (token) {
+      return this.http.put(
+        'http://localhost:4500/post/update',
+        { profile, userID },
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            token: token,
+          }),
+        }
+      );
+    } else {
+      return null;
+    }
+  }
 }

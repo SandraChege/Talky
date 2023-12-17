@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from '../services/register.service';
+import { UploadService } from '../services/cloudinary/upload.service';
 
 @Component({
   selector: 'app-profile',
@@ -27,11 +28,12 @@ export class ProfileComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private register: RegisterService
+    private register: RegisterService,
+    private upload: UploadService
   ) {
     this.profileForm = this.formBuilder.group({
       fullName: ['', Validators.required],
-      profileUrl: ([ ]),
+      profileUrl: ([]),
       profileCaption: ['', Validators.required],
     });
   }
@@ -68,64 +70,84 @@ export class ProfileComponent {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
+
+  // updateProfile() {
+  //   this.isProfileFormVisible = true;
+  //   this.register.getuser().subscribe((response) => {
+  //     this.user = response;
+  //     this.userDetails = this.user.user;
+  //     // console.log(this.userDetails);
+
+  //     this.profileForm.patchValue({
+  //       fullname: this.userDetails.fullname,
+  //       profileUrl: this.userDetails.profileUrl,
+  //       profileCaption: this.userDetails.profileCaption,
+  //     });
+  //   });
+  // }
+
+  hideform() {
+    this.isFormVisible = false;
+    this.isFollowersVisible = false;
+    this.isProfileFormVisible = false;
+  }
+  //FETCH USER PROFILE
+  getUserProfile() {
+    this.register.getuser().subscribe((response) => {
+      console.log(response);
+
+      this.user = response;
+      this.userDetails = this.user.user;
+      // console.log(this.userDetails);
+    });
+  }
+
+  //UPDATE USER PROFILE
   updateProfile() {
     this.isProfileFormVisible = true;
     this.register.getuser().subscribe((response) => {
       this.user = response;
       this.userDetails = this.user.user;
       // console.log(this.userDetails);
-
       this.profileForm.patchValue({
-        fullname: this.userDetails.fullname,
-        profileUrl: this.userDetails.profileUrl,
+        fullName: this.userDetails.fullname,
         profileCaption: this.userDetails.profileCaption,
+        profileUrl: this.userDetails.profileUrl,
       });
     });
+    // console.log(this.profileForm.value);
+
+    this.profileForm.value.profileUrl = this.files;
+    if (this.profileForm.valid) {
+      const imageUrls: string[] = [];
+
+      // Upload all images
+      for (let index = 0; index < this.files.length; index++) {
+        const data = new FormData();
+        const file_data = this.files[index];
+        data.append('file', file_data);
+        data.append('upload_preset', 'x1zwskyt');
+        data.append('cloud_name', 'dg5qb7ntu');
+
+        console.log('data is ', data);
+        this.upload.uploadImage(data).subscribe((res) => {
+          imageUrls.push(res.secure_url);
+
+          // Check if all images are uploaded before making the post request
+          if (imageUrls.length === this.files.length) {
+            const profileDetails = {
+              imageUrl: imageUrls.join(','),
+              fullname: this.profileForm.value.fullname,
+              profileCaption:this.profileForm.value.profileCaption
+            };
+            this.register.updateProfile(profileDetails)?.subscribe((response) => {
+              console.log(response);
+            })
+          }
+        });
+      }
+    } else {
+      console.log('data is not valid');
+    }
   }
-  // newPost() {
-  //   // Your logic to share the post
-  //   console.log(this.addPostForm.value);
-  //   this.addPostForm.value.image = this.files;
-
-  //   if (this.addPostForm.valid) {
-  //     const imageUrls: string[] = [];
-
-  //     // Upload all images
-  //     for (let index = 0; index < this.files.length; index++) {
-  //       const data = new FormData();
-  //       const file_data = this.files[index];
-  //       data.append('file', file_data);
-  //       data.append('upload_preset', 'x1zwskyt');
-  //       data.append('cloud_name', 'dg5qb7ntu');
-
-  //       console.log('data is ', data);
-
-  //       this.upload.uploadImage(data).subscribe((res) => {
-  //         // console.log(res.secure_url);
-  //         imageUrls.push(res.secure_url);
-
-  //         console.log('my image urls is ', imageUrls);
-  //       });
-  //     }
-  //   } else {
-  //     console.log('dat is not valid');
-  //   }
-  // }
-  hideform() {
-    this.isFormVisible = false;
-    this.isFollowersVisible = false;
-    this.isProfileFormVisible = false;
-  }
-
-  getUserProfile() {
-    this.register.getuser().subscribe((response) => {
-      this.user = response;
-      this.userDetails = this.user.user;
-      // console.log(this.userDetails);
-    });
-  }
-
-  //GET ALL POSTS BY USERID
-  
 }
-

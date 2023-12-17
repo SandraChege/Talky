@@ -1,7 +1,7 @@
 import Router from "express";
 
 import { verifyToken } from "../middlewares/verfiyToken";
-import { createComment, createPost, deleteComment, deletePost, getAllComments, getAllPosts, getPostComments, getPostLikes, getSinglePost, toggleLikePost, updateComment, updatePost } from "../controllers/postController";
+import { createComment, createPost, deleteComment, deletePost, getAllComments, getAllPosts, getPostComments, getPostLikes, getPostLikes2, getSinglePost, toggleLikePost, toggleLikePost2, updateComment, updatePost } from "../controllers/postController";
 
 
 const post_router = Router();
@@ -16,7 +16,7 @@ post_router.get("/allcomments", verifyToken, getAllComments)
 post_router.put("/updatecomment", verifyToken, updateComment)
 post_router.delete("/deletecomment/:ID", verifyToken, deleteComment)
 post_router.get("/getcomments/:ID", verifyToken, getPostComments)
-post_router.post('/likepost', verifyToken, toggleLikePost)
-post_router.get("/getlikes/:postID",verifyToken, getPostLikes)
+post_router.post('/likepost', verifyToken, toggleLikePost2)
+post_router.get("/getlikes/:postID",verifyToken, getPostLikes2)
 
 export default post_router;

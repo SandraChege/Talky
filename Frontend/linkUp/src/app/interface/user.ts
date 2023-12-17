@@ -29,3 +29,13 @@ export interface getAllUsers {
   resetPassword: string;
   resetToken: string;
 }
+export interface profileDetails {
+  fullname: string;
+  profileUrl: string;
+  profileCaption: string;
+}
+
+export interface toggleFollowUserInterface {
+  following_user_id: string;
+  followed_user_id: string;
+}
