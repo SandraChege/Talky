@@ -3,6 +3,7 @@ export interface UserDetails {
   fullname: string;
   email: string;
   password: string;
+  profileUrl: string;
 }
 export interface loginUserDetails {
   email: string;

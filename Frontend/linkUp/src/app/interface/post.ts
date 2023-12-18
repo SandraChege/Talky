@@ -19,3 +19,23 @@ export interface editPost {
   postID: string;
   userID: string;
 }
+
+export interface allposts {
+  created_at: Date;
+  fullname: string;
+  imageUrl: string;
+  isDeleted: Boolean;
+  postContent: string;
+  postID: string;
+  userID: string;
+}
+
+export interface singlePost {
+  created_at: Date;
+  fullname: string;
+  imageUrl: string;
+  isDeleted: boolean;
+  postContent: string;
+  postID: string;
+  userID: string;
+}

@@ -16,3 +16,7 @@ export const validateUpdatePost = joi.object().keys({
 export const validatePostId = joi.object().keys({
   postID: joi.string().min(8).required(),
 });
+
+export const validateUserPostID = joi.object().keys({
+  userID: joi.string().required()
+})

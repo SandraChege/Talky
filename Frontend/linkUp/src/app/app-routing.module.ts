@@ -25,7 +25,7 @@ const routes: Routes = [
   // { path: 'navbar', component:NavbarComponent},
   { path: 'home', component: HomeComponent },
   { path: 'addpost', component: PostformComponent },
-  { path: 'myposts', component: MypostsComponent },
+  { path: 'myposts/:postID', component: MypostsComponent },
   { path: 'mock', component: SummaryComponent },
   { path: 'people', component: PeopleComponent },
   { path: 'followers', component: FollowersComponent },

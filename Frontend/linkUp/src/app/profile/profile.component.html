@@ -21,21 +21,15 @@
             </div>
             <!-- POST CONTAINER -->
             <div class="myposts" *ngIf="viewposts">
-                <div>
-                    <a routerLink="/myposts">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
-                    </a>
-                </div>
-                <div>
-                    <a routerLink="/myposts">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
-                    </a>
-                </div>
-                <div>
-                    <a routerLink="/myposts">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/46/christmas-tree-1867135_640.jpg" alt="">
-                    </a>
-                </div>
+               <div *ngFor="let post of allposts">
+                    <div>
+                        <button>
+                            <a [routerLink]="['/myposts', post.postID]">
+                                <img src="{{ post.imageUrl }}" alt="">
+                            </a>
+                        </button>
+                    </div>
+               </div>
             </div>
              <!--Followers container-->
             <div *ngIf="isFollowersVisible">

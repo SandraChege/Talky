@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { editPost, getAllPosts, postBody } from '../interface/post';
+import { allposts, editPost, getAllPosts, postBody, singlePost } from '../interface/post';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -26,16 +26,36 @@ export class PostService {
   }
 
   //GET POSTS BY ID
-  fetchPostByID(postID:string) {
+  fetchPostByID(postID: string) {
     const token = localStorage.getItem('token');
 
     if (token) {
-      return this.http.get(`http://localhost:4500/post/single/${postID}`, {
+      return this.http.get<singlePost[]>(`http://localhost:4500/post/single/${postID}`, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           token: token,
         }),
       });
+    } else {
+      return null;
+    }
+  }
+
+  //GET POSTS BY USERID
+  fetchPostByUserID() {
+    const token = localStorage.getItem('token');
+    const userID = localStorage.getItem('userID');
+
+    if (token) {
+      return this.http.get<allposts[]>(
+        `http://localhost:4500/post/byUserID/${userID}`,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            token: token,
+          }),
+        }
+      );
     } else {
       return null;
     }
@@ -67,14 +87,14 @@ export class PostService {
   }
 
   //EDIT or UPDATE POSTS
-  editPost(post:editPost){
+  editPost(post: editPost) {
     const token = localStorage.getItem('token');
-    const userID = localStorage.getItem('userID')
+    const userID = localStorage.getItem('userID');
 
     if (token) {
       return this.http.put(
         'http://localhost:4500/post/update',
-        {post, userID},
+        { post, userID },
         {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
@@ -86,7 +106,7 @@ export class PostService {
       return null;
     }
   }
-  
+
   //DELETE POSTS
   deletePost(postID: string) {
     const token = localStorage.getItem('token');

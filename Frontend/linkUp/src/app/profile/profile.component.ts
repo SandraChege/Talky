@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from '../services/register.service';
 import { UploadService } from '../services/cloudinary/upload.service';
+import { PostService } from '../services/post.service';
+import { allposts } from '../interface/post';
 
 @Component({
   selector: 'app-profile',
@@ -21,19 +23,24 @@ export class ProfileComponent {
 
   user: any;
   userDetails: any;
+  allposts: allposts[] = [];
+
+  // followers: followers[] = [];
 
   ngOnInit() {
     this.getUserProfile();
+    this.getPostsByUserID();
   }
 
   constructor(
     private formBuilder: FormBuilder,
     private register: RegisterService,
-    private upload: UploadService
+    private upload: UploadService,
+    private post: PostService
   ) {
     this.profileForm = this.formBuilder.group({
       fullName: ['', Validators.required],
-      profileUrl: ([]),
+      profileUrl: [],
       profileCaption: ['', Validators.required],
     });
   }
@@ -44,6 +51,7 @@ export class ProfileComponent {
     this.isFavourite1 = true;
     this.isFavourite2 = false;
     this.isFavourite3 = false;
+    // this.getPostsByUserID()
   }
   viewFollowers() {
     this.isFollowersVisible = true;
@@ -138,16 +146,26 @@ export class ProfileComponent {
             const profileDetails = {
               imageUrl: imageUrls.join(','),
               fullname: this.profileForm.value.fullname,
-              profileCaption:this.profileForm.value.profileCaption
+              profileCaption: this.profileForm.value.profileCaption,
             };
-            this.register.updateProfile(profileDetails)?.subscribe((response) => {
-              console.log(response);
-            })
+            this.register
+              .updateProfile(profileDetails)
+              ?.subscribe((response) => {
+                console.log(response);
+              });
           }
         });
       }
     } else {
       console.log('data is not valid');
     }
+  }
+
+  //GET POSTS BY ID
+  getPostsByUserID() {
+    this.post.fetchPostByUserID()?.subscribe((response) => {
+      this.allposts = response;
+      console.log(this.allposts);
+    });
   }
 }

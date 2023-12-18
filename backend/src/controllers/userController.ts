@@ -177,23 +177,22 @@ export const getOneUserById = async (req: Request, res: Response) => {
     console.log("user id is:", userID);
     
     const pool = await mssql.connect(sqlConfig);
-    const result = await pool
+    const result =  (await pool
       .request()
       .input("userID", userID)
-      .execute("getById");
+      .execute("getById")).recordset;
     
-     if (result.recordset.length === 0) {
+     if (result.length === 0) {
        return res.status(404).json({
          message: "User not found",
        });
      }
-    const singleUser = result.recordset[0];
+    const singleUser = result;
     console.log(singleUser);
     
-    return res.status(200).json({
-      user: singleUser,
-      message: "Single User retrieved successfully",
-    });
+    return res.status(200).json(
+       singleUser
+    );
   } catch (error) {
     return res.status(500).json({
       message: error,
@@ -366,9 +365,9 @@ export const getFollowers = async (req: Request, res: Response) => {
       })
     ).recordset;
 
-    return res.status(200).json({
-      followers: followers,
-    });
+    return res.status(200).json(
+      followers,
+    );
   } catch (error) {
     return res.json({
       error: error,
@@ -387,9 +386,9 @@ export const getFollowings = async (req: Request, res: Response) => {
       })
     ).recordset;
 
-    return res.status(200).json({
-      followings: followers,
-    });
+    return res.status(200).json(
+      followers,
+    );
   } catch (error) {
     return res.json({
       error: error,

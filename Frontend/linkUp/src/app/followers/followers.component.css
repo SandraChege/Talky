@@ -15,7 +15,8 @@
   border-radius: 10px;
   background-color: rgba(21, 23, 30, 0.1);
   border: 1px solid rgb(107, 114, 128);
-  color: white;
+  color: black;
+  outline: none;
 }
 .searchInput input:focus,
 .searchInput input:hover {

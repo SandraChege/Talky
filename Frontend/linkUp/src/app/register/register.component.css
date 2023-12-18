@@ -1,4 +1,4 @@
-.success-message{
+/* .success-message{
   background-color: var(--darkpurple);
   padding: 10px;
   color: var(--white);
@@ -11,6 +11,15 @@
   color: var(--white);
   border-radius: 10px;
   margin: 2px;
+} */
+.success-message, .error-message{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.success-message img, .error-message img {
+  width: 100px;
+  height: 100px;
 }
 .register {
   margin: 0;

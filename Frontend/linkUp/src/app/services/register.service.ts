@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserDetails, getAllUsers, loginUserDetails, resetPasswordDetails, toggleFollowUserInterface } from '../interface/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { followers, following } from '../interface/followers';
 
 @Injectable({
   providedIn: 'root',
@@ -125,8 +126,8 @@ export class RegisterService {
     const token = localStorage.getItem('token');
 
     if (token) {
-      return this.http.get<UserDetails>(
-        `http://localhost:4500/user/getoneuser/${userID}`,
+      return this.http.get<{ user: UserDetails[] }>(
+        `http://localhost:4500/user/byId/${userID}`,
         {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
@@ -152,7 +153,7 @@ export class RegisterService {
     let token = localStorage.getItem('token') as string;
     let userID = localStorage.getItem('userID') as string;
     if (token) {
-      return this.http.get(
+      return this.http.get<following[]>(
         `http://localhost:4500/user/getFollowings/${userID}`,
         {
           headers: new HttpHeaders({
@@ -164,15 +165,14 @@ export class RegisterService {
     } else {
       return null;
     }
-    //   .pipe(map((response) => response.followers));
   }
 
   // GET FOLLOWERS
   getFollowers() {
     let token = localStorage.getItem('token') as string;
-    let userID = localStorage.getItem('userID') as string
+    let userID = localStorage.getItem('userID') as string;
     if (token) {
-      return this.http.get(
+      return this.http.get<followers[]>(
         `http://localhost:4500/user/getFollowers/${userID}`,
         {
           headers: new HttpHeaders({
@@ -180,11 +180,10 @@ export class RegisterService {
             token: token,
           }),
         }
-      )
+      );
     } else {
       return null;
     }
-    //   .pipe(map((response) => response.followers));
   }
 
   //UPDATE PROFILE

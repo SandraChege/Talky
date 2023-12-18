@@ -9,6 +9,7 @@ import {
   validatePost,
   validatePostId,
   validateUpdatePost,
+  validateUserPostID,
 } from "../Validators/post";
 import { Post, Comment } from "../interface/post";
 import { execute, query } from "../helpers/dbHelper";
@@ -139,6 +140,30 @@ export const getSinglePost = async (req: Request, res: Response) => {
 
     const procedureName = "getPostById";
     const result = await execute(procedureName, { postID });
+
+    res.json(result.recordset);
+  } catch (error) {
+    console.log(error);
+    res.status(404).send({ message: "internal server error" });
+  }
+};
+
+//GET ALL POSTS BY USERID
+export const getPostByUserID = async (req: Request, res: Response) => {
+  try {
+    const userID = req.params.ID;
+    console.log(userID);
+
+    if (!userID) return res.status(400).send({ error: "Id is required" });
+
+    const { error } = validateUserPostID.validate({ userID });
+    console.log(error);
+
+    if (error) return res.status(400).send({ error: error.details[0].message });
+    // console.log("hello");
+
+    const procedureName = "getPostsByUserID";
+    const result = await execute(procedureName, { userID });
 
     res.json(result.recordset);
   } catch (error) {
