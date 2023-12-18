@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { allposts, editPost, getAllPosts, postBody, singlePost } from '../interface/post';
+import { allposts, editPost, fetchAllPosts, getAllPosts, postBody, singlePost } from '../interface/post';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { fetchAllComments } from '../interface/comment';
 

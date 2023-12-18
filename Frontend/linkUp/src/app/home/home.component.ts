@@ -137,6 +137,7 @@ export class HomeComponent {
   //FETCH ALL POSTS
   fetchAllPosts() {
     this.postService.fetchAllPosts()?.subscribe((response: any) => {
+      // console.log(response);
       this.allPosts = response.map((post: any) => ({
         ...post,
         creatorName: this.fetchUsernameById(post.userID),
@@ -242,6 +243,8 @@ export class HomeComponent {
         this.currentComment = foundComment;
         this.iseditCommentVisible = true;
         this.editedCommentText = this.currentComment.comment;
+        // console.log(this.editedCommentText);
+        
         break;
       }
     }

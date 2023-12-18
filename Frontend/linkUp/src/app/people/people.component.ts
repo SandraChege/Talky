@@ -26,5 +26,13 @@ export class PeopleComponent {
     })
   }
 
+  followUser(userID:string) {
+    console.log(userID);
+    
+    // this.register.toggleFollowUser(userID)?.subscribe((response) => {
+      
+    // })
+  }
+
   
 }

@@ -39,3 +39,14 @@ export interface singlePost {
   postID: string;
   userID: string;
 }
+
+export interface fetchAllPosts {
+  comments: object;
+  created_at: string;
+  fullname: string;
+  imageUrl: string;
+  isDeleted: boolean;
+  postContent: string;
+  postID: string;
+  userID: string;
+}

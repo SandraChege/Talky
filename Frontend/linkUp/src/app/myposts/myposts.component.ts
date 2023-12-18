@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { UploadService } from '../services/cloudinary/upload.service';
 import { PostService } from '../services/post.service';
@@ -18,6 +18,7 @@ export class MypostsComponent {
   post: singlePost[] = [];
   newcommentText: string = '';
   newReplyText: string = '';
+  // newReplyTextChange: EventEmitter<string> = new EventEmitter<string>();
   fetchedComments: fetchAllComments[] = [];
   editedCommentText: string = '';
 
@@ -38,8 +39,14 @@ export class MypostsComponent {
       }
     });
   }
+  // LIKE AND UNLIKE POST
+  toggleLike(postID: string) {
+    console.log(postID);
 
-  toggleLike(postID: string) {}
+    this.postService.toggleLike(postID)?.subscribe((response) => {
+      console.log(response);
+    });
+  }
 
   //CREATE A COMMENT
   onSubmitComment(postID: string) {
@@ -73,7 +80,7 @@ export class MypostsComponent {
     if (currentuserID === userID) {
       this.postService.deletePost(postID)?.subscribe((response) => {
         console.log(response);
-        this.router.navigate(['profile'])
+        this.router.navigate(['profile']);
       });
     }
   }
@@ -87,17 +94,24 @@ export class MypostsComponent {
   }
 
   //REPLY TO A COMMENT
-  toggleReply( commentID: string, postID: string, userID: string, parentCommentID: string) {
+  toggleReply(
+    commentID: string,
+    postID: string,
+    userID: string,
+    parentCommentID: string
+  ) {
+    console.log('clicked me');
+
     this.iseditCommentVisible = false;
     this.showReply = true;
-    console.log(this.newReplyText);
-    this.postService.replyComment(commentID, postID, this.newReplyText)?.subscribe((response) => {
-      console.log(response);
-      this.newReplyText = ''
-      this.showReply = false
-      this.fetchAllCommentsByPostId(postID)
-    })
-    
+
+
+    // this.postService.replyComment(commentID, postID, this.newReplyText)?.subscribe((response) => {
+    //   console.log(response);
+    //   this.newReplyText = ''
+    //   this.showReply = false
+    //   this.fetchAllCommentsByPostId(postID)
+    // })
   }
 
   //EDIT COMMENTS
