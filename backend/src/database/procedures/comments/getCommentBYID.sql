@@ -2,9 +2,18 @@ CREATE OR ALTER PROCEDURE getAllComments
 (
     @postID VARCHAR(255)
 )
-	AS
+AS
 SET NOCOUNT ON;
 BEGIN
-	SELECT * FROM Comments 
-    WHERE postID = @postID and isDeleted = 0
+	SELECT 
+    Comments.commentID, Comments.comment, 
+    Comments.postID, Comments.userID, 
+    Comments.isDeleted, Comments.created_at,
+    Comments.parentCommentID,
+    Users.fullname
+    FROM Comments
+    LEFT JOIN Users 
+    ON Comments.userID = Users.userID 
+
+    WHERE postID = @postID and Comments.isDeleted = 0
 END

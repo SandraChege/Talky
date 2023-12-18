@@ -1,7 +1,7 @@
 import Router from "express";
 
 import { verifyToken } from "../middlewares/verfiyToken";
-import { createComment, createPost, deleteComment, deletePost, getAllComments, getAllPosts, getPostByUserID, getPostComments, getPostLikes, getPostLikes2, getSinglePost, toggleLikePost, toggleLikePost2, updateComment, updatePost } from "../controllers/postController";
+import { createComment, replyComment, createPost, deleteComment, deletePost, getAllComments, getAllPosts, getPostByUserID, getPostComments, getPostLikes, getPostLikes2, getSinglePost, toggleLikePost, toggleLikePost2, updateComment, updatePost } from "../controllers/postController";
 
 
 const post_router = Router();
@@ -12,6 +12,7 @@ post_router.get("/all",verifyToken, getAllPosts)
 post_router.put("/update",verifyToken, updatePost);
 post_router.delete("/delete/:ID", deletePost);
 post_router.post("/createcomment", createComment)
+post_router.post("/replycomment", replyComment);
 post_router.get("/allcomments", verifyToken, getAllComments)
 post_router.put("/updatecomment", verifyToken, updateComment)
 post_router.delete("/deletecomment/:ID", verifyToken, deleteComment)

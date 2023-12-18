@@ -6,6 +6,13 @@ export const validateComment = joi.object().keys({
   postID: joi.string().required(),
 });
 
+export const validateReplyComment = joi.object().keys({
+  comment: joi.string(),
+  userID: joi.string(),
+  parentCommentID: joi.string(),
+  postID: joi.string().required(),
+});
+
 export const validateUpdateComment = joi.object().keys({
   postID: joi.string().required(),
   comment: joi.string().required(),

@@ -1,9 +1,9 @@
 <div class="flex homecontainer">
     <app-navbar></app-navbar>
-    <div class="home w-[90vw] flex ml-[10vw] py-6 gap-x-14 border-red-900">
-        <div class="leftcontainer  justify-center flex flex-col bg-green-500">
+    <div class="home w-[90vw] flex ml-[10vw] justify-center py-6 gap-x-14">
+        <div class="w-[40vw] leftcontainer flex flex-col">
             <!--MOCK POSTS START HERE-->
-            <div class="w-[50vw] postcontainer flex-col text-black font-550 text-base rounded-[15px]">
+            <div class="postcontainer flex-col text-black font-550 text-base rounded-[15px]">
                 <div class="post" *ngFor = "let post of post">
                     <div class="flex justify-between">
                         <p class="py-2 font-[550] text-base">{{post.fullname}}</p>
@@ -12,8 +12,8 @@
                             <div class="dropdown">
                                 <button class="dropbtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                 <div class="dropdown-content">
-                                <!-- <button (click)="editPost(post.userID, post.postID)">Edit Post</button> -->
-                                <!-- <button (click)="deletePost(post.postID, post.userID)">Delete Post</button> -->
+                                <button (click)="editPost(post.userID, post.postID)">Edit Post</button>
+                                <button (click)="deletePost(post.postID, post.userID)">Delete Post</button>
                                 </div>
                             </div>
                         </div>
@@ -50,10 +50,11 @@
                     <!--ACTIONS END-->
 
                     <!--COMMENT INPUT FIELD-->
-                    <div class="flex justify-between items-center">
+                    <div class="one flex justify-between items-center">
                         <input
                         type="text"
                         placeholder="Type your comments"
+                        [(ngModel)]="newcommentText"
                         class="py-1.5"
                         />
                         <button type="submit" class="comment outline-none" (click)="onSubmitComment(post.postID)">
@@ -64,37 +65,34 @@
 
                     <!--COMMENTS container-->
                     <div class="postcomments p-2">
-                        <div class="py-2" >
-                        <p class="font-bold">fullname</p>
-                        <p>comment</p>
-                        <!--REPLY CONTAINER-->
-                        <button
-                            (click)="toggleReply()"
-                            class="text-[#6B7280] text-[13px] text-right"
-                        >
-                            Reply
-                        </button>
-                        <button  class="text-[#6B7280] text-[13px] mx-8">Edit</button>
-                        <button class="text-[#6B7280] text-[13px]">Delete</button>
-
-                        <div class="reply-container flex justify-between items-center py-2">
-                            <input type="text"placeholder="Type your reply" class="py-1.0"/>
-                            <button type="submit" class="comment outline-none">
-                            <i class="fa-solid fa-paper-plane"></i>
+                        <div class="py-2" *ngFor="let comment of fetchedComments">
+                            <p class="font-bold">{{comment.fullname}}</p>
+                            <p>{{comment.comment}}</p>
+                            <!--REPLY CONTAINER-->
+                            <button (click)="toggleReply(comment.commentID, comment.postID, comment.userID, comment.parentCommentID)" class="text-[#6B7280] text-[13px] text-right">
+                                Reply
                             </button>
-                        </div>
+                            <button (click)="editComment(comment.commentID, comment.postID, comment.userID)" class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+                            <button (click)="deleteComment(comment.commentID, comment.postID, comment.userID)" class="text-[#6B7280] text-[13px]">Delete</button>
 
-                        <!-- EDIT INPUT FIELD -->
-                        <div  class="reply-container flex justify-between items-center py-2">
-                            <input type="text" class="py-1.0" />
-                            <button  class="comment outline-none">
-                            <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-                        </div>
-                        
+                            <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
+                                <input [(ngModel)]="newReplyText" type="text"placeholder="Type your reply" class="py-1.0"/>
+                                <button type="submit" class="comment outline-none">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </div>
+
+                            <!-- EDIT INPUT FIELD -->
+                            <div *ngIf="iseditCommentVisible" class="reply-container flex justify-between items-center py-2">
+                                <input [(ngModel)]="editedCommentText" type="text" class="py-1.0" placeholder="edit your comment"/>
+                                <button  class="comment outline-none">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <!---COMENTS CONTAINER END-->
+
 
 
 

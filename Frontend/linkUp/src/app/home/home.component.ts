@@ -153,7 +153,7 @@ export class HomeComponent {
   }
 
   //EDIT POST
-  editPost(userID: string, postID: string) {
+  editPost(userID: string, postID: string) {    
     const currentuserID = localStorage.getItem('userID');
 
     if (currentuserID === userID) {

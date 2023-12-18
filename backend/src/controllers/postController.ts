@@ -11,11 +11,12 @@ import {
   validateUpdatePost,
   validateUserPostID,
 } from "../Validators/post";
-import { Post, Comment } from "../interface/post";
+import { Post, Comment, replyCommentBody } from "../interface/post";
 import { execute, query } from "../helpers/dbHelper";
 import {
   validateComment,
   validateCommentId,
+  validateReplyComment,
   validateUpdateComment,
 } from "../Validators/comment";
 import { isEmpty } from "lodash";
@@ -199,6 +200,7 @@ export const createComment = async (req: Request, res: Response) => {
     res.send((error as Error).message);
   }
 };
+
 //UPDATE COMMENT
 export const updateComment = async (req: Request, res: Response) => {
   try {
@@ -233,10 +235,13 @@ export const updateComment = async (req: Request, res: Response) => {
     });
   }
 };
+
 //DELETE COMMENT
 export const deleteComment = async (req: Request, res: Response) => {
   try {
     const commentID = req.params.ID;
+    console.log(commentID);
+    
     if (!commentID) return res.status(400).send({ error: "Id is required" });
 
     const { error } = validateCommentId.validate({ commentID });
@@ -291,6 +296,35 @@ export const getPostComments = async (req: Request, res: Response) => {
   } catch (error) {
     console.log(error);
     res.status(404).send({ message: "internal server error" });
+  }
+};
+
+//REPLY ON A COMMENT
+export const replyComment = async (req: Request, res: Response) => {
+  try {
+    const { parentCommentID, comment, userID, postID } = req.body;
+
+    const { error } = validateReplyComment.validate(req.body);
+
+    if (error)
+      return res.status(400).send({ error: "please place correct details" });
+
+    const newReplyComment: replyCommentBody = {
+      commentID: v4(),
+      parentCommentID,
+      comment,
+      postID,
+      userID,
+    };
+
+    const procedure = "createReplyComment";
+    const params = newReplyComment;
+
+    await execute(procedure, params);
+    return res.send({ message: "comment created successfully" });
+  } catch (error) {
+    console.log(error);
+    res.send((error as Error).message);
   }
 };
 
