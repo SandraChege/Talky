@@ -148,11 +148,13 @@ export class HomeComponent {
       });
       this.allPosts.forEach((post) => {
         this.getLikesCount(post.postID);
-        // console.log(post.postID);
+        console.log(post.postID);
       });
     });
   }
+  
 
+  
   //EDIT POST
   editPost(userID: string, postID: string) {    
     const currentuserID = localStorage.getItem('userID');
@@ -297,6 +299,7 @@ export class HomeComponent {
       // this.fetchAllPosts();
     });
   }
+  
   //GET LIKES COUNT
   getLikesCount(postID: string) {
     this.postService.getLikesCount(postID)?.subscribe((response) => {

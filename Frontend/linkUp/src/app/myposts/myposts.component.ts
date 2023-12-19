@@ -1,5 +1,5 @@
 import { Component, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UploadService } from '../services/cloudinary/upload.service';
 import { PostService } from '../services/post.service';
 import { RegisterService } from '../services/register.service';
@@ -14,14 +14,19 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['./myposts.component.css'],
 })
 export class MypostsComponent {
+  replyForm!: FormGroup;
+  editPostForm!: FormGroup;
+  imageurl = '';
+  files: any[] = [];
   showReply: boolean = false;
   iseditCommentVisible: boolean = false;
+  isUpdateFormVisible: boolean = false;
   post: singlePost[] = [];
   newcommentText: string = '';
   newReplyText: string = '';
   fetchedComments: fetchAllComments[] = [];
   editedCommentText: string = '';
-  replyForm!: FormGroup;
+  likecount = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,10 +44,21 @@ export class MypostsComponent {
         this.fetchAllCommentsByPostId(postID);
       }
     });
+
     this.replyForm = this.formBuilder.group({
       reply: ['', Validators.required],
     });
+
+    this.editPostForm = this.formBuilder.group({
+      image: ['', Validators.required],
+      content: ['', Validators.required]
+    });
   }
+
+  hideform() {
+    this.isUpdateFormVisible = false;
+  }
+
   // LIKE AND UNLIKE POST
   toggleLike(postID: string) {
     console.log(postID);
@@ -75,8 +91,48 @@ export class MypostsComponent {
     });
   }
 
+  onSelectPostImage(event: any) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+
+    if (this.files) {
+      const data = new FormData();
+      const file_data = this.files;
+
+      data.append('file', file_data[0]);
+      data.append('upload_preset', 'x1zwskyt');
+      data.append('cloud_name', 'dg5qb7ntu');
+
+      this.upload.uploadImage(data).subscribe((res) => {
+        console.log(res.secure_url);
+        this.imageurl = res.secure_url;
+      });
+    }
+  }
+
+  onRemovePostImage(event: any) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
   //EDIT SINGLE POST
-  editPost(userID: string, postID: string) {}
+  editPost(userID: string, postID: string) {
+    this.isUpdateFormVisible = true;
+
+    this.postService.fetchPostByID(postID)?.subscribe((response) => {
+      this.post = response;
+      console.log(this.post);
+
+      this.editPostForm.patchValue({
+        image: this.post[0].imageUrl,
+        content: this.post[0].postContent,
+      });
+
+      // this.imageurl = this.userDetails.profileUrl;
+    });
+    
+  }
+  updatePost() {}
 
   //DELETE POST
   deletePost(postID: string, userID: string) {
@@ -93,12 +149,14 @@ export class MypostsComponent {
   fetchAllCommentsByPostId(postID: string) {
     this.postService.getCommentsByPostId(postID)?.subscribe((response: any) => {
       this.fetchedComments = response;
+      this.likecount = this.fetchedComments.length;
       console.log(this.fetchedComments);
     });
   }
+
   //REPLY TO A COMMENT
   replycomment() {
-    if (this.replyForm.valid){
+    if (this.replyForm.valid) {
       const formValue = this.replyForm.value;
       console.log(formValue);
     }
@@ -109,7 +167,7 @@ export class MypostsComponent {
     commentID: string,
     postID: string,
     userID: string,
-    parentCommentID: string,
+    parentCommentID: string
     // formValue: any
   ) {
     console.log('clicked me');
@@ -117,10 +175,9 @@ export class MypostsComponent {
     this.showReply = true;
 
     // setTimeout(() => {
-      const formValue = this.replyForm.value;
-      console.log(formValue);
+    const formValue = this.replyForm.value;
+    console.log(formValue);
     // }, 30000);
-    
 
     // this.postService.replyComment(commentID, postID, this.newReplyText)?.subscribe((response) => {
     //   console.log(response);
@@ -133,6 +190,7 @@ export class MypostsComponent {
   //EDIT COMMENTS
   editComment(commentID: string, postID: string, userID: string) {
     this.showReply = false;
+    this.iseditCommentVisible = true;
     const currentuserID = localStorage.getItem('userID');
   }
 

@@ -22,6 +22,7 @@ export class ProfileComponent {
   viewposts = true;
   files: any[] = [];
   imageurl = '';
+  numPosts = 0;
 
   user: any;
   userDetails: any;
@@ -116,7 +117,7 @@ export class ProfileComponent {
   //UPDATE USER PROFILE
 
   populateForm() {
-        this.register.getuser().subscribe((response) => {
+    this.register.getuser().subscribe((response) => {
       this.user = response;
       this.userDetails = this.user.user;
       // console.log(this.userDetails);
@@ -164,6 +165,7 @@ export class ProfileComponent {
     this.post.fetchPostByUserID()?.subscribe((response) => {
       this.allposts = response;
       console.log(this.allposts);
+      this.numPosts = this.allposts.length
     });
   }
 }

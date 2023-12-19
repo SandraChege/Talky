@@ -17,11 +17,13 @@ export class FollowersComponent {
 
   followers: followers[] = [];
   user!: any;
+  Followersnumber = 0
 
   getAllFollowers() {
     this.register.getFollowers()?.subscribe((response) => {
       this.followers = response;
       console.log(this.followers);
+      this.Followersnumber = this.followers.length      
     });
   }
 }

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class UploadService {
   constructor(private http: HttpClient) {}
 
+  //DG5QB7NTU CLUD NAME
   uploadImage(vals: any): Observable<any> {
     let data = vals;
     return this.http.post(
