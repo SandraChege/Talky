@@ -1,5 +1,10 @@
 import { Component, EventEmitter } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { UploadService } from '../services/cloudinary/upload.service';
 import { PostService } from '../services/post.service';
 import { RegisterService } from '../services/register.service';
@@ -7,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { singlePost } from '../interface/post';
 import { fetchAllComments } from '../interface/comment';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { post } from 'cypress/types/jquery';
 
 @Component({
   selector: 'app-myposts',
@@ -16,7 +22,9 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 export class MypostsComponent {
   replyForm!: FormGroup;
   editPostForm!: FormGroup;
+  editCommentForm!: FormGroup;
   imageurl = '';
+  postid = '';
   files: any[] = [];
   showReply: boolean = false;
   iseditCommentVisible: boolean = false;
@@ -27,6 +35,10 @@ export class MypostsComponent {
   fetchedComments: fetchAllComments[] = [];
   editedCommentText: string = '';
   likecount = 0;
+  commentid = '';
+  userid = '';
+  parentcommentid = '';
+  replycommentcontext = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,9 +61,13 @@ export class MypostsComponent {
       reply: ['', Validators.required],
     });
 
+    this.editCommentForm = this.formBuilder.group({
+      reply: ['', Validators.required],
+    });
+
     this.editPostForm = this.formBuilder.group({
       image: ['', Validators.required],
-      content: ['', Validators.required]
+      content: ['', Validators.required],
     });
   }
 
@@ -118,6 +134,7 @@ export class MypostsComponent {
   //EDIT SINGLE POST
   editPost(userID: string, postID: string) {
     this.isUpdateFormVisible = true;
+    this.postid = postID;
 
     this.postService.fetchPostByID(postID)?.subscribe((response) => {
       this.post = response;
@@ -128,11 +145,30 @@ export class MypostsComponent {
         content: this.post[0].postContent,
       });
 
-      // this.imageurl = this.userDetails.profileUrl;
+      this.imageurl = this.post[0].imageUrl;
+      console.log(this.imageurl);
     });
-    
   }
-  updatePost() {}
+  updatePost() {
+    if (this.editPostForm.value) {
+      const postDetails = {
+        imageUrl: this.imageurl, // Assuming you want to concatenate image URLs
+        postContent: this.editPostForm.value.content,
+        postID: this.postid,
+        userID: localStorage.getItem('userID'),
+      };
+
+      console.log(postDetails);
+
+      this.postService.editPost(postDetails)?.subscribe((response) => {
+        console.log('updated post:', response);
+        this.isUpdateFormVisible = false;
+        this.viewSinglePost(this.postid);
+      });
+    } else {
+      console.log('data is not valid');
+    }
+  }
 
   //DELETE POST
   deletePost(postID: string, userID: string) {
@@ -155,43 +191,72 @@ export class MypostsComponent {
   }
 
   //REPLY TO A COMMENT
-  replycomment() {
-    if (this.replyForm.valid) {
-      const formValue = this.replyForm.value;
-      console.log(formValue);
-    }
-  }
-
-  //REPLY TO A COMMENT
   toggleReply(
     commentID: string,
     postID: string,
     userID: string,
     parentCommentID: string
-    // formValue: any
   ) {
-    console.log('clicked me');
-    this.iseditCommentVisible = false;
-    this.showReply = true;
+    if (parentCommentID !== '') {
+      console.log('clicked me');
+      console.log(commentID);
 
-    // setTimeout(() => {
-    const formValue = this.replyForm.value;
-    console.log(formValue);
-    // }, 30000);
+      this.iseditCommentVisible = false;
+      this.showReply = true;
+      this.postid = postID;
+      this.userid = userID;
+      this.parentcommentid = commentID;
+      console.log(this.parentcommentid);
+    }
+  }
 
-    // this.postService.replyComment(commentID, postID, this.newReplyText)?.subscribe((response) => {
-    //   console.log(response);
-    //   this.newReplyText = ''
-    //   this.showReply = false
-    //   this.fetchAllCommentsByPostId(postID)
-    // })
+  replycomment() {
+    if (this.replyForm.valid) {
+      const formValue = this.replyForm.value;
+      this.replycommentcontext = formValue.reply;
+    }
+    const replyBody = {
+      comment: this.replycommentcontext,
+      userID: this.userid,
+      postID: this.postid,
+      parentCommentID: this.parentcommentid,
+    };
+    console.log(replyBody);
+
+    this.postService.replyComment(replyBody)?.subscribe((response) => {
+      console.log(response);
+    });
   }
 
   //EDIT COMMENTS
   editComment(commentID: string, postID: string, userID: string) {
     this.showReply = false;
-    this.iseditCommentVisible = true;
+
     const currentuserID = localStorage.getItem('userID');
+    if (currentuserID === userID) {
+      this.iseditCommentVisible = true;
+      this.postid = postID;
+      this.userid = userID;
+      this.commentid = commentID;
+    }
+  }
+  editcomments() {
+    if (this.editCommentForm.valid) {
+      const formValue = this.editCommentForm.value;
+      this.replycommentcontext = formValue.reply;
+    }
+    const replyBody = {
+      comment: this.replycommentcontext,
+      userID: this.userid,
+      postID: this.postid,
+      commentID: this.commentid,
+    };
+    console.log(replyBody);
+
+    this.postService.editusercomments(replyBody)?.subscribe((response) => {
+      console.log(response);
+      this.viewSinglePost(this.postid)
+    });
   }
 
   //DELETE COMMENT

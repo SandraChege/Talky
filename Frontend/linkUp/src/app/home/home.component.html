@@ -84,27 +84,32 @@
               <p>{{comment.comment}}</p>
               <!--REPLY CONTAINER-->
               <button
-                (click)="toggleReply()"
+                (click)="toggleReply(comment.commentID, comment.postID, comment.userID, comment.parentCommentID)"
                 class="text-[#6B7280] text-[13px] text-right"
               >
                 Reply
               </button>
-              <button (click)="editComment(comment.userID, comment.postID, comment.commentID)" class="text-[#6B7280] text-[13px] mx-8">Edit</button>
+              <button (click)="editComment(comment.commentID, comment.postID, comment.userID)" class="text-[#6B7280] text-[13px] mx-8">Edit</button>
               <button class="text-[#6B7280] text-[13px]" (click)="deleteComment(comment.commentID, comment.postID, comment.userID)">Delete</button>
 
+              <!--REPLY TO A COMMENT-->
               <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
-                <input type="text"placeholder="Type your reply" class="py-1.0"/>
-                <button type="submit" class="comment outline-none">
-                  <i class="fa-solid fa-paper-plane"></i>
-                </button>
+                <form [formGroup] = "replyForm" (ngSubmit)="replycomment()" class="flex">
+                  <input [(ngModel)]="newReplyText" type="text" formControlName="reply" placeholder="Type your reply" class="py-1.0"/>
+                  <button type="submit" class="comment outline-none">
+                    <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+                </form>
               </div>
 
-               <!-- EDIT INPUT FIELD -->
+              <!-- EDIT INPUT FIELD -->
               <div *ngIf="iseditCommentVisible" class="reply-container flex justify-between items-center py-2">
-                <input [(ngModel)]="editedCommentText" type="text" class="py-1.0" />
-                <button (click)="saveEdit()" class="comment outline-none">
-                  <i class="fa-solid fa-paper-plane"></i>
-                </button>
+                <form [formGroup] = "editCommentForm" (ngSubmit)="editcomments()" class="flex">
+                  <input [(ngModel)]="editedCommentText" formControlName="reply" type="text" class="py-1.0" placeholder="edit your comment"/>
+                  <button  class="comment outline-none">
+                    <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+                </form>
               </div>
              
             </div>

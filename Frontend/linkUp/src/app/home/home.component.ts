@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 import { UploadService } from '../services/cloudinary/upload.service';
 import { RegisterService } from '../services/register.service';
 import { getAllUsers } from '../interface/user';
@@ -15,6 +20,8 @@ import { Comment } from '../interface/comment';
 })
 export class HomeComponent {
   addPostForm!: FormGroup;
+  replyForm!: FormGroup;
+  editCommentForm!: FormGroup;
   files: any[] = [];
   allusers: getAllUsers[] = [];
   allPosts: any[] = [];
@@ -29,6 +36,12 @@ export class HomeComponent {
   postLikeCount = 0;
   userID = localStorage.getItem('userID');
   storedUser: string | null = localStorage.getItem('user_details');
+  newReplyText: string = '';
+  postid = '';
+  commentid = '';
+  userid = '';
+  parentcommentid = '';
+  replycommentcontext = '';
 
   ngOnInit() {
     this.getAllUsers();
@@ -38,19 +51,21 @@ export class HomeComponent {
   constructor(
     private upload: UploadService,
     private register: RegisterService,
-    private postService: PostService
+    private postService: PostService,
+    private formBuilder: FormBuilder
   ) {
     this.addPostForm = new FormGroup({
       image: new FormControl([]),
       content: new FormControl('', Validators.required),
     });
 
-    // if (this.storedUser) {
-    //   const user = JSON.parse(this.storedUser);
-    //   this.userID = user.userID;
-    // } else {
-    //   console.error('User details not found in local storage');
-    // }
+    this.replyForm = this.formBuilder.group({
+      reply: ['', Validators.required],
+    });
+
+    this.editCommentForm = this.formBuilder.group({
+      reply: ['', Validators.required],
+    });
   }
 
   onSelectPostImage(event: any) {
@@ -72,10 +87,6 @@ export class HomeComponent {
     this.isUpdateFormVisible = false;
   }
 
-  // newPost() {}
-  toggleReply() {
-    this.showReply = true;
-  }
   //CREATE POST
   newPost() {
     // Your logic to share the post
@@ -152,11 +163,9 @@ export class HomeComponent {
       });
     });
   }
-  
 
-  
   //EDIT POST
-  editPost(userID: string, postID: string) {    
+  editPost(userID: string, postID: string) {
     const currentuserID = localStorage.getItem('userID');
 
     if (currentuserID === userID) {
@@ -171,7 +180,7 @@ export class HomeComponent {
       });
     }
   }
-  
+
   //DELETE POST
   deletePost(postID: string, userID: string) {
     console.log(userID);
@@ -204,7 +213,7 @@ export class HomeComponent {
       }
     });
   }
-  
+
   //FETCH USERNAME BY THEIR ID
   fetchUsernameById(userID: string) {
     const userIndex = this.allusers.findIndex((user) => user.userID === userID);
@@ -226,51 +235,6 @@ export class HomeComponent {
         this.fetchAllCommentsByPostId(postID);
         this.newcommentText = '';
       });
-  }
-
-  //EDIT COMMENT
-  editComment(userID: string, postID: string, commentID: string) {
-    // console.log(userID);
-    // console.log(postID);
-    // console.log(commentID);
-    const currentUser = localStorage.getItem('userID');
-
-    for (const post of this.allPosts) {
-      const foundComment = post.comments.find(
-        (comment: Comment) => comment.commentID === commentID
-      );
-      if (foundComment && foundComment.userID === currentUser) {
-        // console.log(foundComment);
-
-        this.currentComment = foundComment;
-        this.iseditCommentVisible = true;
-        this.editedCommentText = this.currentComment.comment;
-        // console.log(this.editedCommentText);
-        
-        break;
-      }
-    }
-  }
-  saveEdit() {
-    if (this.editedCommentText) {
-      console.log(this.editedCommentText);
-
-      this.postService
-        .editComment(
-          this.currentComment.userID,
-          this.currentComment.postID,
-          this.currentComment.commentID,
-          this.editedCommentText
-        )
-        ?.subscribe((response) => {
-          console.log(response);
-          // Update comment text
-          this.currentComment.comment = this.editedCommentText;
-          // Reset editingComment and editedCommentText
-          this.iseditCommentVisible = false;
-          this.editedCommentText = '';
-        });
-    }
   }
 
   //DELETE COMMENT
@@ -299,7 +263,7 @@ export class HomeComponent {
       // this.fetchAllPosts();
     });
   }
-  
+
   //GET LIKES COUNT
   getLikesCount(postID: string) {
     this.postService.getLikesCount(postID)?.subscribe((response) => {
@@ -312,6 +276,78 @@ export class HomeComponent {
   getAllUsers() {
     this.register.fetchAllUsers()?.subscribe((response: any) => {
       this.allusers = response.users;
+    });
+  }
+
+  //EDIT COMMENTS
+  editComment(commentID: string, postID: string, userID: string) {
+    this.showReply = false;
+
+    const currentuserID = localStorage.getItem('userID');
+    if (currentuserID === userID) {
+      this.iseditCommentVisible = true;
+      this.postid = postID;
+      this.userid = userID;
+      this.commentid = commentID;
+    }
+  }
+  editcomments() {
+    if (this.editCommentForm.valid) {
+      const formValue = this.editCommentForm.value;
+      this.replycommentcontext = formValue.reply;
+    }
+    const replyBody = {
+      comment: this.replycommentcontext,
+      userID: this.userid,
+      postID: this.postid,
+      commentID: this.commentid,
+    };
+    console.log(replyBody);
+
+    this.postService.editusercomments(replyBody)?.subscribe((response) => {
+      console.log(response);
+      this.iseditCommentVisible = false;
+      this.fetchAllCommentsByPostId(this.postid);
+    });
+  }
+
+  //REPLY TO A COMMENT
+  toggleReply(
+    commentID: string,
+    postID: string,
+    userID: string,
+    parentCommentID: string
+  ) {
+    if (parentCommentID !== '') {
+      console.log('clicked me');
+      console.log(commentID);
+
+      this.iseditCommentVisible = false;
+      this.showReply = true;
+      this.postid = postID;
+      this.userid = userID;
+      this.parentcommentid = commentID;
+      console.log(this.parentcommentid);
+    }
+  }
+
+  replycomment() {
+    if (this.replyForm.valid) {
+      const formValue = this.replyForm.value;
+      this.replycommentcontext = formValue.reply;
+    }
+    const replyBody = {
+      comment: this.replycommentcontext,
+      userID: this.userid,
+      postID: this.postid,
+      parentCommentID: this.parentcommentid,
+    };
+    console.log(replyBody);
+
+    this.postService.replyComment(replyBody)?.subscribe((response) => {
+      console.log(response);
+      this.showReply = false;
+      this.fetchAllCommentsByPostId(this.postid);
     });
   }
 }

@@ -77,7 +77,7 @@
 
                             <!--REPLY TO A COMMENT-->
                             <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
-                                <form action="" [formGroup] = "replyForm" (ngSubmit)="replycomment()" class="flex">
+                                <form [formGroup] = "replyForm" (ngSubmit)="replycomment()" class="flex">
                                     <input [(ngModel)]="newReplyText" type="text" formControlName="reply" placeholder="Type your reply" class="py-1.0"/>
                                     <button type="submit" class="comment outline-none">
                                     <i class="fa-solid fa-paper-plane"></i>
@@ -87,17 +87,19 @@
 
                             <!-- EDIT INPUT FIELD -->
                             <div *ngIf="iseditCommentVisible" class="reply-container flex justify-between items-center py-2">
-                                <input [(ngModel)]="editedCommentText" type="text" class="py-1.0" placeholder="edit your comment"/>
-                                <button  class="comment outline-none">
-                                <i class="fa-solid fa-paper-plane"></i>
-                                </button>
+                                <form [formGroup] = "editCommentForm" (ngSubmit)="editcomments()" class="flex">
+                                    <input [(ngModel)]="editedCommentText" formControlName="reply" type="text" class="py-1.0" placeholder="edit your comment"/>
+                                    <button  class="comment outline-none">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <!---COMENTS CONTAINER END-->
                 </div>
 
-                 <!--UPDATE FROM CONTAINER-->
+                 <!--UPDATE POST FORM CONTAINER-->
                     <div class="postform overlay" *ngIf="isUpdateFormVisible">
                         <div class="container">
                             <div class="btns flex justify-end py-2">
