@@ -1,11 +1,12 @@
 import { Component, EventEmitter } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UploadService } from '../services/cloudinary/upload.service';
 import { PostService } from '../services/post.service';
 import { RegisterService } from '../services/register.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { singlePost } from '../interface/post';
 import { fetchAllComments } from '../interface/comment';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-myposts',
@@ -18,9 +19,9 @@ export class MypostsComponent {
   post: singlePost[] = [];
   newcommentText: string = '';
   newReplyText: string = '';
-  // newReplyTextChange: EventEmitter<string> = new EventEmitter<string>();
   fetchedComments: fetchAllComments[] = [];
   editedCommentText: string = '';
+  replyForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,6 +38,9 @@ export class MypostsComponent {
         this.viewSinglePost(postID);
         this.fetchAllCommentsByPostId(postID);
       }
+    });
+    this.replyForm = this.formBuilder.group({
+      reply: ['', Validators.required],
     });
   }
   // LIKE AND UNLIKE POST
@@ -92,19 +96,31 @@ export class MypostsComponent {
       console.log(this.fetchedComments);
     });
   }
+  //REPLY TO A COMMENT
+  replycomment() {
+    if (this.replyForm.valid){
+      const formValue = this.replyForm.value;
+      console.log(formValue);
+    }
+  }
 
   //REPLY TO A COMMENT
   toggleReply(
     commentID: string,
     postID: string,
     userID: string,
-    parentCommentID: string
+    parentCommentID: string,
+    // formValue: any
   ) {
     console.log('clicked me');
-
     this.iseditCommentVisible = false;
     this.showReply = true;
 
+    // setTimeout(() => {
+      const formValue = this.replyForm.value;
+      console.log(formValue);
+    // }, 30000);
+    
 
     // this.postService.replyComment(commentID, postID, this.newReplyText)?.subscribe((response) => {
     //   console.log(response);

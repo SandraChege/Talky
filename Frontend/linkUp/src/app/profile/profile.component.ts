@@ -4,6 +4,7 @@ import { RegisterService } from '../services/register.service';
 import { UploadService } from '../services/cloudinary/upload.service';
 import { PostService } from '../services/post.service';
 import { allposts } from '../interface/post';
+import { gte } from 'cypress/types/lodash';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,7 @@ export class ProfileComponent {
   isFavourite3: boolean = false;
   viewposts = true;
   files: any[] = [];
+  imageurl = '';
 
   user: any;
   userDetails: any;
@@ -30,6 +32,7 @@ export class ProfileComponent {
   ngOnInit() {
     this.getUserProfile();
     this.getPostsByUserID();
+    this.populateForm();
   }
 
   constructor(
@@ -40,7 +43,7 @@ export class ProfileComponent {
   ) {
     this.profileForm = this.formBuilder.group({
       fullName: ['', Validators.required],
-      profileUrl: [],
+      profileUrl: [''],
       profileCaption: ['', Validators.required],
     });
   }
@@ -72,6 +75,20 @@ export class ProfileComponent {
   onSelectPostImage(event: any) {
     console.log(event);
     this.files.push(...event.addedFiles);
+
+    if (this.files) {
+      const data = new FormData();
+      const file_data = this.files;
+
+      data.append('file', file_data[0]);
+      data.append('upload_preset', 'x1zwskyt');
+      data.append('cloud_name', 'dg5qb7ntu');
+
+      this.upload.uploadImage(data).subscribe((res) => {
+        console.log(res.secure_url);
+        this.imageurl = res.secure_url
+      });
+    }
   }
 
   onRemovePostImage(event: any) {
@@ -79,30 +96,16 @@ export class ProfileComponent {
     this.files.splice(this.files.indexOf(event), 1);
   }
 
-  // updateProfile() {
-  //   this.isProfileFormVisible = true;
-  //   this.register.getuser().subscribe((response) => {
-  //     this.user = response;
-  //     this.userDetails = this.user.user;
-  //     // console.log(this.userDetails);
-
-  //     this.profileForm.patchValue({
-  //       fullname: this.userDetails.fullname,
-  //       profileUrl: this.userDetails.profileUrl,
-  //       profileCaption: this.userDetails.profileCaption,
-  //     });
-  //   });
-  // }
-
   hideform() {
     this.isFormVisible = false;
     this.isFollowersVisible = false;
     this.isProfileFormVisible = false;
   }
+
   //FETCH USER PROFILE
   getUserProfile() {
     this.register.getuser().subscribe((response) => {
-      console.log(response);
+      // console.log(response);
 
       this.user = response;
       this.userDetails = this.user.user;
@@ -111,52 +114,47 @@ export class ProfileComponent {
   }
 
   //UPDATE USER PROFILE
-  updateProfile() {
-    this.isProfileFormVisible = true;
-    this.register.getuser().subscribe((response) => {
+
+  populateForm() {
+        this.register.getuser().subscribe((response) => {
       this.user = response;
       this.userDetails = this.user.user;
       // console.log(this.userDetails);
+
       this.profileForm.patchValue({
         fullName: this.userDetails.fullname,
         profileCaption: this.userDetails.profileCaption,
         profileUrl: this.userDetails.profileUrl,
       });
+          
+      this.imageurl = this.userDetails.profileUrl
     });
-    // console.log(this.profileForm.value);
+  }
 
-    this.profileForm.value.profileUrl = this.files;
-    if (this.profileForm.valid) {
-      const imageUrls: string[] = [];
+  updateProfile() {
+    this.isProfileFormVisible = true;
 
-      // Upload all images
-      for (let index = 0; index < this.files.length; index++) {
-        const data = new FormData();
-        const file_data = this.files[index];
-        data.append('file', file_data);
-        data.append('upload_preset', 'x1zwskyt');
-        data.append('cloud_name', 'dg5qb7ntu');
 
-        console.log('data is ', data);
-        this.upload.uploadImage(data).subscribe((res) => {
-          imageUrls.push(res.secure_url);
+    console.log(this.imageurl);
+    // this.profileForm.value.profileUrl = this.files;
 
-          // Check if all images are uploaded before making the post request
-          if (imageUrls.length === this.files.length) {
-            const profileDetails = {
-              imageUrl: imageUrls.join(','),
-              fullname: this.profileForm.value.fullname,
-              profileCaption: this.profileForm.value.profileCaption,
-            };
-            this.register
-              .updateProfile(profileDetails)
-              ?.subscribe((response) => {
-                console.log(response);
-              });
-          }
-        });
-      }
-    } else {
+    if (this.profileForm.value.fullName ) {
+      const profileDetails = {
+        profileUrl: this.imageurl, // Assuming you want to concatenate image URLs
+        profileCaption: this.profileForm.value.profileCaption,
+        fullname: this.profileForm.value.fullName,
+        userID: localStorage.getItem('userID'),
+      };
+
+      console.log(profileDetails);
+
+      this.register.updateProfile(profileDetails)?.subscribe((response) => {
+        console.log('Profile updated successfully', response);
+        this.isProfileFormVisible = false;
+        this.populateForm()
+      });
+    
+  } else {
       console.log('data is not valid');
     }
   }

@@ -190,18 +190,17 @@ export class RegisterService {
   updateProfile(profile: any) {
     const token = localStorage.getItem('token');
     const userID = localStorage.getItem('userID');
+    console.log(profile);
 
     if (token) {
-      return this.http.put(
-        'http://localhost:4500/post/update',
-        { profile, userID },
+      return this.http.put('http://localhost:4500/user/updateuser',
+        profile,
         {
-          headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            token: token,
-          }),
-        }
-      );
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          token: token,
+        }),
+      });
     } else {
       return null;
     }

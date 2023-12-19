@@ -76,10 +76,12 @@
                             <button (click)="deleteComment(comment.commentID, comment.postID, comment.userID)" class="text-[#6B7280] text-[13px]">Delete</button>
 
                             <div *ngIf="showReply" class="reply-container flex justify-between items-center py-2">
-                                <input [(ngModel)]="newReplyText" type="text"placeholder="Type your reply" class="py-1.0"/>
-                                <button type="submit" class="comment outline-none">
-                                <i class="fa-solid fa-paper-plane"></i>
-                                </button>
+                                <form action="" [formGroup] = "replyForm" (ngSubmit)="replycomment()" class="flex">
+                                    <input [(ngModel)]="newReplyText" type="text" formControlName="reply" placeholder="Type your reply" class="py-1.0"/>
+                                    <button type="submit" class="comment outline-none">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
+                                </form>
                             </div>
 
                             <!-- EDIT INPUT FIELD -->
