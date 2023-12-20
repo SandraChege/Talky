@@ -1,9 +1,9 @@
-<div><!--Adds  height-->
+<div><!--Adds data-cy="updateProfile" height-->
     <app-navbar></app-navbar>
     <div class="profilecontainer  flex ml-[10vw] w-[90vw] text-black text-base">
         <div class="profile text-base">
             <!--username and image-->
-            <div class="top flex p-[10px] gap-x-4">
+            <div class="top flex p-[10px] gap-x-4" data-cy="profiletop1">
                 <div class="image">
                     <img src="{{userDetails.profileUrl}}" alt="">
                 </div>
@@ -11,16 +11,16 @@
                     <p class="py-1">Hello, <span>{{userDetails.fullname}}</span></p>
                     <p class="py-1">{{userDetails.username}}</p>
                     <p class="py-4">{{userDetails.profileCaption}}</p>
-                    <button (click)="isProfileFormVisible=true" class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Edit Profile</button>
+                    <button data-cy="updateProfile" (click)="isProfileFormVisible=true" class="rounded-[10px] border-solid border-[1px] bg-[#7e22ce] border-[#7e22ce] outline-none px-4 py-[8px] hover:cursor-pointer text-white">Edit Profile</button>
                 </div>
             </div>
-            <div class="total flex justify-around">
+            <div class="total flex justify-around" data-cy="profiletop2">
                 <button (click)="viewmyposts()" [class.active]="isFavourite1">Posts:<span class="px-2">{{numPosts}}</span></button>
                 <button (click) = "viewFollowers()" [class.active]="isFavourite2" class="hover:text-[#0000FF] hover:text-bold hover:text-[18px]">Followers: <span class="px-2">2</span></button>
                 <button (click) = "viewFollowing()" [class.active]="isFavourite3" class="hover:text-[#8800FF] hover:text-bold hover:text-[18px]">Following: <span class="px-2">2</span></button>
             </div>
             <!-- POST CONTAINER -->
-            <div class="myposts" *ngIf="viewposts">
+            <div data-cy="myposts" class="myposts" *ngIf="viewposts">
                <div *ngFor="let post of allposts">
                     <div>
                         <button>
@@ -44,7 +44,7 @@
        
 
         <!--Profile form-->
-        <div class="profileform overlay" *ngIf="isProfileFormVisible">
+        <div data-cy="profileform" class="profileform overlay" *ngIf="isProfileFormVisible">
             <div class="container text-black">
                 <form [formGroup] = "profileForm" (ngSubmit)="updateProfile()">
                     <div class="closeicon"><button (click)="hideform()"><i class="fa-solid fa-xmark"></i></button></div>

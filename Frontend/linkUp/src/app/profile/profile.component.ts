@@ -134,8 +134,7 @@ export class ProfileComponent {
 
   updateProfile() {
     this.isProfileFormVisible = true;
-
-
+    
     console.log(this.imageurl);
     // this.profileForm.value.profileUrl = this.files;
 

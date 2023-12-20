@@ -35,3 +35,21 @@
 //     }
 //   }
 // }
+
+/// <reference path="index.d.ts"/>
+//custom command for login
+Cypress.Commands.add('loginUser', () => {
+  cy.visit('/login');
+
+  it('login a user successfully', () => {
+    cy.visit('/login');
+
+    cy.get('[data-cy="userEmail"]').type('phillipwaiganjo@gmail.com');
+    cy.get('[data-cy="userPassword"]').type('12345678');
+
+    cy.get('[data-cy="login_user_btn"]').click();
+
+    cy.get('[data-cy="registered-success-popup"]');
+    cy.location('pathname').should('eq', '/home');
+  });
+});

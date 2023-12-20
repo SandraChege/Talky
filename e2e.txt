@@ -1,0 +1,5 @@
+messaging
+redo on posts
+followers and following
+like and unlike post count
+see profile on those folllowing and followers

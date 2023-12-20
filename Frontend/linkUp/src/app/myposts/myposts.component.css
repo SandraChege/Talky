@@ -44,7 +44,10 @@ img {
   overflow-y: scroll;
   height: 10rem;
 }
-.postcomments input[type=text]{
+.postcomments div form{
+  width: 100%;
+}
+.postcomments div form input[type=text]{
   width: 100%;
   outline: none;
   color: black;

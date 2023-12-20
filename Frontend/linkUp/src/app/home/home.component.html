@@ -24,7 +24,7 @@
       <!--DIVISION 2-->
 
       <!--MOCK POSTS START HERE-->
-      <div class="postcontainer flex flex-col text-black font-550 text-base rounded-[15px]" *ngFor="let post of allPosts">
+      <div data-cy="allPosts" class="postcontainer flex flex-col text-black font-550 text-base rounded-[15px]" *ngFor="let post of allPosts">
         <div class="post">
           <div class="flex justify-between">
             <p class="py-2 font-[550] text-base">{{post.creatorName}}</p>

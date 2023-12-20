@@ -1,4 +1,4 @@
-USE talky
+-- USE talky
 
 CREATE TABLE Users (
     userID VARCHAR(255) PRIMARY KEY,
@@ -20,4 +20,5 @@ CREATE TABLE Users (
 
 
 SELECT * FROM Users;
+
 DROP TABLE Users;

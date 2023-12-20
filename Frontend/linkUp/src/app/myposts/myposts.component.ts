@@ -225,6 +225,8 @@ export class MypostsComponent {
 
     this.postService.replyComment(replyBody)?.subscribe((response) => {
       console.log(response);
+      this.fetchAllCommentsByPostId(this.postid);
+      this.showReply = false;
     });
   }
 
@@ -255,7 +257,8 @@ export class MypostsComponent {
 
     this.postService.editusercomments(replyBody)?.subscribe((response) => {
       console.log(response);
-      this.viewSinglePost(this.postid)
+      this.fetchAllCommentsByPostId(this.postid);
+      this.iseditCommentVisible = false;
     });
   }
 

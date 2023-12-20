@@ -66,6 +66,14 @@ img {
   overflow-y: scroll;
   height: 10rem;
 }
+.postcomments div form{
+  width: 100%;
+}
+.postcomments div form input[type=text]{
+  width: 100%;
+  outline: none;
+  color: black;
+}
 .postcomments::-webkit-scrollbar {
   width: 5px; /* width of the entire scrollbar */
 }
