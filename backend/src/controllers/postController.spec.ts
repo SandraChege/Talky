@@ -5,6 +5,7 @@ import { execute, query } from "../helpers/dbHelper";
 
 import {
   createComment,
+  createPost,
   deleteComment,
   deletePost,
   replyComment,
@@ -126,7 +127,7 @@ describe("should create a comment", () => {
     });
   });
 
-  it("should edit a post", async() => {
+  it("should edit a post", async () => {
     const req: any = {
       body: {
         imageUrl: "https://image.12345",
@@ -148,6 +149,26 @@ describe("should create a comment", () => {
       message: "Product updated successfully",
     });
   });
-    
-  
+
+  it("should create a post", async () => {
+    const req: any = {
+      body: {
+        imageUrl: "https://imageUrl.1234",
+        postContent: "Qwerty1234567890",
+        userID: "User123",
+      },
+    } as any;
+
+    const res: any = {
+      status: jest.fn().mockReturnThis(),
+      send: jest.fn(),
+    } as any;
+
+    await createPost(req, res);
+
+    //  expect(mockResponse.status).toHaveBeenCalledWith(200);
+    expect(res.send).toHaveBeenCalledWith({
+      message: "post created successfully",
+    });
+  });
 });
