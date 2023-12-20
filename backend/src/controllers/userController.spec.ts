@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { v4 } from "uuid";
 import { execute, query } from "../helpers/dbHelper";
 
-import { registerUser, loginUser, resetPassword } from "./userController";
+import { registerUser, loginUser, resetPassword, updateUserDetails, toggleFollowUser } from "./userController";
 
 jest.mock("../helpers/dbHelper", () => ({
   execute: jest.fn(),
@@ -158,55 +158,78 @@ describe("loginUser", () => {
   });
 });
 
-// describe("resetPassword", () => {
-//   it("should reset user password", async () => {
-//     // Arrange
-//     const req: any = {
-//       body: {
-//         email: "devngecu@gmail.com",
-//         resetToken: "ResetToken",
-//         newPassword: "newPassword123",
-//       },
-//     } as any;
+describe("updates user", () => {
+   it("should update user details successfully", async () => {
+     const req:any = {
+       body: {
+         userID: "user123",
+         fullname: "Robin Ngecu",
+         profileUrl: "http://example.com/avatar.jpg",
+         profileCaption: "I am a web developer",
+       },
+     };
+     const res:any = {
+       status: jest.fn().mockReturnThis(),
+       send: jest.fn(),
+     };
 
-//     const res: any = {
+     await updateUserDetails(req, res);
+
+    //  expect(mockResponse.status).toHaveBeenCalledWith(200);
+     expect(res.send).toHaveBeenCalledWith({
+       message: "User updated successfully",
+     });
+   });
+  
+   it("should fails to update user details successfully", async () => {
+     const req: any = {
+       body: {
+        //  userID: "user123",
+        //  fullname: "Robin Ngecu",
+        //  profileUrl: "http://example.com/avatar.jpg",
+        //  profileCaption: "I am a web developer",
+       },
+     };
+     const res: any = {
+       status: jest.fn().mockReturnThis(),
+       json: jest.fn(),
+     };
+
+     await updateUserDetails(req, res);
+
+     //  expect(mockResponse.status).toHaveBeenCalledWith(200);
+     expect(res.json).toHaveBeenCalledWith({
+       error: 'Invalid request',
+      details:"Both userID, profileUrl,profileCaption and fullname are required for updating user details.",
+     });
+   });
+})
+
+// describe('toggleFollowUser controller', () => {
+//   it("should follow user successfully if relationship does not exist", async () => {
+//     const req:any = {
+//       body: {
+//         following_userID: "user123",
+//         followed_userID: "user789",
+//       },
+//     };
+//     const res:any = {
 //       status: jest.fn().mockReturnThis(),
 //       json: jest.fn(),
-//     } as any;
+//     };
 
-//     // Mock bcrypt hash function
-//     jest
-//       .spyOn(bcrypt, "hash")
-//       .mockResolvedValueOnce("HashedNewPassword" as never);
+//     // Mocking the query to simulate a non-existing relationship
+//     query.mockResolvedValue({ recordset: [] });
 
-//     // Mock execute function to simulate a successful password reset
-//     (execute as jest.Mock).mockResolvedValueOnce({
-//       rowsAffected: [1],
-//       recordset: [{ message: "Password updated successfully" }],
-//     });
+//     // Mocking the execute function to simulate a successful follow
+//     execute.mockResolvedValue({ rowsAffected: [1] });
 
-//     // Act
-//     await resetPassword(req, res);
+//     await toggleFollowUser(req, res);
 
-//     // Assert
 //     expect(res.status).toHaveBeenCalledWith(200);
 //     expect(res.json).toHaveBeenCalledWith({
-//       message: "Password reset successful.",
-//     });
-
-//     // Additional assertions
-//     expect(bcrypt.hash).toHaveBeenCalledWith(
-//       "newPassword123",
-//       expect.any(Number)
-//     );
-//     expect(execute).toHaveBeenCalledWith("ResetPassword", {
-//       email: "devngecu@gmail.com",
-//       resetToken: "ResetToken",
-//       newPassword: "HashedNewPassword",
+//       message: "User Followed",
 //     });
 //   });
-// });
-
-
-
+// }) 
 
