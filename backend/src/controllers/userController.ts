@@ -323,7 +323,7 @@ export const resetPassword = async (req: Request, res: Response) => {
       newPassword: hashedPassword,
     });
 
-    console.log("rows affected", result.rowsAffected);
+    console.log("rows affected", result.rowsAffected[1]);
 
     if (result.rowsAffected[0] > 0) {
       res.status(200).json({ message: "Password reset successful." });

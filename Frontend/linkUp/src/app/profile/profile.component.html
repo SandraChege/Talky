@@ -44,7 +44,7 @@
        
 
         <!--Profile form-->
-        <div data-cy="profileform" class="profileform overlay" *ngIf="isProfileFormVisible">
+        <div id="profileform" class="profileform overlay" *ngIf="isProfileFormVisible">
             <div class="container text-black">
                 <form [formGroup] = "profileForm" (ngSubmit)="updateProfile()">
                     <div class="closeicon"><button (click)="hideform()"><i class="fa-solid fa-xmark"></i></button></div>

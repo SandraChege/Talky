@@ -36,7 +36,8 @@
 //   }
 // }
 
-/// <reference path="index.d.ts"/>
+///<reference path="index.d.ts"/>
+
 //custom command for login
 Cypress.Commands.add('loginUser', () => {
   cy.visit('/login');
