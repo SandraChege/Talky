@@ -34,13 +34,14 @@
                     <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500">Password is required</div>
                 <!--<div *ngIf="registrationForm.get('password')?.errors?.minlength">Password must be at least 8 characters long.</div>-->
                 </div>
+
                 <div class="flex flex-col">
                     <input data-cy="login_user_btn" type="submit" value="Let's go" class="rounded-[10px] border-solid border-[1px] bg-[#2563EB] border-[#2563EB] outline-none px-4 py-[6px] mt-[1rem] hover:cursor-pointer">
                 </div>
 
                 <div class="flex flex-col mt-4 text-[13px] text-gray-900">
                     <div class="text-right active:text-[#8800FF]">
-                        <a routerLink="/reset" class="active:text-[#f9fafb]">Forgot password</a>
+                        <a routerLink="/reset" class="active:text-[#f9fafb]" data-cy="forgot">Forgot password</a>
                     </div>
 
                     <div class="flex flex-row flex-grow flex items-center">
@@ -50,7 +51,7 @@
                     </div>            
 
                     <div class="text-left active:text-[#8800FF]">
-                        <a routerLink="/register" class="active:text-[#f9fafb]">Don't have an account</a>
+                        <a data-cy="noaccount" routerLink="/register" class="active:text-[#f9fafb]">Don't have an account</a>
                     </div>
                 </div>
             </form>

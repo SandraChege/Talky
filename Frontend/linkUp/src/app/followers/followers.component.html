@@ -4,11 +4,11 @@
         <div class="w-[100%] summarycontainer flex flex-col text-base text-black">
             <!--SEARCH FUNCTIONALITY-->
             <div class="searchInput flex justify-end">
-                <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search user" [(ngModel)]="searchText">
+                <input type="search" name="" id="" class="rounded-[10px] p-[10px]" placeholder="search user" [(ngModel)]="searchText"  data-cy="searchuser">
             </div>
             <!-- personinfo -->
             <div class="allPersonalInfo mt-[20px]">
-                <div *ngFor = "let user of followers | followers:searchText ">
+                <div *ngFor = "let user of followers | followers:searchText " data-cy="followers">
                     <div class="pdetails">
                         <div class="top">
                             <img src="{{user.profileUrl}}" alt="">

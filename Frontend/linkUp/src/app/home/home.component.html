@@ -25,7 +25,7 @@
 
       <!--MOCK POSTS START HERE-->
       <div data-cy="allPosts" class="postcontainer flex flex-col text-black font-550 text-base rounded-[15px]" *ngFor="let post of allPosts">
-        <div class="post">
+        <div class="post" id="post">
           <div class="flex justify-between">
             <p class="py-2 font-[550] text-base">{{post.creatorName}}</p>
             <!--DROPDOWN FOR EDITING AND DDELETING POST-->
@@ -69,6 +69,7 @@
           <div class="flex justify-between items-center">
             <input
               type="text"
+              id="addcomment1"
               placeholder="Type your comments"
               class="py-1.5"
               [(ngModel)]="newcommentText"

@@ -43,7 +43,7 @@ Cypress.Commands.add('loginUser', () => {
   cy.visit('/login');
 
   it('login a user successfully', () => {
-    cy.visit('/login');
+    // cy.visit('/login');
 
     cy.get('[data-cy="userEmail"]').type('phillipwaiganjo@gmail.com');
     cy.get('[data-cy="userPassword"]').type('12345678');

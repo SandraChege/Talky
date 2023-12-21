@@ -3,3 +3,7 @@ redo on posts
 followers and following
 like and unlike post count
 see profile on those folllowing and followers
+
+FINISH ON ALL TESTING I.E PERFFORMANCE, STRESS, SMOKE, BREAKPOINT = https://k6.io/docs/test-types/load-test-types/
+
+https://profilinator.rishav.dev/
